@@ -1,0 +1,64 @@
+{
+    "require": "strict",
+    "rules": [
+      {
+        "name": "operation-summary-uses-video-term-instead-of-clip",
+        "object": "*",
+        "enabled": true,
+        "description": "operation summaries should use the term `video` instead of `clip`",
+        "notContain": {
+          "properties": ["summary"],
+          "pattern": {
+            "value": "clip",
+            "flags": "gi"
+          }
+        }
+      },
+      {
+        "name": "operation-summary-should-not-have-trailing-punctuation",
+        "object": "*",
+        "enabled": true,
+        "description": "operation summaries should not have trailing punctuation",
+        "pattern": {
+          "property": "summary",
+          "value": "^[a-zA-Z0-9 ']+$"
+        }
+      },
+      {
+        "name": "schema-title-uses-video-term-instead-of-clip",
+        "object": "*",
+        "enabled": false,
+        "description": "schema titles should use the term `video` instead of `clip`",
+        "notContain": {
+          "properties": ["title"],
+          "pattern": {
+            "value": "clip",
+            "flags": "gi"
+          }
+        }
+      },
+      {
+        "name": "response-description-uses-video-term-instead-of-clip",
+        "object": "response",
+        "enabled": true,
+        "description": "response descriptions should use the term `video` instead of `clip`",
+        "notContain": {
+          "properties": ["description"],
+          "pattern": {
+            "value": "clip",
+            "flags": "gi"
+          }
+        }
+      },
+      {
+        "name": "response-description-should-should-have-trailing-punctuation",
+        "object": "response",
+        "enabled": true,
+        "pattern": {
+          "property": "description",
+          "split": "\n",
+          "value": "^(There are [a-z]+ ways that this status code can be encountered:|(.*)[.?!])$"
+        }
+      }
+    ]
+  }

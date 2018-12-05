@@ -1,0 +1,8 @@
+{
+    "devDependencies": {
+        "speccy": "^0.8.5"
+    },
+    "scripts": {
+        "test": "speccy lint api.yaml"
+    }
+}
