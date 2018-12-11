@@ -188,7 +188,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -285,7 +285,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -362,7 +362,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -457,7 +457,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -575,7 +575,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: "The field by which to sort the results.\n\nOption descriptions:\n * `relevant` - Relevant sorting is available only for search queries.\n"
+          description: "The way to sort the results.\n\nOption descriptions:\n * `relevant` - Relevant sorting is available only for search queries.\n"
           in: query
           name: sort
           required: false
@@ -1052,7 +1052,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -1804,7 +1804,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -1960,7 +1960,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -2347,7 +2347,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -2485,7 +2485,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -2881,7 +2881,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: "The field by which to sort the results.\n\nOption descriptions:\n * `relevant` - Relevant sorting is available only for search queries.\n"
+          description: "The way to sort the results.\n\nOption descriptions:\n * `relevant` - Relevant sorting is available only for search queries.\n"
           in: query
           name: sort
           required: false
@@ -3056,7 +3056,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -3148,7 +3148,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -3455,7 +3455,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -3820,7 +3820,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -4093,7 +4093,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -4150,7 +4150,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -4295,7 +4295,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -4573,7 +4573,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -4643,7 +4643,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -4841,7 +4841,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -4988,7 +4988,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The technique to use for sorting the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -5139,7 +5139,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -5489,7 +5489,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -5730,7 +5730,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -5827,7 +5827,7 @@ paths:
             type: number
             example: 10
         -
-          description: "The field by which to sort the results.\n\nOption descriptions:\n * `default` - This will sort to the default sort set on the portfolio.\n"
+          description: "The way to sort the results.\n\nOption descriptions:\n * `default` - This will sort to the default sort set on the portfolio.\n"
           in: query
           name: sort
           required: false
@@ -6124,7 +6124,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -6450,7 +6450,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -6699,7 +6699,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -7212,7 +7212,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -7562,7 +7562,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -8197,7 +8197,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -9019,7 +9019,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -9128,7 +9128,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -9212,7 +9212,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -9585,7 +9585,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -9673,7 +9673,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -9871,7 +9871,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -10543,7 +10543,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -10856,7 +10856,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -10921,7 +10921,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -11098,7 +11098,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -11442,7 +11442,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -11520,7 +11520,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -11759,7 +11759,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -11938,7 +11938,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The technique to use for sorting the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -12121,7 +12121,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -12684,7 +12684,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -12797,7 +12797,7 @@ paths:
             type: number
             example: 10
         -
-          description: "The field by which to sort the results.\n\nOption descriptions:\n * `default` - This will sort to the default sort set on the portfolio.\n"
+          description: "The way to sort the results.\n\nOption descriptions:\n * `default` - This will sort to the default sort set on the portfolio.\n"
           in: query
           name: sort
           required: false
@@ -13158,7 +13158,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -13533,7 +13533,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -13911,7 +13911,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -14373,7 +14373,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -14572,7 +14572,7 @@ paths:
             type: string
             example: 'staff picks'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -15480,7 +15480,7 @@ paths:
             type: string
             example: 'Stop motion'
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -15733,7 +15733,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'The field by which to sort the results.'
+          description: 'The way to sort the results.'
           in: query
           name: sort
           required: false
@@ -20107,7 +20107,7 @@ components:
           example: '2007-01-18T16:40:11+00:00'
           type: string
         email:
-          description: 'The user''s email address.'
+          description: 'The user''s email address. This data requires a bearer token with the `email` scope.'
           example: user@example.com
           type: string
         link:
