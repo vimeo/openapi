@@ -1,5 +1,7 @@
 # Vimeo + OpenAPI
 
+<img src="https://user-images.githubusercontent.com/33762/49821892-8c1dc000-fd49-11e8-93e3-98c7ddd9a654.png" width="400" />
+
 This repository contains an [OpenAPI specification](https://www.openapis.org/) for the the latest version of the Vimeo API.
 
 Our OpenAPI specification powers the [Vimeo API Reference](https://developer.vimeo.com/api/reference) pages and API playground.
