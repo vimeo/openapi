@@ -6236,17 +6236,14 @@ paths:
           schema:
             type: number
             example: 12345
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                should_delete_clips:
-                  description: 'Whether to delete all the videos in the project along with the project itself.'
-                  example: 'true'
-                  type: boolean
+        -
+          description: 'Whether to delete all the videos in the project along with the project itself.'
+          in: query
+          name: should_delete_clips
+          required: false
+          schema:
+            type: boolean
+            example: 'true'
       responses:
         204:
           description: 'The project was deleted.'
@@ -6386,23 +6383,22 @@ paths:
           schema:
             type: number
             example: 12345
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                should_delete_clips:
-                  description: 'Allow videos to be removed from folder or deleted.'
-                  example: 'false'
-                  type: boolean
-                uris:
-                  description: 'A comma-separated list of video URIs to delete.'
-                  example: '/videos/258684937,/videos/273576296'
-                  type: string
-              required:
-                - uris
+        -
+          description: 'Allow videos to be removed from folder and deleted.'
+          in: query
+          name: should_delete_clips
+          required: false
+          schema:
+            type: boolean
+            example: 'false'
+        -
+          description: 'A comma-separated list of video URIs to delete.'
+          in: query
+          name: uris
+          required: true
+          schema:
+            type: string
+            example: '/videos/258684937,/videos/273576296'
       responses:
         204:
           description: 'The videos were deleted.'
@@ -6521,17 +6517,14 @@ paths:
           schema:
             type: number
             example: 12345
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                uris:
-                  description: 'A comma-separated list of video URIs to add.'
-                  example: '/videos/258684937,/videos/273576296'
-                  type: string
+        -
+          description: 'A comma-separated list of video URIs to add.'
+          in: query
+          name: uris
+          required: false
+          schema:
+            type: string
+            example: '/videos/258684937,/videos/273576296'
       responses:
         204:
           description: 'The videos were added.'
@@ -13304,17 +13297,14 @@ paths:
           schema:
             type: number
             example: 152184
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                should_delete_clips:
-                  description: 'Whether to delete all the videos in the project along with the project itself.'
-                  example: 'true'
-                  type: boolean
+        -
+          description: 'Whether to delete all the videos in the project along with the project itself.'
+          in: query
+          name: should_delete_clips
+          required: false
+          schema:
+            type: boolean
+            example: 'true'
       responses:
         204:
           description: 'The project was deleted.'
@@ -13478,23 +13468,22 @@ paths:
           schema:
             type: number
             example: 152184
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                should_delete_clips:
-                  description: 'Allow videos to be removed from folder or deleted.'
-                  example: 'false'
-                  type: boolean
-                uris:
-                  description: 'A comma-separated list of video URIs to delete.'
-                  example: '/videos/258684937,/videos/273576296'
-                  type: string
-              required:
-                - uris
+        -
+          description: 'Allow videos to be removed from folder and deleted.'
+          in: query
+          name: should_delete_clips
+          required: false
+          schema:
+            type: boolean
+            example: 'false'
+        -
+          description: 'A comma-separated list of video URIs to delete.'
+          in: query
+          name: uris
+          required: true
+          schema:
+            type: string
+            example: '/videos/258684937,/videos/273576296'
       responses:
         204:
           description: 'The videos were deleted.'
@@ -13629,17 +13618,14 @@ paths:
           schema:
             type: number
             example: 152184
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                uris:
-                  description: 'A comma-separated list of video URIs to add.'
-                  example: '/videos/258684937,/videos/273576296'
-                  type: string
+        -
+          description: 'A comma-separated list of video URIs to add.'
+          in: query
+          name: uris
+          required: false
+          schema:
+            type: string
+            example: '/videos/258684937,/videos/273576296'
       responses:
         204:
           description: 'The videos were added.'
