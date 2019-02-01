@@ -6641,7 +6641,7 @@ paths:
         - Videos\Essentials
       parameters:
         -
-          description: 'The page that contains the video URI.'
+          description: 'The page that contains the video URI. Only available when not paired with `query`.'
           in: query
           name: containing_uri
           required: false
@@ -6728,14 +6728,6 @@ paths:
               - likes
               - modified_time
               - plays
-        -
-          description: 'Whether to include private videos in the search. Please note that a separate search service provides this functionality. The service performs a partial text search on the video''s name.'
-          in: query
-          name: weak_search
-          required: false
-          schema:
-            type: boolean
-            example: 'false'
       responses:
         304:
           description: 'This user has not created any videos since the given `If-Modified-Since` header.'
@@ -13863,7 +13855,7 @@ paths:
             type: number
             example: 152184
         -
-          description: 'The page that contains the video URI.'
+          description: 'The page that contains the video URI. Only available when not paired with `query`.'
           in: query
           name: containing_uri
           required: false
@@ -13950,14 +13942,6 @@ paths:
               - likes
               - modified_time
               - plays
-        -
-          description: 'Whether to include private videos in the search. Please note that a separate search service provides this functionality. The service performs a partial text search on the video''s name.'
-          in: query
-          name: weak_search
-          required: false
-          schema:
-            type: boolean
-            example: 'false'
       responses:
         304:
           description: 'This user has not created any videos since the given `If-Modified-Since` header.'
@@ -16904,6 +16888,10 @@ paths:
                       description: 'If your upload approach is pull, Vimeo will download the video hosted at this public URL. This URL must be valid for at least 24 hours.'
                       example: 'https://example.com'
                       type: string
+                    redirect_url:
+                      description: 'The app''s redirect URL. Use this parameter when `approach` is `post`.'
+                      example: 'https://example.com'
+                      type: string
                     size:
                       description: 'Upload size'
                       example: '13623861'
@@ -17167,9 +17155,24 @@ components:
           required:
             - html
           type: object
+        embed_brand_color:
+          description: 'Whether to show the album''s custom brand color in the player of the album''s embedded playlist.'
+          example: 'true'
+          nullable: true
+          type: boolean
+        embed_custom_logo:
+          description: 'Whether to show the album''s custom logo in the player of the album''s embedded playlist.'
+          example: 'true'
+          nullable: true
+          type: boolean
         hide_nav:
           description: 'Whether to hide the Vimeo navigation when viewing the album.'
           example: 'true'
+          type: boolean
+        hide_vimeo_logo:
+          description: 'Whether to hide the Vimeo logo in the player of the album''s embedded playlist.'
+          example: 'true'
+          nullable: true
           type: boolean
         layout:
           description: 'The album''s layout preference'
@@ -17342,7 +17345,10 @@ components:
         - domain
         - duration
         - embed
+        - embed_brand_color
+        - embed_custom_logo
         - hide_nav
+        - hide_vimeo_logo
         - layout
         - link
         - metadata
