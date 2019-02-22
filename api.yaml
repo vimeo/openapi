@@ -3557,7 +3557,6 @@ paths:
                     - standard
                   type: string
               required:
-                - description
                 - name
       responses:
         201:
@@ -4056,6 +4055,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      security:
+        -
+          oauth2:
+            - edit
+  '/me/albums/{album_id}/videos/{video_id}/set_album_thumbnail':
+    post:
+      summary: 'Set a video as the album thumbnail'
+      operationId: set_video_as_album_thumbnail_alt1
+      tags:
+        - 'Albums\Album videos'
+      parameters:
+        -
+          description: 'The ID of the album.'
+          in: path
+          name: album_id
+          required: true
+          schema:
+            type: number
+            example: 12345
+        -
+          description: 'The ID of the video.'
+          in: path
+          name: video_id
+          required: true
+          schema:
+            type: number
+            example: 196367152
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                time_code:
+                  description: 'The video frame time in seconds to use as the album thumbnail.'
+                  example: 300
+                  type: number
+      responses:
+        204:
+          description: 'The album was updated with a new thumbnail.'
+        404:
+          description: 'No such album, or user, or video exists. Returns a unique error code of `5000`.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        403:
+          description: 'The authenticated user cannot edit the album. Returns a unique error code of `3429`.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        500:
+          description: 'Unexpected error while setting thumbnail. Returns a unique error code of `4016`.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
       security:
         -
           oauth2:
@@ -9987,7 +10045,6 @@ paths:
                     - standard
                   type: string
               required:
-                - description
                 - name
       responses:
         201:
@@ -11076,6 +11133,73 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      security:
+        -
+          oauth2:
+            - edit
+  '/users/{user_id}/albums/{album_id}/videos/{video_id}/set_album_thumbnail':
+    post:
+      summary: 'Set a video as the album thumbnail'
+      operationId: set_video_as_album_thumbnail
+      tags:
+        - 'Albums\Album videos'
+      parameters:
+        -
+          description: 'The ID of the album.'
+          in: path
+          name: album_id
+          required: true
+          schema:
+            type: number
+            example: 12345
+        -
+          description: 'The ID of the user.'
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: number
+            example: 152184
+        -
+          description: 'The ID of the video.'
+          in: path
+          name: video_id
+          required: true
+          schema:
+            type: number
+            example: 196367152
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                time_code:
+                  description: 'The video frame time in seconds to use as the album thumbnail.'
+                  example: 300
+                  type: number
+      responses:
+        204:
+          description: 'The album was updated with a new thumbnail.'
+        404:
+          description: 'No such album, or user, or video exists. Returns a unique error code of `5000`.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        403:
+          description: 'The authenticated user cannot edit the album. Returns a unique error code of `3429`.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        500:
+          description: 'Unexpected error while setting thumbnail. Returns a unique error code of `4016`.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
       security:
         -
           oauth2:
@@ -21854,6 +21978,10 @@ components:
               $ref: '#/components/schemas/project'
           description: 'Information about the folder that contains this video.'
           nullable: true
+        password:
+          description: 'The privacy-enabled password to watch this video. Only users can see their own video passwords. This data requires a bearer token with the `private` scope.'
+          example: hunter1
+          type: string
         pictures:
           allOf:
             -
