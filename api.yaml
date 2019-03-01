@@ -14,33 +14,33 @@ tags:
   -
     name: 'Albums\Custom album thumbnails'
   -
-    name: Albums\Essentials
+    name: 'Albums\Essentials'
   -
     name: 'Authentication Extras\Essentials'
   -
-    name: Categories\Channels
+    name: 'Categories\Channels'
   -
-    name: Categories\Essentials
+    name: 'Categories\Essentials'
   -
-    name: Categories\Groups
+    name: 'Categories\Groups'
   -
-    name: Categories\Subscriptions
+    name: 'Categories\Subscriptions'
   -
-    name: Categories\Videos
+    name: 'Categories\Videos'
   -
-    name: Channels\Categories
+    name: 'Channels\Categories'
   -
-    name: Channels\Essentials
+    name: 'Channels\Essentials'
   -
-    name: Channels\Moderators
+    name: 'Channels\Moderators'
   -
     name: 'Channels\Private channel members'
   -
     name: 'Channels\Subscriptions and subscribers'
   -
-    name: Channels\Tags
+    name: 'Channels\Tags'
   -
-    name: Channels\Videos
+    name: 'Channels\Videos'
   -
     name: 'Embed Presets\Custom Logos'
   -
@@ -48,15 +48,15 @@ tags:
   -
     name: 'Embed Presets\Videos'
   -
-    name: Groups\Essentials
+    name: 'Groups\Essentials'
   -
-    name: Groups\Subscription
+    name: 'Groups\Subscription'
   -
-    name: Groups\Users
+    name: 'Groups\Users'
   -
-    name: Groups\Videos
+    name: 'Groups\Videos'
   -
-    name: Likes\Essentials
+    name: 'Likes\Essentials'
   -
     name: 'On Demand\Backgrounds'
   -
@@ -76,53 +76,53 @@ tags:
   -
     name: 'On Demand\Videos'
   -
-    name: Portfolios\Essentials
+    name: 'Portfolios\Essentials'
   -
-    name: Portfolios\Videos
+    name: 'Portfolios\Videos'
   -
-    name: Projects\Essentials
+    name: 'Projects\Essentials'
   -
-    name: Projects\Videos
+    name: 'Projects\Videos'
   -
-    name: Tags\Essentials
+    name: 'Tags\Essentials'
   -
-    name: Users\Essentials
+    name: 'Users\Essentials'
   -
-    name: Users\Feed
+    name: 'Users\Feed'
   -
-    name: Users\Follows
+    name: 'Users\Follows'
   -
-    name: Users\Internal
+    name: 'Users\Internal'
   -
-    name: Users\Pictures
+    name: 'Users\Pictures'
   -
     name: 'Users\Watch History'
   -
-    name: Videos\Comments
+    name: 'Videos\Comments'
   -
     name: 'Videos\Content Ratings'
   -
     name: 'Videos\Creative Commons'
   -
-    name: Videos\Credits
+    name: 'Videos\Credits'
   -
     name: 'Videos\Embed Privacy'
   -
-    name: Videos\Essentials
+    name: 'Videos\Essentials'
   -
-    name: Videos\Languages
+    name: 'Videos\Languages'
   -
-    name: Videos\Recommendations
+    name: 'Videos\Recommendations'
   -
-    name: Videos\Tags
+    name: 'Videos\Tags'
   -
     name: 'Videos\Text Tracks'
   -
-    name: Videos\Thumbnails
+    name: 'Videos\Thumbnails
   -
-    name: Videos\Upload
+    name: 'Videos\Upload'
   -
-    name: Videos\Versions
+    name: 'Videos\Versions'
   -
     name: 'Videos\Viewing Privacy'
   -
