@@ -4094,8 +4094,12 @@ paths:
                   example: 300
                   type: number
       responses:
-        204:
+        200:
           description: 'The album was updated with a new thumbnail.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/album'
         404:
           description: 'Error code 5000: No such album, or user, or video exists.'
           content:
@@ -11190,8 +11194,12 @@ paths:
                   example: 300
                   type: number
       responses:
-        204:
+        200:
           description: 'The album was updated with a new thumbnail.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/album'
         404:
           description: 'Error code 5000: No such album, or user, or video exists.'
           content:
