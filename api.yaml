@@ -42,7 +42,7 @@ tags:
   -
     name: Channels\Videos
   -
-    name: 'Embed Presets\Custom Logos'
+    name: 'Embed Presets\Custom logos'
   -
     name: 'Embed Presets\Essentials'
   -
@@ -50,7 +50,7 @@ tags:
   -
     name: Groups\Essentials
   -
-    name: Groups\Subscription
+    name: Groups\Subscriptions
   -
     name: Groups\Users
   -
@@ -146,7 +146,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
       responses:
         200:
           description: 'Standard request.'
@@ -433,7 +433,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -1941,7 +1941,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -2589,7 +2589,7 @@ paths:
               properties:
                 active:
                   description: 'Whether the image created by the `time` field should be the default thumbnail for the video.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 time:
                   description: 'Creates an image of the video from the given time offset.'
@@ -2766,7 +2766,7 @@ paths:
               properties:
                 active:
                   description: 'Active text tracks appear in the player and are visible to other users. Only one text track per language can be active.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 language:
                   description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
@@ -3129,7 +3129,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -3223,7 +3223,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific video in a group'
-      description: 'Check if a group has a video.'
+      description: 'This method returns a single video from a group. You can use this method to determine whether the video belongs to the group.'
       operationId: get_group_video
       tags:
         - Groups\Videos
@@ -3289,7 +3289,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/video'
         403:
-          description: "* The video is already in the group.\n* The user can't add videos to the group."
+          description: "* The video is already in the group.\n* The authenticated user can't add videos to the group."
           content:
             application/vnd.vimeo.video+json:
               schema:
@@ -3379,7 +3379,7 @@ paths:
                       properties:
                         add:
                           description: 'Whether a user can add the video to an album, channel, or group. This value becomes the default add setting for all future videos uploaded by the user.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         comments:
                           description: 'Who can comment on the video. This value becomes the default comment setting for all future videos that this user uploads.'
@@ -3390,7 +3390,7 @@ paths:
                           type: string
                         download:
                           description: 'Whether a user can download the video. This value becomes the default download setting for all future videos that this user uploads.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         embed:
                           description: 'The privacy for embed videos. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for adding and removing domains.'
@@ -3510,7 +3510,7 @@ paths:
                   type: string
                 hide_nav:
                   description: 'Whether to hide Vimeo navigation when displaying the album.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 layout:
                   description: 'The type of layout for presenting the album.'
@@ -3535,7 +3535,7 @@ paths:
                   type: string
                 review_mode:
                   description: 'Whether album videos should use the review mode URL.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 sort:
                   description: 'The default sort order of the album''s videos.'
@@ -3678,7 +3678,7 @@ paths:
                   type: string
                 hide_nav:
                   description: 'Whether to hide Vimeo navigation when displaying the album.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 layout:
                   description: 'The type of layout for presenting the album.'
@@ -3703,7 +3703,7 @@ paths:
                   type: string
                 review_mode:
                   description: 'Whether album videos should use the review mode URL.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 sort:
                   description: 'The default sort order of the album''s videos.'
@@ -3731,7 +3731,7 @@ paths:
                   type: string
                 use_custom_domain:
                   description: 'Whether the user has opted in to use a custom domain for their album.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -3812,7 +3812,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -3869,7 +3869,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'false'
+            example: false
       responses:
         200:
           description: 'The videos were returned.'
@@ -4156,7 +4156,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -4487,9 +4487,10 @@ paths:
   /me/customlogos:
     get:
       summary: 'Get all the custom logos that belong to a user'
+      description: 'This method returns all the custom logos that belong to the specified user.'
       operationId: get_custom_logos_alt1
       tags:
-        - 'Embed Presets\Custom Logos'
+        - 'Embed Presets\Custom logos'
       responses:
         200:
           description: 'The custom logos were returned.'
@@ -4500,16 +4501,17 @@ paths:
                 items:
                   $ref: '#/components/schemas/picture'
         403:
-          description: "* The user can't view this custom logo.\n* The user can't view custom logos."
+          description: "* The authenticated user can't view this particular custom logo.\n* The authenticated user can't view custom logos in general."
           content:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a custom logo'
+      description: 'This method adds a custom logo to the specified user''s account.'
       operationId: create_custom_logo_alt1
       tags:
-        - 'Embed Presets\Custom Logos'
+        - 'Embed Presets\Custom logos'
       responses:
         201:
           description: 'The custom logo was created.'
@@ -4518,7 +4520,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/picture'
         403:
-          description: "* You can't upload pictures for another user's videos.\n* The user can't add a custom logo."
+          description: "* The authenticated user can't upload pictures to another user's video.\n* The authenticated user can't add a custom logo."
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -4530,9 +4532,10 @@ paths:
   '/me/customlogos/{logo_id}':
     get:
       summary: 'Get a specific custom logo'
+      description: 'This method returns a single custom logo belonging to the specified user.'
       operationId: get_custom_logo_alt1
       tags:
-        - 'Embed Presets\Custom Logos'
+        - 'Embed Presets\Custom logos'
       parameters:
         -
           description: 'The ID of the custom logo.'
@@ -4550,7 +4553,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/picture'
         403:
-          description: 'The user can''t view custom logos.'
+          description: 'The authenticated user can''t view custom logos.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -4955,7 +4958,7 @@ paths:
       summary: 'Remove a user from a group'
       operationId: leave_group_alt1
       tags:
-        - Groups\Subscription
+        - Groups\Subscriptions
       parameters:
         -
           description: 'The ID of the group.'
@@ -4982,7 +4985,7 @@ paths:
       summary: 'Add a user to a group'
       operationId: join_group_alt1
       tags:
-        - Groups\Subscription
+        - Groups\Subscriptions
       parameters:
         -
           description: 'The ID of the group.'
@@ -5021,7 +5024,7 @@ paths:
             example: 1108
       responses:
         204:
-          description: 'The user has joined the group.'
+          description: 'The user belongs to the group.'
         404:
           description: "* No such group exists.\n* The authenticated user isn't a member of this group."
           content:
@@ -5051,7 +5054,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -5289,11 +5292,11 @@ paths:
                   properties:
                     active:
                       description: 'Whether the Buy action is active. *Required if `rent.active` is false.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     download:
                       description: 'Whether people who buy the video can download it. To use this field, `type` must be `film`.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     price:
                       properties:
@@ -5371,11 +5374,11 @@ paths:
                       properties:
                         active:
                           description: 'Whether episodes can be bought.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         download:
                           description: 'Whether people who buy the episode can download it. To use this field, `type` must be `series`.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         price:
                           properties:
@@ -5389,7 +5392,7 @@ paths:
                       properties:
                         active:
                           description: 'Whether episodes can be rented'
-                          example: 'true'
+                          example: true
                           type: boolean
                         period:
                           description: 'The period in which this episode can be rented for.'
@@ -5424,7 +5427,7 @@ paths:
                   properties:
                     active:
                       description: 'Whether the video can be rented. *Required if `buy.active` is false.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     period:
                       description: 'The period in which this can be rented for.'
@@ -5496,7 +5499,7 @@ paths:
                       properties:
                         active:
                           description: 'Whether monthly subscription is active. *Required if `rent.active` and `buy.active` are false.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         price:
                           properties:
@@ -5763,7 +5766,7 @@ paths:
               properties:
                 active:
                   description: 'Whether the picture is the user''s active portrait.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -5898,7 +5901,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -6095,6 +6098,7 @@ paths:
                 $ref: '#/components/schemas/presets'
     patch:
       summary: 'Edit an embed preset'
+      description: 'This method edits an embed present belonging to the specified user.'
       operationId: edit_embed_preset_alt1
       tags:
         - 'Embed Presets\Essentials'
@@ -6141,12 +6145,13 @@ paths:
   '/me/presets/{preset_id}/videos':
     get:
       summary: 'Get all the videos that have been added to an embed preset'
+      description: 'This method returns all the videos that make use of the specified embed preset.'
       operationId: get_embed_preset_videos_alt1
       tags:
         - 'Embed Presets\Videos'
       parameters:
         -
-          description: 'The ID of the preset.'
+          description: 'The ID of the embed preset.'
           in: path
           name: preset_id
           required: true
@@ -6315,7 +6320,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
       responses:
         204:
           description: 'The project was deleted.'
@@ -6465,7 +6470,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'false'
+            example: false
         -
           description: 'A comma-separated list of the video URIs to remove.'
           in: query
@@ -6757,7 +6762,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'Whether to filter by all playable videos or by all videos that are not  playable.'
           in: query
@@ -6765,7 +6770,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -6846,31 +6851,31 @@ paths:
                       properties:
                         embed:
                           description: 'Show or hide the Embed button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         fullscreen:
                           description: 'Show or hide the Fullscreen button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         hd:
                           description: 'Show or hide the HD button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         like:
                           description: 'Show or hide the Like button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         scaling:
                           description: 'Show or hide the Scaling button (shown only in Fullscreen mode).'
-                          example: 'true'
+                          example: true
                           type: boolean
                         share:
                           description: 'Show or hide the Share button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         watchlater:
                           description: 'Show or hide the Watch Later button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                       type: object
                     color:
@@ -6883,7 +6888,7 @@ paths:
                           properties:
                             active:
                               description: 'Show or hide your custom logo.'
-                              example: 'true'
+                              example: true
                               type: boolean
                             link:
                               description: 'The URL that loads when the user clicks your custom logo.'
@@ -6891,17 +6896,17 @@ paths:
                               type: string
                             sticky:
                               description: 'Whether always to show the custom logo or to hide it after time with the rest of the UI.'
-                              example: 'true'
+                              example: true
                               type: boolean
                           type: object
                         vimeo:
                           description: 'Show or hide the Vimeo logo.'
-                          example: 'true'
+                          example: true
                           type: boolean
                       type: object
                     playbar:
                       description: 'Show or hide the playbar.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     title:
                       properties:
@@ -6929,7 +6934,7 @@ paths:
                       type: object
                     volume:
                       description: 'Show or hide the volume selector.'
-                      example: 'true'
+                      example: true
                       type: boolean
                   type: object
                 license:
@@ -6959,7 +6964,7 @@ paths:
                   properties:
                     add:
                       description: 'Whether a user can add the video to an album, channel, or group.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     comments:
                       description: 'The privacy level required to comment on the video.'
@@ -6970,7 +6975,7 @@ paths:
                       type: string
                     download:
                       description: 'Whether a user can download the video. Not available to users with a Basic membership'
-                      example: 'true'
+                      example: true
                       type: boolean
                     embed:
                       description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for details on adding and removing domains.'
@@ -7023,7 +7028,7 @@ paths:
                   properties:
                     active:
                       description: 'Enable or disable video review.'
-                      example: 'true'
+                      example: true
                       type: boolean
                   type: object
                 spatial:
@@ -7270,7 +7275,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -7795,7 +7800,7 @@ paths:
                   properties:
                     active:
                       description: 'If set to true, you will enable pre-orders on the On Demand page.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     publish_time:
                       description: 'The time that the On Demand page will be published. *Required if `preorder.active` is `true`.'
@@ -7806,12 +7811,12 @@ paths:
                   properties:
                     active:
                       description: 'Whether to publish the On Demand page.'
-                      example: 'true'
+                      example: true
                       type: boolean
                   type: object
                 publish_when_ready:
                   description: 'Whether to publish the On Demand page automatically after all videos are finished transcoding.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -8037,7 +8042,7 @@ paths:
               properties:
                 active:
                   description: 'Whether to make this background the active background.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -8437,7 +8442,7 @@ paths:
               properties:
                 active:
                   description: 'Whether to make this picture the active picture.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -8561,7 +8566,7 @@ paths:
                   type: string
                 download:
                   description: 'Whether the promotion grants download access to VOD content. This is necessary only when not previously defined in the On Demand container or when `access_type` is `vip` or `product_type` is `buy`.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 end_time:
                   description: 'The end of the promotion period. If you don''t specify a value, the promotion will never expire.'
@@ -9864,7 +9869,7 @@ paths:
                       properties:
                         add:
                           description: 'Whether a user can add the video to an album, channel, or group. This value becomes the default add setting for all future videos uploaded by the user.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         comments:
                           description: 'Who can comment on the video. This value becomes the default comment setting for all future videos that this user uploads.'
@@ -9875,7 +9880,7 @@ paths:
                           type: string
                         download:
                           description: 'Whether a user can download the video. This value becomes the default download setting for all future videos that this user uploads.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         embed:
                           description: 'The privacy for embed videos. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for adding and removing domains.'
@@ -10012,7 +10017,7 @@ paths:
                   type: string
                 hide_nav:
                   description: 'Whether to hide Vimeo navigation when displaying the album.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 layout:
                   description: 'The type of layout for presenting the album.'
@@ -10037,7 +10042,7 @@ paths:
                   type: string
                 review_mode:
                   description: 'Whether album videos should use the review mode URL.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 sort:
                   description: 'The default sort order of the album''s videos.'
@@ -10204,7 +10209,7 @@ paths:
                   type: string
                 hide_nav:
                   description: 'Whether to hide Vimeo navigation when displaying the album.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 layout:
                   description: 'The type of layout for presenting the album.'
@@ -10229,7 +10234,7 @@ paths:
                   type: string
                 review_mode:
                   description: 'Whether album videos should use the review mode URL.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 sort:
                   description: 'The default sort order of the album''s videos.'
@@ -10257,7 +10262,7 @@ paths:
                   type: string
                 use_custom_domain:
                   description: 'Whether the user has opted in to use a custom domain for their album.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -10526,7 +10531,7 @@ paths:
               properties:
                 active:
                   description: 'Whether to make this the active album thumbnail.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -10789,7 +10794,7 @@ paths:
               properties:
                 active:
                   description: 'Whether to make this the active album logo.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -10872,7 +10877,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -10929,7 +10934,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'false'
+            example: false
       responses:
         200:
           description: 'The videos were returned.'
@@ -11264,7 +11269,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -11659,9 +11664,10 @@ paths:
   '/users/{user_id}/customlogos':
     get:
       summary: 'Get all the custom logos that belong to a user'
+      description: 'This method returns all the custom logos that belong to the specified user.'
       operationId: get_custom_logos
       tags:
-        - 'Embed Presets\Custom Logos'
+        - 'Embed Presets\Custom logos'
       parameters:
         -
           description: 'The ID of the user.'
@@ -11681,16 +11687,17 @@ paths:
                 items:
                   $ref: '#/components/schemas/picture'
         403:
-          description: "* The user can't view this custom logo.\n* The user can't view custom logos."
+          description: "* The authenticated user can't view this particular custom logo.\n* The authenticated user can't view custom logos in general."
           content:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a custom logo'
+      description: 'This method adds a custom logo to the specified user''s account.'
       operationId: create_custom_logo
       tags:
-        - 'Embed Presets\Custom Logos'
+        - 'Embed Presets\Custom logos'
       parameters:
         -
           description: 'The ID of the user.'
@@ -11708,7 +11715,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/picture'
         403:
-          description: "* You can't upload pictures for another user's videos.\n* The user can't add a custom logo."
+          description: "* The authenticated user can't upload pictures to another user's video.\n* The authenticated user can't add a custom logo."
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -11720,9 +11727,10 @@ paths:
   '/users/{user_id}/customlogos/{logo_id}':
     get:
       summary: 'Get a specific custom logo'
+      description: 'This method returns a single custom logo belonging to the specified user.'
       operationId: get_custom_logo
       tags:
-        - 'Embed Presets\Custom Logos'
+        - 'Embed Presets\Custom logos'
       parameters:
         -
           description: 'The ID of the custom logo.'
@@ -11748,7 +11756,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/picture'
         403:
-          description: 'The user can''t view custom logos.'
+          description: 'The authenticated user can''t view custom logos.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -12218,7 +12226,7 @@ paths:
       summary: 'Remove a user from a group'
       operationId: leave_group
       tags:
-        - Groups\Subscription
+        - Groups\Subscriptions
       parameters:
         -
           description: 'The ID of the group.'
@@ -12253,7 +12261,7 @@ paths:
       summary: 'Add a user to a group'
       operationId: join_group
       tags:
-        - Groups\Subscription
+        - Groups\Subscriptions
       parameters:
         -
           description: 'The ID of the group.'
@@ -12308,7 +12316,7 @@ paths:
             example: 152184
       responses:
         204:
-          description: 'The user has joined the group.'
+          description: 'The user belongs to the group.'
         404:
           description: "* No such group exists.\n* The authenticated user isn't a member of this group."
           content:
@@ -12346,7 +12354,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -12625,11 +12633,11 @@ paths:
                   properties:
                     active:
                       description: 'Whether the Buy action is active. *Required if `rent.active` is false.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     download:
                       description: 'Whether people who buy the video can download it. To use this field, `type` must be `film`.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     price:
                       properties:
@@ -12707,11 +12715,11 @@ paths:
                       properties:
                         active:
                           description: 'Whether episodes can be bought.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         download:
                           description: 'Whether people who buy the episode can download it. To use this field, `type` must be `series`.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         price:
                           properties:
@@ -12725,7 +12733,7 @@ paths:
                       properties:
                         active:
                           description: 'Whether episodes can be rented'
-                          example: 'true'
+                          example: true
                           type: boolean
                         period:
                           description: 'The period in which this episode can be rented for.'
@@ -12760,7 +12768,7 @@ paths:
                   properties:
                     active:
                       description: 'Whether the video can be rented. *Required if `buy.active` is false.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     period:
                       description: 'The period in which this can be rented for.'
@@ -12832,7 +12840,7 @@ paths:
                       properties:
                         active:
                           description: 'Whether monthly subscription is active. *Required if `rent.active` and `buy.active` are false.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         price:
                           properties:
@@ -13054,7 +13062,7 @@ paths:
               properties:
                 active:
                   description: 'Whether the picture is the user''s active portrait.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -13213,7 +13221,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -13450,6 +13458,7 @@ paths:
                 $ref: '#/components/schemas/presets'
     patch:
       summary: 'Edit an embed preset'
+      description: 'This method edits an embed present belonging to the specified user.'
       operationId: edit_embed_preset
       tags:
         - 'Embed Presets\Essentials'
@@ -13504,12 +13513,13 @@ paths:
   '/users/{user_id}/presets/{preset_id}/videos':
     get:
       summary: 'Get all the videos that have been added to an embed preset'
+      description: 'This method returns all the videos that make use of the specified embed preset.'
       operationId: get_embed_preset_videos
       tags:
         - 'Embed Presets\Videos'
       parameters:
         -
-          description: 'The ID of the preset.'
+          description: 'The ID of the embed preset.'
           in: path
           name: preset_id
           required: true
@@ -13711,7 +13721,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
       responses:
         204:
           description: 'The project was deleted.'
@@ -13885,7 +13895,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'false'
+            example: false
         -
           description: 'A comma-separated list of the video URIs to remove.'
           in: query
@@ -14314,7 +14324,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'Whether to filter by all playable videos or by all videos that are not  playable.'
           in: query
@@ -14322,7 +14332,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -14412,31 +14422,31 @@ paths:
                       properties:
                         embed:
                           description: 'Show or hide the Embed button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         fullscreen:
                           description: 'Show or hide the Fullscreen button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         hd:
                           description: 'Show or hide the HD button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         like:
                           description: 'Show or hide the Like button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         scaling:
                           description: 'Show or hide the Scaling button (shown only in Fullscreen mode).'
-                          example: 'true'
+                          example: true
                           type: boolean
                         share:
                           description: 'Show or hide the Share button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         watchlater:
                           description: 'Show or hide the Watch Later button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                       type: object
                     color:
@@ -14449,7 +14459,7 @@ paths:
                           properties:
                             active:
                               description: 'Show or hide your custom logo.'
-                              example: 'true'
+                              example: true
                               type: boolean
                             link:
                               description: 'The URL that loads when the user clicks your custom logo.'
@@ -14457,17 +14467,17 @@ paths:
                               type: string
                             sticky:
                               description: 'Whether always to show the custom logo or to hide it after time with the rest of the UI.'
-                              example: 'true'
+                              example: true
                               type: boolean
                           type: object
                         vimeo:
                           description: 'Show or hide the Vimeo logo.'
-                          example: 'true'
+                          example: true
                           type: boolean
                       type: object
                     playbar:
                       description: 'Show or hide the playbar.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     title:
                       properties:
@@ -14495,7 +14505,7 @@ paths:
                       type: object
                     volume:
                       description: 'Show or hide the volume selector.'
-                      example: 'true'
+                      example: true
                       type: boolean
                   type: object
                 license:
@@ -14525,7 +14535,7 @@ paths:
                   properties:
                     add:
                       description: 'Whether a user can add the video to an album, channel, or group.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     comments:
                       description: 'The privacy level required to comment on the video.'
@@ -14536,7 +14546,7 @@ paths:
                       type: string
                     download:
                       description: 'Whether a user can download the video. Not available to users with a Basic membership'
-                      example: 'true'
+                      example: true
                       type: boolean
                     embed:
                       description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for details on adding and removing domains.'
@@ -14589,7 +14599,7 @@ paths:
                   properties:
                     active:
                       description: 'Enable or disable video review.'
-                      example: 'true'
+                      example: true
                       type: boolean
                   type: object
                 spatial:
@@ -14776,7 +14786,7 @@ paths:
           required: false
           schema:
             type: boolean
-            example: 'true'
+            example: true
         -
           description: 'The page number of the results to show.'
           in: query
@@ -15135,31 +15145,31 @@ paths:
                       properties:
                         embed:
                           description: 'Show or hide the Embed button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         fullscreen:
                           description: 'Show or hide the Fullscreen button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         hd:
                           description: 'Show or hide the HD button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         like:
                           description: 'Show or hide the Like button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         scaling:
                           description: 'Show or hide the Scaling button (shown only in Fullscreen mode).'
-                          example: 'true'
+                          example: true
                           type: boolean
                         share:
                           description: 'Show or hide the Share button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                         watchlater:
                           description: 'Show or hide the Watch Later button.'
-                          example: 'true'
+                          example: true
                           type: boolean
                       type: object
                     color:
@@ -15172,7 +15182,7 @@ paths:
                           properties:
                             active:
                               description: 'Show or hide your custom logo.'
-                              example: 'true'
+                              example: true
                               type: boolean
                             link:
                               description: 'The URL that loads when the user clicks your custom logo.'
@@ -15180,17 +15190,17 @@ paths:
                               type: string
                             sticky:
                               description: 'Whether always to show the custom logo or to hide it after time with the rest of the UI.'
-                              example: 'true'
+                              example: true
                               type: boolean
                           type: object
                         vimeo:
                           description: 'Show or hide the Vimeo logo.'
-                          example: 'true'
+                          example: true
                           type: boolean
                       type: object
                     playbar:
                       description: 'Show or hide the playbar.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     title:
                       properties:
@@ -15218,7 +15228,7 @@ paths:
                       type: object
                     volume:
                       description: 'Show or hide the volume selector.'
-                      example: 'true'
+                      example: true
                       type: boolean
                   type: object
                 license:
@@ -15248,7 +15258,7 @@ paths:
                   properties:
                     add:
                       description: 'Whether a user can add the video to an album, channel, or group.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     comments:
                       description: 'The privacy level required to comment on the video.'
@@ -15259,7 +15269,7 @@ paths:
                       type: string
                     download:
                       description: 'Whether a user can download the video. Not available to users with a Basic membership.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     embed:
                       description: 'The video''s new embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for details on adding and removing domains.'
@@ -15312,7 +15322,7 @@ paths:
                   properties:
                     active:
                       description: 'Enable or disable video review.'
-                      example: 'true'
+                      example: true
                       type: boolean
                   type: object
                 spatial:
@@ -16243,7 +16253,7 @@ paths:
               properties:
                 active:
                   description: 'Whether the image created by the `time` field should be the default thumbnail for the video.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 time:
                   description: 'Creates an image of the video from the given time offset.'
@@ -16350,7 +16360,7 @@ paths:
               properties:
                 active:
                   description: 'Whether this thumbnail is the default.'
-                  example: 'true'
+                  example: true
                   type: boolean
       responses:
         200:
@@ -16388,7 +16398,7 @@ paths:
             example: 258684937
       responses:
         204:
-          description: 'The embed preset was unassigned.'
+          description: 'The embed preset was removed.'
         404:
           description: 'No such video or embed preset exists.'
           content:
@@ -16423,7 +16433,7 @@ paths:
             example: 258684937
       responses:
         204:
-          description: 'The embed presets exists.'
+          description: 'The embed preset has been added to the video.'
         404:
           description: 'No such video or embed preset exists.'
           content:
@@ -16432,6 +16442,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add an embed preset to a video'
+      description: 'This method assigns an embed preset to the specified video.'
       operationId: add_video_embed_preset
       tags:
         - 'Embed Presets\Videos'
@@ -17000,7 +17011,7 @@ paths:
               properties:
                 active:
                   description: 'Active text tracks appear in the player and are visible to other users. Only one text track per language can be active.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 language:
                   description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
@@ -17154,7 +17165,7 @@ paths:
               properties:
                 active:
                   description: 'Whether the text track is active, meaning that it appears in the player. Only one text track per language, and type, can be active.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 language:
                   description: 'The language of the text track. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
@@ -17198,7 +17209,8 @@ paths:
             - edit
   '/videos/{video_id}/timelinethumbnails':
     post:
-      summary: 'Add a new custom logo to a video'
+      summary: 'Add a new timeline event thumbnail to a video'
+      description: 'This method adds a timeline event thumbnail to the specified video.'
       operationId: create_video_custom_logo
       tags:
         - 'Embed Presets\Videos'
@@ -17213,7 +17225,7 @@ paths:
             example: 258684937
       responses:
         201:
-          description: 'Standard request.'
+          description: 'The timeline event thumbnail was created.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -17225,7 +17237,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/legacy-error'
         403:
-          description: 'If the user is attempting to upload pictures for another user''s videos.'
+          description: 'The authenticated user can''t upload pictures to another user''s video.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -17236,13 +17248,14 @@ paths:
             - upload
   '/videos/{video_id}/timelinethumbnails/{thumbnail_id}':
     get:
-      summary: 'Get a custom video logo'
+      summary: 'Get a timeline event thumbnail'
+      description: 'This method returns a single timeline event thumbnail that belongs to the specified video.'
       operationId: get_video_custom_logo
       tags:
         - 'Embed Presets\Videos'
       parameters:
         -
-          description: 'The ID of the picture.'
+          description: 'The ID of the timeline event thumbnail.'
           in: path
           name: thumbnail_id
           required: true
@@ -17259,13 +17272,13 @@ paths:
             example: 258684937
       responses:
         200:
-          description: 'The custom logo was returned.'
+          description: 'The timeline event thumbnail was returned.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/picture'
         403:
-          description: 'If the user isn''t permitted to view this custom logo.'
+          description: 'The authenticated user can''t view this timeline event thumbnail.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -17540,15 +17553,19 @@ components:
       properties:
         allow_continuous_play:
           description: 'Whether an album should allow continuous play.'
-          example: 'true'
+          example: true
           type: boolean
         allow_downloads:
           description: 'Whether an album should allow downloads.'
-          example: 'true'
+          example: true
           type: boolean
         allow_share:
           description: 'Whether an album should allow sharing.'
-          example: 'true'
+          example: true
+          type: boolean
+        autoplay:
+          description: 'Whether to start playback of the next video in the album''s embedded playlist immediately after the previous video finishes.'
+          example: true
           type: boolean
         brand_color:
           description: 'Hexadecimal color code for the decorative color. For example, album videos use this color for player buttons.'
@@ -17591,21 +17608,21 @@ components:
           type: object
         embed_brand_color:
           description: 'Whether to show the album''s custom brand color in the player of the album''s embedded playlist.'
-          example: 'true'
+          example: true
           nullable: true
           type: boolean
         embed_custom_logo:
           description: 'Whether to show the album''s custom logo in the player of the album''s embedded playlist.'
-          example: 'true'
+          example: true
           nullable: true
           type: boolean
         hide_nav:
           description: 'Whether to hide the Vimeo navigation when viewing the album.'
-          example: 'true'
+          example: true
           type: boolean
         hide_vimeo_logo:
           description: 'Whether to hide the Vimeo logo in the player of the album''s embedded playlist.'
-          example: 'true'
+          example: true
           nullable: true
           type: boolean
         layout:
@@ -17619,6 +17636,10 @@ components:
           description: 'The URL to access the album.'
           example: 'https://vimeo.com/album/Vimeo Holiday Videos!'
           type: string
+        loop:
+          description: 'Whether automatic playback will restart at the top of the embedded playlist after reaching the end of the last video in the playlist.'
+          example: true
+          type: boolean
         metadata:
           description: 'Metadata about the album.'
           properties:
@@ -17747,7 +17768,7 @@ components:
           type: string
         review_mode:
           description: 'Whether album videos should use the review mode URL.'
-          example: 'true'
+          example: true
           type: boolean
         sort:
           description: 'Sort type of the album.'
@@ -17781,7 +17802,7 @@ components:
           type: string
         use_custom_domain:
           description: 'Whether the user has opted in to use a custom domain for their album.'
-          example: 'false'
+          example: false
           type: boolean
         user:
           allOf:
@@ -17790,16 +17811,17 @@ components:
           description: 'The owner of the album.'
         web_brand_color:
           description: 'Whether an album should show the brand color in the web layout.'
-          example: 'true'
+          example: true
           type: boolean
         web_custom_logo:
           description: 'Whether an album''s custom logo should be shown in the web layout.'
-          example: 'true'
+          example: true
           type: boolean
       required:
         - allow_continuous_play
         - allow_downloads
         - allow_share
+        - autoplay
         - brand_color
         - created_time
         - custom_logo
@@ -17813,6 +17835,7 @@ components:
         - hide_vimeo_logo
         - layout
         - link
+        - loop
         - metadata
         - modified_time
         - name
@@ -18020,7 +18043,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the authenticated user has followed this category.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format that the user followed this category, or the null value if the user hasn''t followed this category.'
@@ -18101,7 +18124,7 @@ components:
           type: array
         top_level:
           description: 'Whether the category isn''t a subcategory of another category.'
-          example: 'true'
+          example: true
           type: boolean
         uri:
           description: 'The unique identifier to access the category resource.'
@@ -18260,7 +18283,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the authenticated user has followed this channel. This data requires a bearer token with the `private` scope.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format that the user followed this channel, or the null value if the user hasn''t followed the channel. This data requires a bearer token with the `private` scope.'
@@ -18535,7 +18558,7 @@ components:
       properties:
         allow_hd:
           description: 'Whether to permit HD embeds on this domain.'
-          example: 'true'
+          example: true
           type: boolean
         domain:
           description: 'The domain name.'
@@ -18558,31 +18581,31 @@ components:
           properties:
             embed:
               description: 'Whether the Embed button appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
             fullscreen:
               description: 'Whether the Fullscreen button appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
             hd:
               description: 'Whether the HD button appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
             like:
               description: 'Whether the Like button appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
             scaling:
               description: 'Whether the Scaling button appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
             share:
               description: 'Whether the Share button appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
             watchlater:
               description: 'Whether the Watch Later button appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
           required:
             - embed
@@ -18605,7 +18628,7 @@ components:
               properties:
                 active:
                   description: 'Whether the custom logo appears in the embeddable player.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 link:
                   description: 'The URL that loads upon clicking the custom logo.'
@@ -18613,7 +18636,7 @@ components:
                   type: string
                 sticky:
                   description: 'Whether the custom logo appears even when the player interface is hidden.'
-                  example: 'true'
+                  example: true
                   type: boolean
               required:
                 - active
@@ -18622,7 +18645,7 @@ components:
               type: object
             vimeo:
               description: 'Whether the Vimeo logo appears in the embeddable player for this video.'
-              example: 'true'
+              example: true
               type: boolean
           required:
             - custom
@@ -18630,11 +18653,11 @@ components:
           type: object
         playbar:
           description: 'Whether the playbar appears in the embeddable player for this video.'
-          example: 'true'
+          example: true
           type: boolean
         speed:
           description: 'Whether the speed controls appear in the embeddable player for this video.'
-          example: 'true'
+          example: true
           type: boolean
         title:
           description: 'A collection of information relating to the embeddable player''s title bar.'
@@ -18674,7 +18697,7 @@ components:
           type: string
         volume:
           description: 'Whether the volume controls appear in the embeddable player for this video.'
-          example: 'true'
+          example: true
           type: boolean
       required:
         - buttons
@@ -18801,7 +18824,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the authenticated user has followed this group. This data requires a bearer token with the `private` scope.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format when the user joined this group. This data requires a bearer token with the `private` scope.'
@@ -18961,7 +18984,7 @@ components:
               properties:
                 added:
                   description: 'Whether this On Demand genre was added.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 options:
                   description: 'An array of HTTP methods permitted on this URI.'
@@ -19077,7 +19100,7 @@ components:
               properties:
                 active:
                   description: 'Whether all the videos on this On Demand page can be purchased as a whole.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 price:
                   description: 'The default price to buy an episode.'
@@ -19092,7 +19115,7 @@ components:
               properties:
                 active:
                   description: 'Whether all the videos on this On Demand page can be rented as a whole.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 period:
                   description: "The rental period for the video:\n\nOption descriptions:\n * `1 day` - The rental period is one day.\n * `1 month` - The rental period is one month.\n * `1 week` - The rental period is one week.\n * `1 year` - The rental period is one year.\n * `2 day` - The rental period is two days.\n * `24 hour` - The rental period is 24 hours.\n * `3 day` - The rental period is three days.\n * `3 month` - The rental period is three months.\n * `30 day` - The rental period is 30 days.\n * `48 hour` - The rental period is 48 hours.\n * `6 month` - The rental period is six months.\n * `60 day` - The rental period is 60 days.\n * `7 day` - The rental period is 7 days.\n * `72 hour` - The rental period is 72 hours.\n"
@@ -19334,7 +19357,7 @@ components:
           properties:
             active:
               description: 'Whether this page is available for preorder.'
-              example: 'true'
+              example: true
               type: boolean
             cancel_time:
               description: 'The time in ISO 8601 format when the preorder was cancelled.'
@@ -19358,7 +19381,7 @@ components:
           properties:
             enabled:
               description: 'Whether this On Demand page has been published.'
-              example: 'true'
+              example: true
               type: boolean
             time:
               description: 'The time in IS 8601 format when this page was published.'
@@ -19388,7 +19411,7 @@ components:
           properties:
             active:
               description: 'Whether this product is active.'
-              example: 'true'
+              example: true
               type: boolean
             link:
               description: 'The link to this product on Vimeo.'
@@ -19483,7 +19506,7 @@ components:
           type: string
         download:
           description: 'Whether this promotion grants download access to On Demand content.'
-          example: 'true'
+          example: true
           type: boolean
         label:
           description: 'The prefix string for batch codes, or the null value for single codes.'
@@ -19709,14 +19732,14 @@ components:
           properties:
             active:
               description: 'Whether this On Demand video can be purchased.'
-              example: 'true'
+              example: true
               type: boolean
             price:
               description: 'A map of currency type to price.'
               type: object
             purchased:
               description: 'Whether this On Demand video has been purchased.'
-              example: 'true'
+              example: true
               type: boolean
           required:
             - active
@@ -19742,7 +19765,7 @@ components:
               properties:
                 added:
                   description: 'Whether this On Demand page was added.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 options:
                   description: 'An array of HTTP methods permitted on this URI.'
@@ -19801,7 +19824,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the user has liked this video.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format when the user liked this video.'
@@ -19821,7 +19844,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the user has added this video to their Watch Later queue.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format when the user added this video to their Watch Later queue.'
@@ -19881,14 +19904,14 @@ components:
           properties:
             active:
               description: 'Whether this On Demand video can be rented.'
-              example: 'true'
+              example: true
               type: boolean
             price:
               description: 'A map of currency type to price.'
               type: object
             purchased:
               description: 'Whether this On Demand video has been rented.'
-              example: 'true'
+              example: true
               type: boolean
           required:
             - active
@@ -19927,7 +19950,7 @@ components:
       properties:
         active:
           description: 'Whether this picture is the active picture for its parent resource.'
-          example: 'true'
+          example: true
           type: boolean
         link:
           description: 'The upload URL for the picture. This field appears when you create the picture resource for the first time.'
@@ -20187,27 +20210,27 @@ components:
               properties:
                 embed:
                   description: 'Whether the preset includes Embed button settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 hd:
                   description: 'Whether the preset includes HD button settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 like:
                   description: 'Whether the preset includes Like button settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 share:
                   description: 'Whether the present includes Share button settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 vote:
                   description: 'Whether the preset includes Vote button settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 watchlater:
                   description: 'Whether the preset includes Watch Later button settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
               required:
                 - embed
@@ -20221,15 +20244,15 @@ components:
               properties:
                 custom:
                   description: 'Whether the preset includes custom logo settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 sticky_custom:
                   description: 'Whether the present includes sticky custom logo settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
                 vimeo:
                   description: 'Whether the preset includes Vimeo logo settings.'
-                  example: 'true'
+                  example: true
                   type: boolean
               required:
                 - custom
@@ -20380,7 +20403,7 @@ components:
           properties:
             drm:
               description: 'Whether the On Demand video for purchase has DRM.'
-              example: 'true'
+              example: true
               type: boolean
           type: object
         rent:
@@ -20393,7 +20416,7 @@ components:
           properties:
             drm:
               description: 'Whether the On Demand subscription has DRM.'
-              example: 'true'
+              example: true
               type: boolean
             expires_time:
               description: 'The time in ISO 8601 format when the On Demand video will expire.'
@@ -20490,7 +20513,7 @@ components:
       properties:
         active:
           description: 'Whether this text track is active.'
-          example: 'true'
+          example: true
           type: boolean
         hls_link:
           description: 'The read-only URL of the text track file, intended for use with HLS playback.'
@@ -21091,7 +21114,7 @@ components:
                   properties:
                     added:
                       description: 'Whether a user is blocking the current user.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format when the block occurred, or the null value if no block exists.'
@@ -21118,7 +21141,7 @@ components:
                   properties:
                     added:
                       description: 'Whether a user is following the current user.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     options:
                       description: 'An array of the HTTP methods permitted on this URI.'
@@ -21182,7 +21205,7 @@ components:
                   properties:
                     add:
                       description: 'Whether other users can add the user''s videos.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     comments:
                       description: "The user's privacy preference for comments:\n\nOption descriptions:\n * `anybody` - Anyone can comment on the user's videos.\n * `contacts` - Only contacts can comment on the user's videos.\n * `nobody` - No one can comment on the user's videos.\n"
@@ -21194,7 +21217,7 @@ components:
                       type: string
                     download:
                       description: 'Whether other users can download the user''s videos.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     embed:
                       description: "The user's privacy preference for embeds:\n\nOption descriptions:\n * `private` - Only the user can embed their own videos.\n * `public` - Anyone can embed the user's videos.\n * `whitelist` - Only those on the whitelist can embed the user's videos.\n"
@@ -21744,7 +21767,7 @@ components:
                       type: string
                     drm:
                       description: 'Whether the video has DRM.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     link:
                       description: 'The URL to buy the On Demand video on Vimeo.'
@@ -21807,7 +21830,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the user has liked the video.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format when the user liked the video.'
@@ -21842,7 +21865,7 @@ components:
                       type: string
                     drm:
                       description: 'Whether the video has DRM.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     expires_time:
                       description: 'The time in ISO 8601 format when the rental period for the video expires.'
@@ -21916,7 +21939,7 @@ components:
                   properties:
                     drm:
                       description: 'Whether the video has DRM.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     expires_time:
                       description: 'The time in ISO 8601 format when the subscription expires.'
@@ -21936,7 +21959,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the user has watched the video.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format when the user watched the video.'
@@ -21960,7 +21983,7 @@ components:
                   properties:
                     added:
                       description: 'Whether the user has added the video to their Watch later list.'
-                      example: 'true'
+                      example: true
                       type: boolean
                     added_time:
                       description: 'The time in ISO 8601 format when the user added the video to their Watch Later list.'
@@ -22020,7 +22043,7 @@ components:
           properties:
             add:
               description: 'Whether the video can be added to collections.'
-              example: 'true'
+              example: true
               type: boolean
             comments:
               description: "Who can comment on the video:\n\nOption descriptions:\n * `anybody` - Anyone can comment on the video.\n * `contacts` - Only contacts can comment on the video.\n * `nobody` - No one can comment on the video.\n"
@@ -22032,7 +22055,7 @@ components:
               type: string
             download:
               description: 'The video''s download permission setting.'
-              example: 'true'
+              example: true
               type: boolean
             embed:
               description: "The video's embed permission setting:\n\nOption descriptions:\n * `private` - The video is private.\n * `public` - Anyone can embed the video.\n"
@@ -22168,6 +22191,14 @@ components:
               example: complete
               type: string
           type: object
+        type:
+          description: "The type of the video.\n\nOption descriptions:\n * `live` - The video is or was a live event.\n * `stock` - The video is a Vimeo Stock video.\n * `video` - The video is a standard Vimeo video.\n"
+          enum:
+            - live
+            - stock
+            - video
+          example: video
+          type: string
         upload:
           description: 'The upload information for this video.'
           nullable: true
@@ -22249,6 +22280,7 @@ components:
         - status
         - tags
         - transcode
+        - type
         - upload
         - uri
         - user
@@ -22259,7 +22291,7 @@ components:
       properties:
         active:
           description: 'Whether this video version is the currently active one.'
-          example: 'true'
+          example: true
           type: boolean
         app:
           allOf:
