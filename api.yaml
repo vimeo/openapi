@@ -88,15 +88,15 @@ tags:
   -
     name: Users\Essentials
   -
-    name: Users\Feed
+    name: Users\Feeds
   -
-    name: Users\Follows
+    name: Users\Followers
   -
     name: Users\Internal
   -
     name: Users\Pictures
   -
-    name: 'Users\Watch History'
+    name: 'Users\Watch history'
   -
     name: Videos\Comments
   -
@@ -2769,7 +2769,7 @@ paths:
                   example: true
                   type: boolean
                 language:
-                  description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
+                  description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
@@ -3331,7 +3331,7 @@ paths:
         - Users\Essentials
       responses:
         200:
-          description: 'The user was returned.'
+          description: 'The user''s representation was returned.'
           content:
             application/vnd.vimeo.user+json:
               schema:
@@ -3353,12 +3353,12 @@ paths:
                   example: 'This is where you will find videos and news updates from the staff'
                   type: string
                 content_filter:
-                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/endpoints/videos#GET/contentratings) endpoint. You must provide a comma-separated list if you are using a query string or an array if you are using JSON.'
+                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint. You must provide a comma-separated list if you''re using a query string or an array if you''re using JSON.'
                   items:
                     type: string
                   type: array
                 link:
-                  description: 'The user''s custom Vimeo URL slug.'
+                  description: 'The user''s custom Vimeo URL.'
                   example: staff
                   type: string
                 location:
@@ -3370,7 +3370,7 @@ paths:
                   example: 'Vimeo Staff'
                   type: string
                 password:
-                  description: 'The default password for all future videos that this user uploads. To use this field, the `videos.privacy.view` field must be `password`.'
+                  description: 'The default password for all future videos that this user uploads. To use this field, the **videos.privacy.view** field must be `password`.'
                   example: hunter1
                   type: string
                 videos:
@@ -3378,7 +3378,7 @@ paths:
                     privacy:
                       properties:
                         add:
-                          description: 'Whether a user can add the video to an album, channel, or group. This value becomes the default add setting for all future videos uploaded by the user.'
+                          description: 'Whether a user can add the video to an album, channel, or group. This value becomes the default add setting for all future videos that this user uploads.'
                           example: true
                           type: boolean
                         comments:
@@ -3393,7 +3393,7 @@ paths:
                           example: true
                           type: boolean
                         embed:
-                          description: 'The privacy for embed videos. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for adding and removing domains.'
+                          description: 'The privacy for embedded videos. The whitelist value enables you to define all valid embeddable domains. See our [Interacting with Videos](https://developer.vimeo.com/api/guides/videos/interact#set-off-site-privacy) guide for details on adding and removing domains.'
                           enum:
                             - private
                             - public
@@ -3414,7 +3414,7 @@ paths:
                   type: object
       responses:
         200:
-          description: 'The user was edited.'
+          description: 'The user''s representation was edited.'
           content:
             application/vnd.vimeo.user+json:
               schema:
@@ -4560,13 +4560,13 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
   /me/feed:
     get:
-      summary: 'Get all videos in a user''s feed'
+      summary: 'Get all the videos in a user''s feed'
       operationId: get_feed_alt1
       tags:
-        - Users\Feed
+        - Users\Feeds
       parameters:
         -
-          description: 'Necessary for proper pagination. You shouldn''t provide this value yourself, and instead use the pagination links in the feed response. Please see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter) for more information.'
+          description: 'The pagination offset. We recommend that you use the pagination links in the feed response instead of working with this value directly. For more details, see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter).'
           in: query
           name: offset
           required: false
@@ -4627,7 +4627,7 @@ paths:
       summary: 'Get all the followers of a user'
       operationId: get_followers_alt1
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
           description: 'The sort direction of the results.'
@@ -4688,7 +4688,7 @@ paths:
       summary: 'Get all the users that a user is following'
       operationId: get_user_following_alt1
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
           description: 'The sort direction of the results.'
@@ -4757,7 +4757,7 @@ paths:
       summary: 'Follow a list of users'
       operationId: follow_users_alt1
       tags:
-        - Users\Follows
+        - Users\Followers
       requestBody:
         required: true
         content:
@@ -4766,7 +4766,7 @@ paths:
               type: object
               properties:
                 users:
-                  description: 'An array of user URIs for the list of users to follow.'
+                  description: 'An array of user IDs for the authenticated user to follow.'
                   items:
                     type: string
                   type: array
@@ -4782,13 +4782,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
         403:
-          description: 'Error code 3417: The current user can''t follow other users.'
+          description: 'Error code 3417: The authenticated user can''t follow other users.'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
         400:
-          description: "* Error code 2205: The request body is empty.\n* Error code 2205: The `users` array is invalid.\n* Error code 2205: The list of users doesn't contain URIs.\n* Error code 2900: A user in the list doesn't exist.\n* Error code 2901: The list contains more than 100 users."
+          description: "* Error code 2205: The request body is empty, the users array is invalid, or the list of users doesn't contain URIs.\n* Error code 2900: A user in the list doesn't exist.\n* Error code 2901: The list contains more than 100 users."
           content:
             application/json:
               schema:
@@ -4800,7 +4800,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
         429:
-          description: 'Error code 9006: The current user is rate-limited from following other users.'
+          description: 'Error code 9006: The authenticated user is rate-limited from following other users.'
           content:
             application/json:
               schema:
@@ -4814,10 +4814,10 @@ paths:
       summary: 'Unfollow a user'
       operationId: unfollow_user_alt1
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
-          description: 'The ID of the following user.'
+          description: 'The ID of the user to unfollow.'
           in: path
           name: follow_user_id
           required: true
@@ -4835,10 +4835,10 @@ paths:
       summary: 'Check if a user is following another user'
       operationId: check_if_user_is_following_alt1
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
-          description: 'The ID of the following user.'
+          description: 'The ID of the user to follow.'
           in: path
           name: follow_user_id
           required: true
@@ -4849,7 +4849,7 @@ paths:
         204:
           description: 'The authenticated user follows the user in question.'
         404:
-          description: 'The user in question doesn''t follow the authenticated user.'
+          description: 'The authenticated user doesn''t follow the user in question.'
           content:
             application/json:
               schema:
@@ -4858,10 +4858,10 @@ paths:
       summary: 'Follow a specific user'
       operationId: follow_user_alt1
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
-          description: 'The ID of the following user.'
+          description: 'The ID of the user to follow.'
           in: path
           name: follow_user_id
           required: true
@@ -5677,7 +5677,7 @@ paths:
             example: 10
       responses:
         200:
-          description: 'The pictures were returned.'
+          description: 'The portrait images were returned.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -5691,7 +5691,7 @@ paths:
         - Users\Pictures
       responses:
         200:
-          description: 'The user picture was created.'
+          description: 'The portrait image was added.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -5717,7 +5717,7 @@ paths:
             example: 12345
       responses:
         204:
-          description: 'The picture was deleted.'
+          description: 'The portrait image was removed.'
       security:
         -
           oauth2:
@@ -5738,7 +5738,7 @@ paths:
             example: 12345
       responses:
         200:
-          description: 'The picture was returned.'
+          description: 'The portrait image was returned.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -5765,12 +5765,12 @@ paths:
               type: object
               properties:
                 active:
-                  description: 'Whether the picture is the user''s active portrait.'
+                  description: 'Whether the picture is the authenticated user''s active portrait.'
                   example: true
                   type: boolean
       responses:
         200:
-          description: 'The picture was edited.'
+          description: 'The portrait image was edited.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -6837,7 +6837,7 @@ paths:
               type: object
               properties:
                 content_rating:
-                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/endpoints/videos#GET/contentratings) endpoint.'
+                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
                   items:
                     type: string
                   type: array
@@ -6949,7 +6949,7 @@ paths:
                     - cc0
                   type: string
                 locale:
-                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
+                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en_US
                   type: string
                 name:
@@ -6978,7 +6978,7 @@ paths:
                       example: true
                       type: boolean
                     embed:
-                      description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for details on adding and removing domains.'
+                      description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/reference/videos#embed-privacy) for details on adding and removing domains.'
                       enum:
                         - private
                         - public
@@ -7168,12 +7168,13 @@ paths:
   /me/watched/videos:
     delete:
       summary: 'Delete a user''s watch history'
+      description: 'This method deletes the authenticated user''s entire watch history.'
       operationId: delete_watch_history
       tags:
-        - 'Users\Watch History'
+        - 'Users\Watch history'
       responses:
         204:
-          description: 'The watch history was deleted.'
+          description: 'The authenticated user''s watch history was deleted.'
       security:
         -
           oauth2:
@@ -7182,7 +7183,7 @@ paths:
       summary: 'Get all the videos that a user has watched'
       operationId: get_watch_history
       tags:
-        - 'Users\Watch History'
+        - 'Users\Watch history'
       parameters:
         -
           description: 'The page number of the results to show.'
@@ -7210,7 +7211,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/video'
         403:
-          description: 'The user can''t view another user''s watch history.'
+          description: 'The authenticated user can''t view another user''s watch history.'
           content:
             application/vnd.vimeo.video+json:
               schema:
@@ -7222,9 +7223,10 @@ paths:
   '/me/watched/videos/{video_id}':
     delete:
       summary: 'Delete a specific video from a user''s watch history'
+      description: 'This method deletes the specified video from the authenticated user''s watch history.'
       operationId: delete_from_watch_history
       tags:
-        - 'Users\Watch History'
+        - 'Users\Watch history'
       parameters:
         -
           description: 'The ID of the video.'
@@ -7236,7 +7238,7 @@ paths:
             example: 258684937
       responses:
         204:
-          description: 'The video was deleted from your watch history.'
+          description: 'The video was deleted from the authenticated user''s watch history.'
       security:
         -
           oauth2:
@@ -7466,7 +7468,7 @@ paths:
                     - client_credentials
                   type: string
                 scope:
-                  description: 'A space-separated list of the authentication [scopes](https://developer.vimeo.com/api/authentication#supported-scopes) that you want to access. The default is `public`.'
+                  description: 'A space-separated list of the authentication [scopes](https://developer.vimeo.com/api/authentication#table-1) that you want to access. The default is `public`.'
                   example: public
                   type: string
               required:
@@ -9812,7 +9814,7 @@ paths:
             example: 152184
       responses:
         200:
-          description: 'The user was returned.'
+          description: 'The user''s representation was returned.'
           content:
             application/vnd.vimeo.user+json:
               schema:
@@ -9843,12 +9845,12 @@ paths:
                   example: 'This is where you will find videos and news updates from the staff'
                   type: string
                 content_filter:
-                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/endpoints/videos#GET/contentratings) endpoint. You must provide a comma-separated list if you are using a query string or an array if you are using JSON.'
+                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint. You must provide a comma-separated list if you''re using a query string or an array if you''re using JSON.'
                   items:
                     type: string
                   type: array
                 link:
-                  description: 'The user''s custom Vimeo URL slug.'
+                  description: 'The user''s custom Vimeo URL.'
                   example: staff
                   type: string
                 location:
@@ -9860,7 +9862,7 @@ paths:
                   example: 'Vimeo Staff'
                   type: string
                 password:
-                  description: 'The default password for all future videos that this user uploads. To use this field, the `videos.privacy.view` field must be `password`.'
+                  description: 'The default password for all future videos that this user uploads. To use this field, the **videos.privacy.view** field must be `password`.'
                   example: hunter1
                   type: string
                 videos:
@@ -9868,7 +9870,7 @@ paths:
                     privacy:
                       properties:
                         add:
-                          description: 'Whether a user can add the video to an album, channel, or group. This value becomes the default add setting for all future videos uploaded by the user.'
+                          description: 'Whether a user can add the video to an album, channel, or group. This value becomes the default add setting for all future videos that this user uploads.'
                           example: true
                           type: boolean
                         comments:
@@ -9883,7 +9885,7 @@ paths:
                           example: true
                           type: boolean
                         embed:
-                          description: 'The privacy for embed videos. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for adding and removing domains.'
+                          description: 'The privacy for embedded videos. The whitelist value enables you to define all valid embeddable domains. See our [Interacting with Videos](https://developer.vimeo.com/api/guides/videos/interact#set-off-site-privacy) guide for details on adding and removing domains.'
                           enum:
                             - private
                             - public
@@ -9904,7 +9906,7 @@ paths:
                   type: object
       responses:
         200:
-          description: 'The user was edited.'
+          description: 'The user''s representation was edited.'
           content:
             application/vnd.vimeo.user+json:
               schema:
@@ -11763,10 +11765,10 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
   '/users/{user_id}/feed':
     get:
-      summary: 'Get all videos in a user''s feed'
+      summary: 'Get all the videos in a user''s feed'
       operationId: get_feed
       tags:
-        - Users\Feed
+        - Users\Feeds
       parameters:
         -
           description: 'The ID of the user.'
@@ -11777,7 +11779,7 @@ paths:
             type: number
             example: 152184
         -
-          description: 'Necessary for proper pagination. You shouldn''t provide this value yourself, and instead use the pagination links in the feed response. Please see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter) for more information.'
+          description: 'The pagination offset. We recommend that you use the pagination links in the feed response instead of working with this value directly. For more details, see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter).'
           in: query
           name: offset
           required: false
@@ -11838,7 +11840,7 @@ paths:
       summary: 'Get all the followers of a user'
       operationId: get_followers
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
           description: 'The ID of the user.'
@@ -11907,7 +11909,7 @@ paths:
       summary: 'Get all the users that a user is following'
       operationId: get_user_following
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
           description: 'The ID of the user.'
@@ -11984,7 +11986,7 @@ paths:
       summary: 'Follow a list of users'
       operationId: follow_users
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
           description: 'The ID of the user.'
@@ -12002,7 +12004,7 @@ paths:
               type: object
               properties:
                 users:
-                  description: 'An array of user URIs for the list of users to follow.'
+                  description: 'An array of user IDs for the authenticated user to follow.'
                   items:
                     type: string
                   type: array
@@ -12018,13 +12020,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
         403:
-          description: 'Error code 3417: The current user can''t follow other users.'
+          description: 'Error code 3417: The authenticated user can''t follow other users.'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
         400:
-          description: "* Error code 2205: The request body is empty.\n* Error code 2205: The `users` array is invalid.\n* Error code 2205: The list of users doesn't contain URIs.\n* Error code 2900: A user in the list doesn't exist.\n* Error code 2901: The list contains more than 100 users."
+          description: "* Error code 2205: The request body is empty, the users array is invalid, or the list of users doesn't contain URIs.\n* Error code 2900: A user in the list doesn't exist.\n* Error code 2901: The list contains more than 100 users."
           content:
             application/json:
               schema:
@@ -12036,7 +12038,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
         429:
-          description: 'Error code 9006: The current user is rate-limited from following other users.'
+          description: 'Error code 9006: The authenticated user is rate-limited from following other users.'
           content:
             application/json:
               schema:
@@ -12050,10 +12052,10 @@ paths:
       summary: 'Unfollow a user'
       operationId: unfollow_user
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
-          description: 'The ID of the following user.'
+          description: 'The ID of the user to unfollow.'
           in: path
           name: follow_user_id
           required: true
@@ -12079,10 +12081,10 @@ paths:
       summary: 'Check if a user is following another user'
       operationId: check_if_user_is_following
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
-          description: 'The ID of the following user.'
+          description: 'The ID of the user to follow.'
           in: path
           name: follow_user_id
           required: true
@@ -12101,7 +12103,7 @@ paths:
         204:
           description: 'The authenticated user follows the user in question.'
         404:
-          description: 'The user in question doesn''t follow the authenticated user.'
+          description: 'The authenticated user doesn''t follow the user in question.'
           content:
             application/json:
               schema:
@@ -12110,10 +12112,10 @@ paths:
       summary: 'Follow a specific user'
       operationId: follow_user
       tags:
-        - Users\Follows
+        - Users\Followers
       parameters:
         -
-          description: 'The ID of the following user.'
+          description: 'The ID of the user to follow.'
           in: path
           name: follow_user_id
           required: true
@@ -12940,7 +12942,7 @@ paths:
             example: 10
       responses:
         200:
-          description: 'The pictures were returned.'
+          description: 'The portrait images were returned.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -12963,7 +12965,7 @@ paths:
             example: 152184
       responses:
         200:
-          description: 'The user picture was created.'
+          description: 'The portrait image was added.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -12997,7 +12999,7 @@ paths:
             example: 152184
       responses:
         204:
-          description: 'The picture was deleted.'
+          description: 'The portrait image was removed.'
       security:
         -
           oauth2:
@@ -13026,7 +13028,7 @@ paths:
             example: 152184
       responses:
         200:
-          description: 'The picture was returned.'
+          description: 'The portrait image was returned.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -13061,12 +13063,12 @@ paths:
               type: object
               properties:
                 active:
-                  description: 'Whether the picture is the user''s active portrait.'
+                  description: 'Whether the picture is the authenticated user''s active portrait.'
                   example: true
                   type: boolean
       responses:
         200:
-          description: 'The picture was edited.'
+          description: 'The portrait image was edited.'
           content:
             application/vnd.vimeo.picture+json:
               schema:
@@ -14408,7 +14410,7 @@ paths:
               type: object
               properties:
                 content_rating:
-                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/endpoints/videos#GET/contentratings) endpoint.'
+                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
                   items:
                     type: string
                   type: array
@@ -14520,7 +14522,7 @@ paths:
                     - cc0
                   type: string
                 locale:
-                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
+                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en_US
                   type: string
                 name:
@@ -14549,7 +14551,7 @@ paths:
                       example: true
                       type: boolean
                     embed:
-                      description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for details on adding and removing domains.'
+                      description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/reference/videos#embed-privacy) for details on adding and removing domains.'
                       enum:
                         - private
                         - public
@@ -15131,7 +15133,7 @@ paths:
               type: object
               properties:
                 content_rating:
-                  description: 'A list of values describing the content in this video. You can find the full list in the [`/contentratings`](https://developer.vimeo.com/api/endpoints/videos#GET/contentratings) endpoint.'
+                  description: 'A list of values describing the content in this video. You can find the full list in the [`/contentratings`](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
                   items:
                     type: string
                   type: array
@@ -15243,7 +15245,7 @@ paths:
                     - cc0
                   type: string
                 locale:
-                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
+                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
@@ -15272,7 +15274,7 @@ paths:
                       example: true
                       type: boolean
                     embed:
-                      description: 'The video''s new embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/endpoints/videos#/{video_id}/privacy/domains) for details on adding and removing domains.'
+                      description: 'The video''s new embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/reference/videos#embed-privacy) for details on adding and removing domains.'
                       enum:
                         - private
                         - public
@@ -17014,7 +17016,7 @@ paths:
                   example: true
                   type: boolean
                 language:
-                  description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
+                  description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
@@ -17168,7 +17170,7 @@ paths:
                   example: true
                   type: boolean
                 language:
-                  description: 'The language of the text track. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/endpoints/videos#GET/languages) endpoint.'
+                  description: 'The language of the text track. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
