@@ -100,13 +100,13 @@ tags:
   -
     name: Videos\Comments
   -
-    name: 'Videos\Content Ratings'
+    name: 'Videos\Content ratings'
   -
     name: 'Videos\Creative Commons'
   -
     name: Videos\Credits
   -
-    name: 'Videos\Embed Privacy'
+    name: 'Videos\Embed privacy'
   -
     name: Videos\Essentials
   -
@@ -116,15 +116,15 @@ tags:
   -
     name: Videos\Tags
   -
-    name: 'Videos\Text Tracks'
+    name: 'Videos\Text tracks'
   -
     name: Videos\Thumbnails
   -
-    name: Videos\Upload
+    name: Videos\Uploads
   -
     name: Videos\Versions
   -
-    name: 'Videos\Viewing Privacy'
+    name: 'Videos\Viewing privacy'
   -
     name: 'Watch Later Queue\Essentials'
 servers:
@@ -135,6 +135,7 @@ paths:
   /:
     get:
       summary: 'Get an API specification'
+      description: 'This method returns a full specification for the Vimeo API.'
       operationId: get_endpoints
       tags:
         - 'API Information'
@@ -211,6 +212,7 @@ paths:
   '/categories/{category}':
     get:
       summary: 'Get a specific category'
+      description: 'This method gets a single category.'
       operationId: get_category
       tags:
         - Categories\Essentials
@@ -239,6 +241,7 @@ paths:
   '/categories/{category}/channels':
     get:
       summary: 'Get all the channels in a category'
+      description: 'This method gets all the channels that belong to a category.'
       operationId: get_category_channels
       tags:
         - Categories\Channels
@@ -316,6 +319,7 @@ paths:
   '/categories/{category}/groups':
     get:
       summary: 'Get all the groups in a category'
+      description: 'This method gets all the groups that belong to a category.'
       operationId: get_category_groups
       tags:
         - Categories\Groups
@@ -393,6 +397,7 @@ paths:
   '/categories/{category}/videos':
     get:
       summary: 'Get all the videos in a category'
+      description: 'This method gets all the videos that belong to a category.'
       operationId: get_category_videos
       tags:
         - Categories\Videos
@@ -492,6 +497,7 @@ paths:
   '/categories/{category}/videos/{video_id}':
     get:
       summary: 'Check for a video in a category'
+      description: 'This method gets a single video from a category. Use it to determine whether the video belongs to the category.'
       operationId: check_category_for_video
       tags:
         - Categories\Videos
@@ -528,6 +534,7 @@ paths:
   /channels:
     get:
       summary: 'Get all channels'
+      description: 'This method gets all existing channels.'
       operationId: get_channels
       tags:
         - Channels\Essentials
@@ -665,6 +672,7 @@ paths:
   '/channels/{channel_id}':
     delete:
       summary: 'Delete a channel'
+      description: 'This method deletes the specified channel.'
       operationId: delete_channel
       tags:
         - Channels\Essentials
@@ -692,6 +700,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific channel'
+      description: 'This method gets a single channel.'
       operationId: get_channel
       tags:
         - Channels\Essentials
@@ -962,6 +971,7 @@ paths:
   '/channels/{channel_id}/moderators':
     delete:
       summary: 'Remove a list of channel moderators'
+      description: 'This method removes multiple moderators from the specified channel.'
       operationId: remove_channel_moderators
       tags:
         - Channels\Moderators
@@ -1012,6 +1022,7 @@ paths:
             - edit
     get:
       summary: 'Get all the moderators in a channel'
+      description: 'This method gets all the moderators of the specified channel.'
       operationId: get_channel_moderators
       tags:
         - Channels\Moderators
@@ -1080,6 +1091,7 @@ paths:
                   $ref: '#/components/schemas/user'
     patch:
       summary: 'Replace the moderators of a channel'
+      description: 'This method replaces the current list of channel moderators with a new list. The authenticated user must be a follower of each to add them as moderator.'
       operationId: replace_channel_moderators
       tags:
         - Channels\Moderators
@@ -1138,6 +1150,7 @@ paths:
             - edit
     put:
       summary: 'Add a list of channel moderators'
+      description: 'This method adds multiple users as moderators to the specified channel. The authenticated user must be a follower to add them as a moderator.'
       operationId: add_channel_moderators
       tags:
         - Channels\Moderators
@@ -1191,6 +1204,7 @@ paths:
   '/channels/{channel_id}/moderators/{user_id}':
     get:
       summary: 'Get a specific channel moderator'
+      description: 'This method gets a single moderator of the specified channel.'
       operationId: get_channel_moderator
       tags:
         - Channels\Moderators
@@ -1220,6 +1234,7 @@ paths:
                 $ref: '#/components/schemas/user'
     delete:
       summary: 'Remove a specific channel moderator'
+      description: 'This method removes a single moderator from the specified channel.'
       operationId: remove_channel_moderator
       tags:
         - Channels\Moderators
@@ -1261,6 +1276,7 @@ paths:
             - edit
     put:
       summary: 'Add a specific channel moderator'
+      description: 'This method adds a single user as a moderator to the specified channel. The authenticated user must be a follower to add them as a moderator.'
       operationId: add_channel_moderator
       tags:
         - Channels\Moderators
@@ -1760,6 +1776,7 @@ paths:
   '/channels/{channel_id}/users':
     get:
       summary: 'Get all the followers of a channel'
+      description: 'This method gets all the followers of a specific channel.'
       operationId: get_channel_subscribers
       tags:
         - 'Channels\Subscriptions and subscribers'
@@ -1844,6 +1861,7 @@ paths:
   '/channels/{channel_id}/videos':
     delete:
       summary: 'Remove a list of videos from a channel'
+      description: 'This method removes multiple videos from a specific channel.'
       operationId: remove_videos_from_channel
       tags:
         - Channels\Videos
@@ -1894,6 +1912,7 @@ paths:
             - edit
     get:
       summary: 'Get all the videos in a channel'
+      description: 'This method gets all the videos in a specific channel.'
       operationId: get_channel_videos
       tags:
         - Channels\Videos
@@ -2009,6 +2028,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a list of videos to a channel'
+      description: 'This method gets all the videos in a specific channel.'
       operationId: add_videos_to_channel
       tags:
         - Channels\Videos
@@ -2056,6 +2076,7 @@ paths:
   '/channels/{channel_id}/videos/{video_id}':
     delete:
       summary: 'Remove a specific video from a channel'
+      description: 'This method removes a single video from the channel in question.'
       operationId: delete_video_from_channel
       tags:
         - Channels\Videos
@@ -2133,6 +2154,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a specific video to a channel'
+      description: 'This method adds a single video to the specified channel.'
       operationId: add_video_to_channel
       tags:
         - Channels\Videos
@@ -2175,6 +2197,7 @@ paths:
   '/channels/{channel_id}/videos/{video_id}/comments':
     get:
       summary: 'Get all the comments on a video'
+      description: 'This method returns all the comments on the specified video.'
       operationId: get_comments_alt1
       tags:
         - Videos\Comments
@@ -2233,6 +2256,7 @@ paths:
                   $ref: '#/components/schemas/comment'
     post:
       summary: 'Add a comment to a video'
+      description: 'This method adds a comment to the specified video.'
       operationId: create_comment_alt1
       tags:
         - Videos\Comments
@@ -2273,6 +2297,12 @@ paths:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/comment'
+        400:
+          description: 'Error code 2207: The comment text is missing.'
+          content:
+            application/vnd.vimeo.comment+json:
+              schema:
+                $ref: '#/components/schemas/error'
         401:
           description: 'Error code 8003: The user credentials are invalid.'
           content:
@@ -2280,13 +2310,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
         403:
-          description: "* Error code 3413: Comments are disabled for this video.\n* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't comment.\n* Error code 3301: The comment was flagged as spam."
-          content:
-            application/vnd.vimeo.comment+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        400:
-          description: 'Error code 2207: The comment text is missing.'
+          description: "* Error code 3301: The comment was flagged as spam.\n* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't comment.\n* Error code 3413: Comments are disabled for this video."
           content:
             application/vnd.vimeo.comment+json:
               schema:
@@ -2298,6 +2322,7 @@ paths:
   '/channels/{channel_id}/videos/{video_id}/credits':
     get:
       summary: 'Get all the credited users in a video'
+      description: 'This method returns all the credited users in a video.'
       operationId: get_video_credits_alt1
       tags:
         - Videos\Credits
@@ -2365,7 +2390,7 @@ paths:
               - date
       responses:
         200:
-          description: 'The users were returned.'
+          description: 'The credited users were returned.'
           content:
             application/vnd.vimeo.credit+json:
               schema:
@@ -2374,6 +2399,7 @@ paths:
                   $ref: '#/components/schemas/credit'
     post:
       summary: 'Credit a user in a video'
+      description: 'This method adds a user credit to a video.'
       operationId: add_video_credit_alt1
       tags:
         - Videos\Credits
@@ -2414,7 +2440,7 @@ paths:
                   example: Producer
                   type: string
                 user_uri:
-                  description: 'The URI of the Vimeo user who should be given credit in this video.'
+                  description: 'The Vimeo URI of the credited person.'
                   example: /users/152184
                   type: string
               required:
@@ -2430,7 +2456,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/credit'
         400:
-          description: "* The credit was added.\n* A parameter is invalid.\n* The authenticated user has an unverified email address.\n* There is a user block between the video owner and the person receiving credit."
+          description: "* A parameter is invalid.\n* The authenticated user has an unverified email address.\n* There is a user block between the video owner and the person receiving credit."
           content:
             application/vnd.vimeo.credit+json:
               schema:
@@ -2444,6 +2470,7 @@ paths:
   '/channels/{channel_id}/videos/{video_id}/likes':
     get:
       summary: 'Get all the users who have liked a video'
+      description: 'This method gets all the users who have liked a particular video.'
       operationId: get_video_likes_alt1
       tags:
         - Likes\Essentials
@@ -2513,6 +2540,7 @@ paths:
   '/channels/{channel_id}/videos/{video_id}/pictures':
     get:
       summary: 'Get all the thumbnails of a video'
+      description: 'This method returns all the thumbnail images of the specified video.'
       operationId: get_video_thumbnails_alt1
       tags:
         - Videos\Thumbnails
@@ -2560,6 +2588,7 @@ paths:
                   $ref: '#/components/schemas/picture'
     post:
       summary: 'Add a video thumbnail'
+      description: 'This method adds a thumbnail image to the specified video.'
       operationId: create_video_thumbnail_alt1
       tags:
         - Videos\Thumbnails
@@ -2588,7 +2617,7 @@ paths:
               type: object
               properties:
                 active:
-                  description: 'Whether the image created by the `time` field should be the default thumbnail for the video.'
+                  description: 'Whether the image created by the **time** field should be the default thumbnail for the video.'
                   example: true
                   type: boolean
                 time:
@@ -2608,10 +2637,11 @@ paths:
             - upload
   '/channels/{channel_id}/videos/{video_id}/privacy/users':
     get:
-      summary: 'Get all the users who can view a user''s private videos by default'
+      summary: 'Get all the users who can view a private video'
+      description: 'This method returns all the users who have access to the specified private video.'
       operationId: get_video_privacy_users_alt1
       tags:
-        - 'Videos\Viewing Privacy'
+        - 'Videos\Viewing privacy'
       parameters:
         -
           description: 'The ID of the channel.'
@@ -2655,17 +2685,17 @@ paths:
                 items:
                   $ref: '#/components/schemas/user'
         400:
-          description: 'No users can view the private video.'
+          description: 'No users can view this private video by default.'
           content:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Permit a list of users to view a private video'
-      description: "The body of this request should follow our\n[batch request format](https://developer.vimeo.com/api/common-formats#batch-requests). Each object must contain\na single `URI` field, and the value of this field must be the URI of the user who can view this video."
+      description: "This method gives multiple users permission to view the specified private video. The body of the request should\nfollow our [batch request format](https://developer.vimeo.com/api/common-formats#working-with-batch-requests): each\nobject must contain a single uri field whose value is the URI of the user who can view the video."
       operationId: add_video_privacy_users_alt1
       tags:
-        - 'Videos\Viewing Privacy'
+        - 'Videos\Viewing privacy'
       parameters:
         -
           description: 'The ID of the channel.'
@@ -2699,9 +2729,10 @@ paths:
   '/channels/{channel_id}/videos/{video_id}/texttracks':
     get:
       summary: 'Get all the text tracks of a video'
+      description: 'This method returns all the text tracks of the specified video.'
       operationId: get_text_tracks_alt1
       tags:
-        - 'Videos\Text Tracks'
+        - 'Videos\Text tracks'
       parameters:
         -
           description: 'The ID of the channel.'
@@ -2736,10 +2767,10 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a text track to a video'
-      description: 'For additional information, see our [text track upload guide](https://developer.vimeo.com/api/upload/texttracks).'
+      description: 'This method adds a text track to the specified video. For more information, see [Working with Text Track Uploads](https://developer.vimeo.com/api/upload/texttracks).'
       operationId: create_text_track_alt1
       tags:
-        - 'Videos\Text Tracks'
+        - 'Videos\Text tracks'
       parameters:
         -
           description: 'The ID of the channel.'
@@ -2765,11 +2796,11 @@ paths:
               type: object
               properties:
                 active:
-                  description: 'Active text tracks appear in the player and are visible to other users. Only one text track per language can be active.'
+                  description: 'Whether the current text track is the *active text track*, or the one that appears in the player. Only one text track per language and type can be active.'
                   example: true
                   type: boolean
                 language:
-                  description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
+                  description: 'The language of the text track. For a full list of supported language, use the [`/languages?filter=texttracks`](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
@@ -2797,7 +2828,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/text-track'
         403:
-          description: "* The authenticated user can't edit the text track.\n* Error code 2204: The request contains errors."
+          description: "* The authenticated user can't add the text track.\n* Error code 2204: The request contains errors."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
@@ -2809,9 +2840,10 @@ paths:
   /contentratings:
     get:
       summary: 'Get all content ratings'
+      description: 'This method returns all available content ratings.'
       operationId: get_content_ratings
       tags:
-        - 'Videos\Content Ratings'
+        - 'Videos\Content ratings'
       responses:
         200:
           description: 'The content ratings were returned.'
@@ -2824,6 +2856,7 @@ paths:
   /creativecommons:
     get:
       summary: 'Get all Creative Commons licenses'
+      description: 'This method returns all available Creative Commons licenses.'
       operationId: get_cc_licenses
       tags:
         - 'Videos\Creative Commons'
@@ -2839,6 +2872,7 @@ paths:
   /groups:
     get:
       summary: 'Get all groups'
+      description: 'This method returns all groups.'
       operationId: get_groups
       tags:
         - Groups\Essentials
@@ -2911,6 +2945,7 @@ paths:
                   $ref: '#/components/schemas/group'
     post:
       summary: 'Create a group'
+      description: 'This method creates a new group.'
       operationId: create_group
       tags:
         - Groups\Essentials
@@ -2957,6 +2992,7 @@ paths:
   '/groups/{group_id}':
     delete:
       summary: 'Delete a group'
+      description: 'This method deletes a group.'
       operationId: delete_group
       tags:
         - Groups\Essentials
@@ -2984,6 +3020,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific group'
+      description: 'This method returns a specific group.'
       operationId: get_group
       tags:
         - Groups\Essentials
@@ -3006,6 +3043,7 @@ paths:
   '/groups/{group_id}/users':
     get:
       summary: 'Get all the members of a group'
+      description: 'This method returns all the users that belong to the specified group.'
       operationId: get_group_members
       tags:
         - Groups\Users
@@ -3090,6 +3128,7 @@ paths:
   '/groups/{group_id}/videos':
     get:
       summary: 'Get all the videos in a group'
+      description: 'This method removes a single video from the specified group.'
       operationId: get_group_videos
       tags:
         - Groups\Videos
@@ -3188,6 +3227,7 @@ paths:
   '/groups/{group_id}/videos/{video_id}':
     delete:
       summary: 'Remove a video from a group'
+      description: 'This method removes a single video from the specified group.'
       operationId: delete_video_from_group
       tags:
         - Groups\Videos
@@ -3259,6 +3299,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a video to a group'
+      description: 'This method adds a video to the specified group.'
       operationId: add_video_to_group
       tags:
         - Groups\Videos
@@ -3301,6 +3342,7 @@ paths:
   /languages:
     get:
       summary: 'Get all languages'
+      description: 'This method returns all the video languages that Vimeo supports.'
       operationId: get_languages
       tags:
         - Videos\Languages
@@ -3326,6 +3368,7 @@ paths:
   /me:
     get:
       summary: 'Get a user'
+      description: 'This method returns the representation of the authenticated user.'
       operationId: get_user_alt1
       tags:
         - Users\Essentials
@@ -3338,6 +3381,7 @@ paths:
                 $ref: '#/components/schemas/user'
     patch:
       summary: 'Edit a user'
+      description: 'This method edits the representation of the authenticated user.'
       operationId: edit_user_alt1
       tags:
         - Users\Essentials
@@ -3422,6 +3466,7 @@ paths:
   /me/albums:
     get:
       summary: 'Get all the albums that belong to a user'
+      description: 'This method gets all the albums from the specified user''s account.'
       operationId: get_albums_alt1
       tags:
         - Albums\Essentials
@@ -3490,6 +3535,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Create an album'
+      description: 'This method creates a new album for the specified user.'
       operationId: create_album_alt1
       tags:
         - Albums\Essentials
@@ -3584,6 +3630,7 @@ paths:
   '/me/albums/{album_id}':
     delete:
       summary: 'Delete an album'
+      description: 'This method deletes an album from the owner''s account.'
       operationId: delete_album_alt1
       tags:
         - Albums\Essentials
@@ -3617,6 +3664,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific album'
+      description: 'This method gets a single album.'
       operationId: get_album_alt1
       tags:
         - Albums\Essentials
@@ -3644,6 +3692,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     patch:
       summary: 'Edit an album'
+      description: 'This method edits an album.'
       operationId: edit_album_alt1
       tags:
         - Albums\Essentials
@@ -3765,6 +3814,7 @@ paths:
   '/me/albums/{album_id}/videos':
     get:
       summary: 'Get all the videos in an album'
+      description: 'This method gets all the videos from the specified album.'
       operationId: get_album_videos_alt1
       tags:
         - 'Albums\Album videos'
@@ -3935,6 +3985,7 @@ paths:
   '/me/albums/{album_id}/videos/{video_id}':
     delete:
       summary: 'Remove a video from an album'
+      description: 'This method removes a video from the specified album.'
       operationId: remove_video_from_album_alt1
       tags:
         - 'Albums\Album videos'
@@ -4020,6 +4071,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a specific video to an album'
+      description: 'This method adds a single video to the specified album.'
       operationId: add_video_to_album_alt1
       tags:
         - 'Albums\Album videos'
@@ -4062,6 +4114,7 @@ paths:
   '/me/albums/{album_id}/videos/{video_id}/set_album_thumbnail':
     post:
       summary: 'Set a video as the album thumbnail'
+      description: 'Information about this method appears below.'
       operationId: set_video_as_album_thumbnail_alt1
       tags:
         - 'Albums\Album videos'
@@ -4125,6 +4178,7 @@ paths:
   /me/appearances:
     get:
       summary: 'Get all the videos in which a user appears'
+      description: 'This method returns all the videos in which the authenticated user has a credited appearance.'
       operationId: get_appearances_alt1
       tags:
         - Videos\Essentials
@@ -4207,6 +4261,7 @@ paths:
   /me/categories:
     get:
       summary: 'Get all the categories that a user follows'
+      description: 'This method gets all the categories to which a particular user has subscribed.'
       operationId: get_category_subscriptions_alt1
       tags:
         - Categories\Subscriptions
@@ -4271,6 +4326,7 @@ paths:
   '/me/categories/{category}':
     delete:
       summary: 'Unsubscribe a user from a category'
+      description: 'This method unsubscribes the current user from a specified category.'
       operationId: unsubscribe_from_category_alt1
       tags:
         - Categories\Subscriptions
@@ -4292,6 +4348,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user follows a category'
+      description: 'This method determines whether a particular user is subscribed to the specified category.'
       operationId: check_if_user_subscribed_to_category_alt1
       tags:
         - Categories\Subscriptions
@@ -4313,6 +4370,7 @@ paths:
             - private
     put:
       summary: 'Subscribe a user to a single category'
+      description: 'This method subscribes the current user to a specified category.'
       operationId: subscribe_to_category_alt1
       tags:
         - Categories\Subscriptions
@@ -4335,6 +4393,7 @@ paths:
   /me/channels:
     get:
       summary: 'Get all the channels to which a user subscribes'
+      description: 'This method gets all the channels to which the specified user subscribes.'
       operationId: get_channel_subscriptions_alt1
       tags:
         - Channels\Essentials
@@ -4409,6 +4468,7 @@ paths:
   '/me/channels/{channel_id}':
     delete:
       summary: 'Unsubscribe a user from a specific channel'
+      description: 'This method causes a user to stop following the channel in question.'
       operationId: unsubscribe_from_channel_alt1
       tags:
         - 'Channels\Subscriptions and subscribers'
@@ -4436,6 +4496,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user follows a channel'
+      description: 'This method determines whether a specific user is a follower of the channel in question.'
       operationId: check_if_user_subscribed_to_channel_alt1
       tags:
         - 'Channels\Subscriptions and subscribers'
@@ -4459,6 +4520,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Subscribe a user to a specific channel'
+      description: 'This method causes a user to become the follower of the channel in question.'
       operationId: subscribe_to_channel_alt1
       tags:
         - 'Channels\Subscriptions and subscribers'
@@ -4561,6 +4623,7 @@ paths:
   /me/feed:
     get:
       summary: 'Get all the videos in a user''s feed'
+      description: 'This method returns all the videos in the authenticated user''s feed.'
       operationId: get_feed_alt1
       tags:
         - Users\Feeds
@@ -4625,6 +4688,7 @@ paths:
   /me/followers:
     get:
       summary: 'Get all the followers of a user'
+      description: 'This method returns all the followers of the authenticated user.'
       operationId: get_followers_alt1
       tags:
         - Users\Followers
@@ -4686,6 +4750,7 @@ paths:
   /me/following:
     get:
       summary: 'Get all the users that a user is following'
+      description: 'This method returns all users that the authenticated user is following.'
       operationId: get_user_following_alt1
       tags:
         - Users\Followers
@@ -4755,6 +4820,7 @@ paths:
                   $ref: '#/components/schemas/user'
     post:
       summary: 'Follow a list of users'
+      description: "This method causes the authenticated user to become the follower of multiple users. In the body of the request, specify the list of users to follow as\nan array of URIs, where `user01_id`, `user02_id`, `user03_id`, and so on, are the user IDs of the users in question:\n\n```\n{\n [\n     {\"uri\" : \"/users/{user01_id}\"},\n     {\"uri\" : \"/users/{user02_id}\"},\n     {\"uri\" : \"/users/{user03_id}\"}\n ]\n}\n```"
       operationId: follow_users_alt1
       tags:
         - Users\Followers
@@ -4812,6 +4878,7 @@ paths:
   '/me/following/{follow_user_id}':
     delete:
       summary: 'Unfollow a user'
+      description: 'This method causes the authenticated user to stop following another user.'
       operationId: unfollow_user_alt1
       tags:
         - Users\Followers
@@ -4833,6 +4900,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user is following another user'
+      description: 'This method determines whether the authenticated user is a follower of the user in question.'
       operationId: check_if_user_is_following_alt1
       tags:
         - Users\Followers
@@ -4856,6 +4924,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Follow a specific user'
+      description: 'This method causes the authenticated user to become the follower of another user.'
       operationId: follow_user_alt1
       tags:
         - Users\Followers
@@ -4884,6 +4953,7 @@ paths:
   /me/groups:
     get:
       summary: 'Get all the groups that a user has joined'
+      description: 'This method returns all the groups to which a particular user belongs.'
       operationId: get_user_groups_alt1
       tags:
         - Groups\Users
@@ -4956,6 +5026,7 @@ paths:
   '/me/groups/{group_id}':
     delete:
       summary: 'Remove a user from a group'
+      description: 'This method removes a single user from the specified group.'
       operationId: leave_group_alt1
       tags:
         - Groups\Subscriptions
@@ -4983,6 +5054,7 @@ paths:
             - interact
     put:
       summary: 'Add a user to a group'
+      description: 'This method adds a single user to the specified group.'
       operationId: join_group_alt1
       tags:
         - Groups\Subscriptions
@@ -5010,6 +5082,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user has joined a group'
+      description: 'This method determines whether a particular user belongs to the specified group.'
       operationId: check_if_user_joined_group_alt1
       tags:
         - Groups\Users
@@ -5034,6 +5107,7 @@ paths:
   /me/likes:
     get:
       summary: 'Get all the videos that a user has liked'
+      description: 'This method gets all the videos that the specified user has liked.'
       operationId: get_likes_alt1
       tags:
         - Likes\Essentials
@@ -5105,6 +5179,7 @@ paths:
   '/me/likes/{video_id}':
     delete:
       summary: 'Cause a user to unlike a video'
+      description: 'This method causes the specified user to unlike a video that they previously liked.'
       operationId: unlike_video_alt1
       tags:
         - Likes\Essentials
@@ -5132,6 +5207,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user has liked a video'
+      description: 'This method checks if the specified user has liked a particular video.'
       operationId: check_if_user_liked_video_alt1
       tags:
         - Likes\Essentials
@@ -5155,6 +5231,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Cause a user to like a video'
+      description: 'This method checks if the specified user has liked a particular video.'
       operationId: like_video_alt1
       tags:
         - Likes\Essentials
@@ -5189,6 +5266,7 @@ paths:
   /me/ondemand/pages:
     get:
       summary: 'Get all the On Demand pages of a user'
+      description: 'Information about this method appears below.'
       operationId: get_user_vods_alt1
       tags:
         - 'On Demand\Essentials'
@@ -5262,6 +5340,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Create an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: create_vod_alt1
       tags:
         - 'On Demand\Essentials'
@@ -5531,6 +5610,7 @@ paths:
   /me/ondemand/purchases:
     get:
       summary: 'Get all the On Demand purchases and rentals that a user has made'
+      description: 'Information about this method appears below.'
       operationId: get_vod_purchases
       tags:
         - 'On Demand\Purchases and Rentals'
@@ -5617,6 +5697,7 @@ paths:
   '/me/ondemand/purchases/{ondemand_id}':
     get:
       summary: 'Check if a user has made a purchase or rental from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: check_if_vod_was_purchased_alt1
       tags:
         - 'On Demand\Purchases and Rentals'
@@ -5655,6 +5736,7 @@ paths:
   /me/pictures:
     get:
       summary: 'Get all the pictures that belong to a user'
+      description: 'This method returns all the portrait images belonging to the authenticated user.'
       operationId: get_pictures_alt1
       tags:
         - Users\Pictures
@@ -5686,6 +5768,7 @@ paths:
                   $ref: '#/components/schemas/picture'
     post:
       summary: 'Add a user picture'
+      description: "This method adds a portrait image to the authenticated user's Vimeo account. Send the binary data of the image file to the location that you receive\nfrom the **link** field in the response. For step-by-step instructions, see\n[Working with Thumbnail Uploads](https://developer.vimeo.com/api/upload/thumbnails#uploading-a-thumbnail-step-3)."
       operationId: create_picture_alt1
       tags:
         - Users\Pictures
@@ -5703,6 +5786,7 @@ paths:
   '/me/pictures/{portraitset_id}':
     delete:
       summary: 'Delete a user picture'
+      description: 'This method removes a portrait image from the authenticated user''s Vimeo account.'
       operationId: delete_picture_alt1
       tags:
         - Users\Pictures
@@ -5724,6 +5808,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific user picture'
+      description: 'This method returns a single portrait image belonging to the authenticated user.'
       operationId: get_picture_alt1
       tags:
         - Users\Pictures
@@ -5745,6 +5830,7 @@ paths:
                 $ref: '#/components/schemas/picture'
     patch:
       summary: 'Edit a user picture'
+      description: 'This method edits a portrait image belonging to the authenticated user.'
       operationId: edit_picture_alt1
       tags:
         - Users\Pictures
@@ -5782,6 +5868,7 @@ paths:
   /me/portfolios:
     get:
       summary: 'Get all the portfolios that belong to a user'
+      description: 'This method gets all the specified user''s portfolios.'
       operationId: get_portfolios_alt1
       tags:
         - Portfolios\Essentials
@@ -5843,6 +5930,7 @@ paths:
   '/me/portfolios/{portfolio_id}':
     get:
       summary: 'Get a specific portfolio'
+      description: 'This method gets a single portfolio from the specified user.'
       operationId: get_portfolio_alt1
       tags:
         - Portfolios\Essentials
@@ -5865,6 +5953,7 @@ paths:
   '/me/portfolios/{portfolio_id}/videos':
     get:
       summary: 'Get all the videos in a portfolio'
+      description: 'This method gets all the videos from the specified portfolio.'
       operationId: get_portfolio_videos_alt1
       tags:
         - Portfolios\Videos
@@ -5945,6 +6034,7 @@ paths:
   '/me/portfolios/{portfolio_id}/videos/{video_id}':
     delete:
       summary: 'Remove a video from a portfolio'
+      description: 'This method removes a video from the specified portfolio.'
       operationId: delete_video_from_portfolio_alt1
       tags:
         - Portfolios\Videos
@@ -5980,6 +6070,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific video in a portfolio'
+      description: 'This method gets a single video from the specified portfolio.'
       operationId: get_portfolio_video_alt1
       tags:
         - Portfolios\Videos
@@ -6009,6 +6100,7 @@ paths:
                 $ref: '#/components/schemas/video'
     put:
       summary: 'Add a video to a portfolio'
+      description: 'This method adds a video to the specified portfolio.'
       operationId: add_video_to_portfolio_alt1
       tags:
         - Portfolios\Videos
@@ -6045,6 +6137,7 @@ paths:
   /me/presets:
     get:
       summary: 'Get all the embed presets that a user has created'
+      description: 'This method returns all the embed presets that belong to the specified user.'
       operationId: get_embed_presets_alt1
       tags:
         - 'Embed Presets\Essentials'
@@ -6077,6 +6170,7 @@ paths:
   '/me/presets/{preset_id}':
     get:
       summary: 'Get a specific embed preset'
+      description: 'This method returns a single embed preset that belongs to the specified user.'
       operationId: get_embed_preset_alt1
       tags:
         - 'Embed Presets\Essentials'
@@ -6720,12 +6814,13 @@ paths:
   /me/videos:
     get:
       summary: 'Get all the videos that a user has uploaded'
+      description: 'This method returns all the videos that the authenticated user has uploaded.'
       operationId: get_videos_alt1
       tags:
         - Videos\Essentials
       parameters:
         -
-          description: 'The page that contains the video URI. Only available when not paired with `query`.'
+          description: 'The page that contains the video URI. Available only when not paired with **query**.'
           in: query
           name: containing_uri
           required: false
@@ -6764,7 +6859,7 @@ paths:
             type: boolean
             example: true
         -
-          description: 'Whether to filter by all playable videos or by all videos that are not  playable.'
+          description: 'Whether to filter the results by playable videos (`true`) or non-playable videos (`false`).'
           in: query
           name: filter_playable
           required: false
@@ -6814,7 +6909,7 @@ paths:
               - plays
       responses:
         304:
-          description: 'This user hasn''t created any videos since the given `If-Modified-Since` header.'
+          description: 'The authenticated user hasn''t created any videos since the given **If-Modified-Since** header.'
         200:
           description: 'The videos were returned.'
           content:
@@ -6825,10 +6920,10 @@ paths:
                   $ref: '#/components/schemas/video'
     post:
       summary: 'Upload a video'
-      description: 'Begin the video upload process. For more information, see our [upload documentation](https://developer.vimeo.com/api/upload/videos).'
+      description: "This method begins the video upload process for the authenticated user. For more information, see our\n[upload documentation](https://developer.vimeo.com/api/upload/videos)."
       operationId: upload_video_alt1
       tags:
-        - Videos\Upload
+        - Videos\Uploads
       requestBody:
         required: true
         content:
@@ -6837,7 +6932,7 @@ paths:
               type: object
               properties:
                 content_rating:
-                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
+                  description: 'A list of values describing the content in this video. Find the full list in the [`/contentratings`](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
                   items:
                     type: string
                   type: array
@@ -6850,15 +6945,15 @@ paths:
                     buttons:
                       properties:
                         embed:
-                          description: 'Show or hide the Embed button.'
+                          description: 'Whether to show the embed button on the embeddable player.'
                           example: true
                           type: boolean
                         fullscreen:
-                          description: 'Show or hide the Fullscreen button.'
+                          description: 'Whether to show the fullscreen button on the embeddable player.'
                           example: true
                           type: boolean
                         hd:
-                          description: 'Show or hide the HD button.'
+                          description: 'Whether to show the HD button on the embeddable player.'
                           example: true
                           type: boolean
                         like:
@@ -6866,20 +6961,20 @@ paths:
                           example: true
                           type: boolean
                         scaling:
-                          description: 'Show or hide the Scaling button (shown only in Fullscreen mode).'
+                          description: 'Whether to show the scaling button on the embeddable player in fullscreen mode.'
                           example: true
                           type: boolean
                         share:
-                          description: 'Show or hide the Share button.'
+                          description: 'Whether to show the share button on the embeddable player.'
                           example: true
                           type: boolean
                         watchlater:
-                          description: 'Show or hide the Watch Later button.'
+                          description: 'Whether to show the watch later button on the embeddable player.'
                           example: true
                           type: boolean
                       type: object
                     color:
-                      description: 'The main color of the embed player.'
+                      description: 'The main color of the embeddable player.'
                       example: '#1ab7ea'
                       type: string
                     logos:
@@ -6887,45 +6982,45 @@ paths:
                         custom:
                           properties:
                             active:
-                              description: 'Show or hide your custom logo.'
+                              description: 'Whether to show the active custom logo on the embeddable player.'
                               example: true
                               type: boolean
                             link:
-                              description: 'The URL that loads when the user clicks your custom logo.'
+                              description: 'The URL that loads when the user clicks the custom logo.'
                               example: 'https://example.com'
                               type: string
                             sticky:
-                              description: 'Whether always to show the custom logo or to hide it after time with the rest of the UI.'
+                              description: 'Whether the custom logo is always visible on the embeddable player (`true`) or whether the logo appears and disappears with the rest of the UI (`false`).'
                               example: true
                               type: boolean
                           type: object
                         vimeo:
-                          description: 'Show or hide the Vimeo logo.'
+                          description: 'Whether to show the Vimeo logo on the embeddable player.'
                           example: true
                           type: boolean
                       type: object
                     playbar:
-                      description: 'Show or hide the playbar.'
+                      description: 'Whether to show the playbar on the embeddable player.'
                       example: true
                       type: boolean
                     title:
                       properties:
                         name:
-                          description: 'Show or hide the video title, or enable the user to determine whether the video title appears.'
+                          description: "How to handle the video title in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the video title.\n * `show` - Show the video title.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
                             - user
                           type: string
                         owner:
-                          description: 'Show or hide the owner information, or enable the user to determine whether the owner information appears.'
+                          description: "How to handle the owner information in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the owner info.\n * `show` - Show the owner info.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
                             - user
                           type: string
                         portrait:
-                          description: 'Show or hide the owner portrait, or enable the user to determine whether the owner portrait appears.'
+                          description: "How to handle the owner portrait in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the portrait.\n * `show` - Show the portrait.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
@@ -6933,12 +7028,12 @@ paths:
                           type: string
                       type: object
                     volume:
-                      description: 'Show or hide the volume selector.'
+                      description: 'Whether to show the volume selector on the embeddable player.'
                       example: true
                       type: boolean
                   type: object
                 license:
-                  description: 'The Creative Commons license.'
+                  description: 'The Creative Commons license under which the video is offered.'
                   enum:
                     - by
                     - by-nc
@@ -6949,7 +7044,7 @@ paths:
                     - cc0
                   type: string
                 locale:
-                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
+                  description: 'The video''s default language. For a full list of supported languages, use the [`/languages?filter=texttracks`](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en_US
                   type: string
                 name:
@@ -6957,7 +7052,7 @@ paths:
                   example: 'Celebrating 10 Years of Staff Picks'
                   type: string
                 password:
-                  description: 'The password. When you set `privacy.view` to `password`, you must provide the password as an additional parameter.'
+                  description: 'The password. When you set **privacy.view** to `password`, you must provide the password as an additional parameter.'
                   example: hunter1
                   type: string
                 privacy:
@@ -6974,18 +7069,18 @@ paths:
                         - nobody
                       type: string
                     download:
-                      description: 'Whether a user can download the video. Not available to users with a Basic membership'
+                      description: 'Whether a user can download the video. Not available to Vimeo Basic members.'
                       example: true
                       type: boolean
                     embed:
-                      description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/reference/videos#embed-privacy) for details on adding and removing domains.'
+                      description: 'The video''s embed setting. Specify the `whitelist` value if you want to provide a list of all valid embed domains; see our [Interacting with Videos](https://developer.vimeo.com/api/guides/videos/interact#set-off-site-privacy) guide for more information.'
                       enum:
                         - private
                         - public
                         - whitelist
                       type: string
                     view:
-                      description: 'The video''s privacy setting. When privacy is `users`, `application/json` is the only valid content type. Basic users can''t set privacy to `unlisted`.'
+                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `unlisted`.'
                       enum:
                         - anybody
                         - contacts
@@ -6996,61 +7091,33 @@ paths:
                         - users
                       type: string
                   type: object
-                ratings:
-                  properties:
-                    mpaa:
-                      properties:
-                        reason:
-                          description: "The reason for the video's MPAA rating.\n\nOption descriptions:\n * `at` - Adult themes\n * `bn` - Brief nudity\n * `n` - Nudity\n * `sl` - Strong language\n * `ss` - Sexual situations\n * `v` - Violence\n"
-                          enum:
-                            - at
-                            - bn
-                            - 'n'
-                            - sl
-                            - ss
-                            - v
-                          type: string
-                      type: object
-                    tv:
-                      properties:
-                        reason:
-                          description: "The reason for the video's TV rating.\n\nOption descriptions:\n * `d` - Suggestive dialogue\n * `fv` - Fantasy violence\n * `l` - Language\n * `ss` - Sexual situations\n * `v` - Violence\n"
-                          enum:
-                            - d
-                            - fv
-                            - l
-                            - ss
-                            - v
-                          type: string
-                      type: object
-                  type: object
                 review_page:
                   properties:
                     active:
-                      description: 'Enable or disable video review.'
+                      description: 'Whether to enable video review.'
                       example: true
                       type: boolean
                   type: object
                 spatial:
                   properties:
                     director_timeline:
-                      description: 'The 360 director timeline.'
+                      description: 'An array representing the 360 director timeline.'
                       items:
                         type: object
                         properties:
                           pitch:
-                            description: 'The timeline pitch. This value must be between -90 and 90.'
+                            description: 'The 360 director timeline pitch. This value must be between −90 and 90. Required only when **spatial.director_timeline** is defined.'
                             example: 70
                             type: number
                           roll:
-                            description: 'The timeline roll.'
+                            description: 'The 360 director timeline roll.'
                             type: number
                           time_code:
-                            description: 'The 360 director timeline time code.'
+                            description: 'The 360 director timeline time code. Required only when **spatial.director_timeline** is defined.'
                             example: 5
                             type: number
                           yaw:
-                            description: 'The timeline yaw. This value must be between 0 and 360.'
+                            description: 'The 360 director timeline yaw. This value must be between 0 and 360. Required only when **spatial.director_timeline** is defined.'
                             example: 125
                             type: number
                         required:
@@ -7059,7 +7126,7 @@ paths:
                           - yaw
                       type: array
                     field_of_view:
-                      description: 'The 360 field of view: default 50, minimum 30, maximum 90.'
+                      description: 'The 360 field of view. This value must be between 30 and 90. The default is 50.'
                       example: 50
                       type: number
                     projection:
@@ -7114,19 +7181,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/video'
         401:
-          description: 'Error code 8002: No user is associated with the authentication token.'
+          description: 'Error code 8002: No user is associated with the access token.'
           content:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/error'
         403:
-          description: "* Error code 4102: The user's allotted quota has been reached.\n* Error code 4101: The user's maximum disk space has been reached."
+          description: "* Error code 4102: The authenticated user's allotted quota has been reached.\n* Error code 4101: The authenticated user's maximum disk space has been reached."
           content:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/error'
         400:
-          description: "* Error code 2205: The body of the request isn't formatted properly.\n* Error code 2204: The request contains invalid parameters.\n* Error code 2204: The request contains invalid body parameters.\n* Error code 2230: The upload type is invalid.\n* Error code 3116: If a `type` payload parameter was supplied instead of `upload.approach`."
+          description: "* Error code 2205: The body of the request isn't formatted properly.\n* Error code 2204: The request contains invalid body parameters.\n* Error code 2230: The upload type is invalid.\n* Error code 3116: The **type** payload parameter was supplied instead of **upload.approach**. Use **upload.approach** starting from API version 3.4."
           content:
             application/vnd.vimeo.video+json:
               schema:
@@ -7140,6 +7207,7 @@ paths:
   '/me/videos/{video_id}':
     get:
       summary: 'Check if a user owns a video'
+      description: 'This method determines whether a particular user is the owner of the specified video.'
       operationId: check_if_user_owns_video_alt1
       tags:
         - Videos\Essentials
@@ -7181,6 +7249,7 @@ paths:
             - delete
     get:
       summary: 'Get all the videos that a user has watched'
+      description: 'Information about this method appears below.'
       operationId: get_watch_history
       tags:
         - 'Users\Watch history'
@@ -7246,6 +7315,7 @@ paths:
   /me/watchlater:
     get:
       summary: 'Get all the videos in a user''s Watch Later queue'
+      description: 'This method gets all the videos from the specified user''s Watch Later queue.'
       operationId: get_watch_later_queue_alt1
       tags:
         - 'Watch Later Queue\Essentials'
@@ -7334,6 +7404,7 @@ paths:
   '/me/watchlater/{video_id}':
     delete:
       summary: 'Remove a video from a user''s Watch Later queue'
+      description: 'This method removes a single video from the specified user''s Watch Later queue.'
       operationId: delete_video_from_watch_later_alt1
       tags:
         - 'Watch Later Queue\Essentials'
@@ -7355,6 +7426,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user has added a specific video to their Watch Later queue'
+      description: 'This method checks the specified user''s Watch Later queue for a particular video.'
       operationId: check_watch_later_queue_alt1
       tags:
         - 'Watch Later Queue\Essentials'
@@ -7386,6 +7458,7 @@ paths:
             - private
     put:
       summary: 'Add a video to a user''s Watch Later queue'
+      description: 'This method adds a single video to the specified user''s Watch Later queue.'
       operationId: add_video_to_watch_later_alt1
       tags:
         - 'Watch Later Queue\Essentials'
@@ -7408,6 +7481,7 @@ paths:
   /oauth/access_token:
     post:
       summary: 'Exchange an authorization code for an access token'
+      description: 'This method exchanges an OAuth authorization code for an OAuth access token.'
       operationId: exchange_auth_code
       tags:
         - 'Authentication Extras\Essentials'
@@ -7490,6 +7564,7 @@ paths:
   /oauth/authorize/vimeo_oauth1:
     post:
       summary: 'Convert OAuth 1 access tokens to OAuth 2 access tokens'
+      description: 'This method exchanges a legacy Advanced API OAuth 1 token for an APIv3 OAuth 2 token.'
       operationId: convert_access_token
       tags:
         - 'Authentication Extras\Essentials'
@@ -7533,6 +7608,7 @@ paths:
   /oauth/verify:
     get:
       summary: 'Verify an OAuth 2 token'
+      description: 'This method verifies that an OAuth 2 token exists.'
       operationId: verify_token
       tags:
         - 'Authentication Extras\Essentials'
@@ -7552,6 +7628,7 @@ paths:
   /ondemand/genres:
     get:
       summary: 'Get all On Demand genres'
+      description: 'Information about this method appears below.'
       operationId: get_vod_genres
       tags:
         - 'On Demand\Genres'
@@ -7567,6 +7644,7 @@ paths:
   '/ondemand/genres/{genre_id}':
     get:
       summary: 'Get a specific On Demand genre'
+      description: 'Information about this method appears below.'
       operationId: get_vod_genre
       tags:
         - 'On Demand\Genres'
@@ -7595,6 +7673,7 @@ paths:
   '/ondemand/genres/{genre_id}/pages':
     get:
       summary: 'Get all the On Demand pages in a genre'
+      description: 'This method returns all the On Demand pages that are in a specific genre.'
       operationId: get_genre_vods
       tags:
         - 'On Demand\Genres'
@@ -7714,6 +7793,7 @@ paths:
   '/ondemand/pages/{ondemand_id}':
     delete:
       summary: 'Delete a draft of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: delete_vod_draft
       tags:
         - 'On Demand\Essentials'
@@ -7747,6 +7827,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod
       tags:
         - 'On Demand\Essentials'
@@ -7846,6 +7927,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/backgrounds':
     get:
       summary: 'Get all the backgrounds of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_backgrounds
       tags:
         - 'On Demand\Backgrounds'
@@ -7891,6 +7973,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a background to an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: create_vod_background
       tags:
         - 'On Demand\Backgrounds'
@@ -7929,6 +8012,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/backgrounds/{background_id}':
     delete:
       summary: 'Remove a background from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: delete_vod_background
       tags:
         - 'On Demand\Backgrounds'
@@ -7974,6 +8058,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific background of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_background
       tags:
         - 'On Demand\Backgrounds'
@@ -8015,6 +8100,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     patch:
       summary: 'Edit a background of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: edit_vod_background
       tags:
         - 'On Demand\Backgrounds'
@@ -8072,6 +8158,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/genres':
     get:
       summary: 'Get all the genres of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_genres_by_ondemand_id
       tags:
         - 'On Demand\Genres'
@@ -8102,6 +8189,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/genres/{genre_id}':
     delete:
       summary: 'Remove a genre from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: delete_vod_genre
       tags:
         - 'On Demand\Genres'
@@ -8149,6 +8237,7 @@ paths:
             - edit
     get:
       summary: 'Check whether an On Demand page belongs to a genre'
+      description: 'Information about this method appears below.'
       operationId: get_vod_genre_by_ondemand_id
       tags:
         - 'On Demand\Genres'
@@ -8184,6 +8273,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a genre to an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: add_vod_genre
       tags:
         - 'On Demand\Genres'
@@ -8309,6 +8399,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/pictures':
     get:
       summary: 'Get all the posters of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_posters
       tags:
         - 'On Demand\Posters'
@@ -8354,6 +8445,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a poster to an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: add_vod_poster
       tags:
         - 'On Demand\Posters'
@@ -8386,6 +8478,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/pictures/{poster_id}':
     get:
       summary: 'Get a specific poster of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_poster
       tags:
         - 'On Demand\Posters'
@@ -8415,6 +8508,7 @@ paths:
                 $ref: '#/components/schemas/picture'
     patch:
       summary: 'Edit a poster of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: edit_vod_poster
       tags:
         - 'On Demand\Posters'
@@ -8460,6 +8554,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/promotions':
     get:
       summary: 'Get all the promotions on an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_promotions
       tags:
         - 'On Demand\Promotions'
@@ -8531,6 +8626,7 @@ paths:
             - promo_codes
     post:
       summary: 'Add a promotion to an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: create_vod_promotion
       tags:
         - 'On Demand\Promotions'
@@ -8656,6 +8752,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/promotions/{promotion_id}':
     delete:
       summary: 'Remove a promotion from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: delete_vod_promotion
       tags:
         - 'On Demand\Promotions'
@@ -8698,6 +8795,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific promotion on an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_promotion
       tags:
         - 'On Demand\Promotions'
@@ -8744,6 +8842,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/promotions/{promotion_id}/codes':
     get:
       summary: 'Get all the codes of a promotion on an On Demand page'
+      description: 'This method returns all the codes of a promotion on an On Demand page.'
       operationId: get_vod_promotion_codes
       tags:
         - 'On Demand\Promotions'
@@ -8806,6 +8905,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/regions':
     delete:
       summary: 'Remove a list of regions from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: delete_vod_regions
       tags:
         - 'On Demand\Regions'
@@ -8857,6 +8957,7 @@ paths:
             - edit
     get:
       summary: 'Get all the regions of an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_regions
       tags:
         - 'On Demand\Regions'
@@ -8886,6 +8987,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a list of regions to an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: set_vod_regions
       tags:
         - 'On Demand\Regions'
@@ -8938,6 +9040,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/regions/{country}':
     delete:
       summary: 'Remove a specific region from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: delete_vod_region
       tags:
         - 'On Demand\Regions'
@@ -9015,6 +9118,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a specific region to an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: add_vod_region
       tags:
         - 'On Demand\Regions'
@@ -9061,6 +9165,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/seasons':
     get:
       summary: 'Get all the seasons on an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_seasons
       tags:
         - 'On Demand\Seasons'
@@ -9137,6 +9242,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/seasons/{season_id}':
     get:
       summary: 'Get a specific season on an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_season
       tags:
         - 'On Demand\Seasons'
@@ -9173,6 +9279,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/seasons/{season_id}/videos':
     get:
       summary: 'Get all the videos in a season on an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_season_videos
       tags:
         - 'On Demand\Seasons'
@@ -9244,6 +9351,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/videos':
     get:
       summary: 'Get all the videos on an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_videos
       tags:
         - 'On Demand\Videos'
@@ -9329,6 +9437,7 @@ paths:
   '/ondemand/pages/{ondemand_id}/videos/{video_id}':
     delete:
       summary: 'Remove a video from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: delete_video_from_vod
       tags:
         - 'On Demand\Videos'
@@ -9364,6 +9473,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific video on an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: get_vod_video
       tags:
         - 'On Demand\Videos'
@@ -9393,6 +9503,7 @@ paths:
                 $ref: '#/components/schemas/video'
     put:
       summary: 'Add a video to an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: add_video_to_vod
       tags:
         - 'On Demand\Videos'
@@ -9571,6 +9682,7 @@ paths:
   /ondemand/regions:
     get:
       summary: 'Get all the On Demand regions'
+      description: 'Information about this method appears below.'
       operationId: get_regions
       tags:
         - 'On Demand\Regions'
@@ -9586,6 +9698,7 @@ paths:
   '/ondemand/regions/{country}':
     get:
       summary: 'Get a specific On Demand region'
+      description: 'Information about this method appears below.'
       operationId: get_region
       tags:
         - 'On Demand\Regions'
@@ -9614,6 +9727,7 @@ paths:
   '/tags/{word}':
     get:
       summary: 'Get a specific tag'
+      description: 'This method gets a specific tag from all available tags.'
       operationId: get_tag
       tags:
         - Tags\Essentials
@@ -9636,6 +9750,7 @@ paths:
   '/tags/{word}/videos':
     get:
       summary: 'Get all the videos with a specific tag'
+      description: 'This method returns all the videos associated with the specified tag.'
       operationId: get_videos_with_tag
       tags:
         - Videos\Tags
@@ -9724,6 +9839,7 @@ paths:
   /users:
     get:
       summary: 'Search for users'
+      description: 'Information about this method appears below.'
       operationId: search_users
       tags:
         - Users\Internal
@@ -9800,6 +9916,7 @@ paths:
   '/users/{user_id}':
     get:
       summary: 'Get a user'
+      description: 'This method returns the representation of the authenticated user.'
       operationId: get_user
       tags:
         - Users\Essentials
@@ -9821,6 +9938,7 @@ paths:
                 $ref: '#/components/schemas/user'
     patch:
       summary: 'Edit a user'
+      description: 'This method edits the representation of the authenticated user.'
       operationId: edit_user
       tags:
         - Users\Essentials
@@ -9914,6 +10032,7 @@ paths:
   '/users/{user_id}/albums':
     get:
       summary: 'Get all the albums that belong to a user'
+      description: 'This method gets all the albums from the specified user''s account.'
       operationId: get_albums
       tags:
         - Albums\Essentials
@@ -9990,6 +10109,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Create an album'
+      description: 'This method creates a new album for the specified user.'
       operationId: create_album
       tags:
         - Albums\Essentials
@@ -10093,6 +10213,7 @@ paths:
   '/users/{user_id}/albums/{album_id}':
     delete:
       summary: 'Delete an album'
+      description: 'This method deletes an album from the owner''s account.'
       operationId: delete_album
       tags:
         - Albums\Essentials
@@ -10134,6 +10255,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific album'
+      description: 'This method gets a single album.'
       operationId: get_album
       tags:
         - Albums\Essentials
@@ -10169,6 +10291,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     patch:
       summary: 'Edit an album'
+      description: 'This method edits an album.'
       operationId: edit_album
       tags:
         - Albums\Essentials
@@ -10298,6 +10421,7 @@ paths:
   '/users/{user_id}/albums/{album_id}/custom_thumbnails':
     get:
       summary: 'Get all the custom upload thumbnails of an album'
+      description: 'This method gets all the custom uploaded thumbnails from the specified album.'
       operationId: get_album_custom_thumbs
       tags:
         - 'Albums\Custom album thumbnails'
@@ -10351,6 +10475,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a custom uploaded thumbnail'
+      description: "This method adds an image file as a custom thumbnail to the specified album. For information on how to upload the thumbnail, see our\n[Working with Thumbnail Uploads](https://developer.vimeo.com/api/upload/thumbnails) guide, and follow the same steps."
       operationId: create_album_custom_thumb
       tags:
         - 'Albums\Custom album thumbnails'
@@ -10447,6 +10572,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific custom uploaded album thumbnail'
+      description: 'This method returns all the videos associated with the specified tag.'
       operationId: get_album_custom_thumbnail
       tags:
         - 'Albums\Custom album thumbnails'
@@ -10496,6 +10622,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     patch:
       summary: 'Replace a custom uploaded album thumbnail'
+      description: "This method replaces the specified custom uploaded album thumbnail with a new image file. For information on how to upload the thumbnail, see our\n[Working with Thumbnail Uploads](https://developer.vimeo.com/api/upload/thumbnails) guide, and follow the same steps."
       operationId: replace_album_custom_thumb
       tags:
         - 'Albums\Custom album thumbnails'
@@ -10561,6 +10688,7 @@ paths:
   '/users/{user_id}/albums/{album_id}/logos':
     get:
       summary: 'Get all the custom logos of an album'
+      description: 'This method gets all the custom logos from the specified album.'
       operationId: get_album_logos
       tags:
         - 'Albums\Custom album logos'
@@ -10614,6 +10742,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a custom album logo'
+      description: "This method adds an image file as a custom logo to the specified album. For information on how to upload the logo, see our\n[Working with Thumbnail Uploads](https://developer.vimeo.com/api/upload/thumbnails) guide, and follow the same steps."
       operationId: create_album_logo
       tags:
         - 'Albums\Custom album logos'
@@ -10710,6 +10839,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific custom album logo'
+      description: 'This method gets a single custom logo from the specified album.'
       operationId: get_album_logo
       tags:
         - 'Albums\Custom album logos'
@@ -10759,6 +10889,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     patch:
       summary: 'Replace a custom album logo'
+      description: "This method replaces the specified custom album logo with a new image file. For information on how to upload the logo, see our\n[Working with Thumbnail Uploads](https://developer.vimeo.com/api/upload/thumbnails) guide, and follow the same steps."
       operationId: replace_album_logo
       tags:
         - 'Albums\Custom album logos'
@@ -10824,6 +10955,7 @@ paths:
   '/users/{user_id}/albums/{album_id}/videos':
     get:
       summary: 'Get all the videos in an album'
+      description: 'This method gets all the videos from the specified album.'
       operationId: get_album_videos
       tags:
         - 'Albums\Album videos'
@@ -11010,6 +11142,7 @@ paths:
   '/users/{user_id}/albums/{album_id}/videos/{video_id}':
     delete:
       summary: 'Remove a video from an album'
+      description: 'This method removes a video from the specified album.'
       operationId: remove_video_from_album
       tags:
         - 'Albums\Album videos'
@@ -11111,6 +11244,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a specific video to an album'
+      description: 'This method adds a single video to the specified album.'
       operationId: add_video_to_album
       tags:
         - 'Albums\Album videos'
@@ -11161,6 +11295,7 @@ paths:
   '/users/{user_id}/albums/{album_id}/videos/{video_id}/set_album_thumbnail':
     post:
       summary: 'Set a video as the album thumbnail'
+      description: 'Information about this method appears below.'
       operationId: set_video_as_album_thumbnail
       tags:
         - 'Albums\Album videos'
@@ -11232,6 +11367,7 @@ paths:
   '/users/{user_id}/appearances':
     get:
       summary: 'Get all the videos in which a user appears'
+      description: 'This method returns all the videos in which the authenticated user has a credited appearance.'
       operationId: get_appearances
       tags:
         - Videos\Essentials
@@ -11322,6 +11458,7 @@ paths:
   '/users/{user_id}/categories':
     get:
       summary: 'Get all the categories that a user follows'
+      description: 'This method gets all the categories to which a particular user has subscribed.'
       operationId: get_category_subscriptions
       tags:
         - Categories\Subscriptions
@@ -11394,6 +11531,7 @@ paths:
   '/users/{user_id}/categories/{category}':
     delete:
       summary: 'Unsubscribe a user from a category'
+      description: 'This method unsubscribes the current user from a specified category.'
       operationId: unsubscribe_from_category
       tags:
         - Categories\Subscriptions
@@ -11423,6 +11561,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user follows a category'
+      description: 'This method determines whether a particular user is subscribed to the specified category.'
       operationId: check_if_user_subscribed_to_category
       tags:
         - Categories\Subscriptions
@@ -11452,6 +11591,7 @@ paths:
             - private
     put:
       summary: 'Subscribe a user to a single category'
+      description: 'This method subscribes the current user to a specified category.'
       operationId: subscribe_to_category
       tags:
         - Categories\Subscriptions
@@ -11482,6 +11622,7 @@ paths:
   '/users/{user_id}/channels':
     get:
       summary: 'Get all the channels to which a user subscribes'
+      description: 'This method gets all the channels to which the specified user subscribes.'
       operationId: get_channel_subscriptions
       tags:
         - Channels\Essentials
@@ -11564,6 +11705,7 @@ paths:
   '/users/{user_id}/channels/{channel_id}':
     delete:
       summary: 'Unsubscribe a user from a specific channel'
+      description: 'This method causes a user to stop following the channel in question.'
       operationId: unsubscribe_from_channel
       tags:
         - 'Channels\Subscriptions and subscribers'
@@ -11599,6 +11741,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user follows a channel'
+      description: 'This method determines whether a specific user is a follower of the channel in question.'
       operationId: check_if_user_subscribed_to_channel
       tags:
         - 'Channels\Subscriptions and subscribers'
@@ -11630,6 +11773,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Subscribe a user to a specific channel'
+      description: 'This method causes a user to become the follower of the channel in question.'
       operationId: subscribe_to_channel
       tags:
         - 'Channels\Subscriptions and subscribers'
@@ -11766,6 +11910,7 @@ paths:
   '/users/{user_id}/feed':
     get:
       summary: 'Get all the videos in a user''s feed'
+      description: 'This method returns all the videos in the authenticated user''s feed.'
       operationId: get_feed
       tags:
         - Users\Feeds
@@ -11838,6 +11983,7 @@ paths:
   '/users/{user_id}/followers':
     get:
       summary: 'Get all the followers of a user'
+      description: 'This method returns all the followers of the authenticated user.'
       operationId: get_followers
       tags:
         - Users\Followers
@@ -11907,6 +12053,7 @@ paths:
   '/users/{user_id}/following':
     get:
       summary: 'Get all the users that a user is following'
+      description: 'This method returns all users that the authenticated user is following.'
       operationId: get_user_following
       tags:
         - Users\Followers
@@ -11984,6 +12131,7 @@ paths:
                   $ref: '#/components/schemas/user'
     post:
       summary: 'Follow a list of users'
+      description: "This method causes the authenticated user to become the follower of multiple users. In the body of the request, specify the list of users to follow as\nan array of URIs, where `user01_id`, `user02_id`, `user03_id`, and so on, are the user IDs of the users in question:\n\n```\n{\n [\n     {\"uri\" : \"/users/{user01_id}\"},\n     {\"uri\" : \"/users/{user02_id}\"},\n     {\"uri\" : \"/users/{user03_id}\"}\n ]\n}\n```"
       operationId: follow_users
       tags:
         - Users\Followers
@@ -12050,6 +12198,7 @@ paths:
   '/users/{user_id}/following/{follow_user_id}':
     delete:
       summary: 'Unfollow a user'
+      description: 'This method causes the authenticated user to stop following another user.'
       operationId: unfollow_user
       tags:
         - Users\Followers
@@ -12079,6 +12228,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user is following another user'
+      description: 'This method determines whether the authenticated user is a follower of the user in question.'
       operationId: check_if_user_is_following
       tags:
         - Users\Followers
@@ -12110,6 +12260,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Follow a specific user'
+      description: 'This method causes the authenticated user to become the follower of another user.'
       operationId: follow_user
       tags:
         - Users\Followers
@@ -12146,6 +12297,7 @@ paths:
   '/users/{user_id}/groups':
     get:
       summary: 'Get all the groups that a user has joined'
+      description: 'This method returns all the groups to which a particular user belongs.'
       operationId: get_user_groups
       tags:
         - Groups\Users
@@ -12226,6 +12378,7 @@ paths:
   '/users/{user_id}/groups/{group_id}':
     delete:
       summary: 'Remove a user from a group'
+      description: 'This method removes a single user from the specified group.'
       operationId: leave_group
       tags:
         - Groups\Subscriptions
@@ -12261,6 +12414,7 @@ paths:
             - interact
     put:
       summary: 'Add a user to a group'
+      description: 'This method adds a single user to the specified group.'
       operationId: join_group
       tags:
         - Groups\Subscriptions
@@ -12296,6 +12450,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user has joined a group'
+      description: 'This method determines whether a particular user belongs to the specified group.'
       operationId: check_if_user_joined_group
       tags:
         - Groups\Users
@@ -12328,6 +12483,7 @@ paths:
   '/users/{user_id}/likes':
     get:
       summary: 'Get all the videos that a user has liked'
+      description: 'This method gets all the videos that the specified user has liked.'
       operationId: get_likes
       tags:
         - Likes\Essentials
@@ -12407,6 +12563,7 @@ paths:
   '/users/{user_id}/likes/{video_id}':
     delete:
       summary: 'Cause a user to unlike a video'
+      description: 'This method causes the specified user to unlike a video that they previously liked.'
       operationId: unlike_video
       tags:
         - Likes\Essentials
@@ -12442,6 +12599,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user has liked a video'
+      description: 'This method checks if the specified user has liked a particular video.'
       operationId: check_if_user_liked_video
       tags:
         - Likes\Essentials
@@ -12473,6 +12631,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Cause a user to like a video'
+      description: 'This method checks if the specified user has liked a particular video.'
       operationId: like_video
       tags:
         - Likes\Essentials
@@ -12515,6 +12674,7 @@ paths:
   '/users/{user_id}/ondemand/pages':
     get:
       summary: 'Get all the On Demand pages of a user'
+      description: 'Information about this method appears below.'
       operationId: get_user_vods
       tags:
         - 'On Demand\Essentials'
@@ -12596,6 +12756,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Create an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: create_vod
       tags:
         - 'On Demand\Essentials'
@@ -12874,6 +13035,7 @@ paths:
   '/users/{user_id}/ondemand/purchases':
     get:
       summary: 'Check if a user has made a purchase or rental from an On Demand page'
+      description: 'Information about this method appears below.'
       operationId: check_if_vod_was_purchased
       tags:
         - 'On Demand\Purchases and Rentals'
@@ -12912,6 +13074,7 @@ paths:
   '/users/{user_id}/pictures':
     get:
       summary: 'Get all the pictures that belong to a user'
+      description: 'This method returns all the portrait images belonging to the authenticated user.'
       operationId: get_pictures
       tags:
         - Users\Pictures
@@ -12951,6 +13114,7 @@ paths:
                   $ref: '#/components/schemas/picture'
     post:
       summary: 'Add a user picture'
+      description: "This method adds a portrait image to the authenticated user's Vimeo account. Send the binary data of the image file to the location that you receive\nfrom the **link** field in the response. For step-by-step instructions, see\n[Working with Thumbnail Uploads](https://developer.vimeo.com/api/upload/thumbnails#uploading-a-thumbnail-step-3)."
       operationId: create_picture
       tags:
         - Users\Pictures
@@ -12977,6 +13141,7 @@ paths:
   '/users/{user_id}/pictures/{portraitset_id}':
     delete:
       summary: 'Delete a user picture'
+      description: 'This method removes a portrait image from the authenticated user''s Vimeo account.'
       operationId: delete_picture
       tags:
         - Users\Pictures
@@ -13006,6 +13171,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific user picture'
+      description: 'This method returns a single portrait image belonging to the authenticated user.'
       operationId: get_picture
       tags:
         - Users\Pictures
@@ -13035,6 +13201,7 @@ paths:
                 $ref: '#/components/schemas/picture'
     patch:
       summary: 'Edit a user picture'
+      description: 'This method edits a portrait image belonging to the authenticated user.'
       operationId: edit_picture
       tags:
         - Users\Pictures
@@ -13080,6 +13247,7 @@ paths:
   '/users/{user_id}/portfolios':
     get:
       summary: 'Get all the portfolios that belong to a user'
+      description: 'This method gets all the specified user''s portfolios.'
       operationId: get_portfolios
       tags:
         - Portfolios\Essentials
@@ -13149,6 +13317,7 @@ paths:
   '/users/{user_id}/portfolios/{portfolio_id}':
     get:
       summary: 'Get a specific portfolio'
+      description: 'This method gets a single portfolio from the specified user.'
       operationId: get_portfolio
       tags:
         - Portfolios\Essentials
@@ -13179,6 +13348,7 @@ paths:
   '/users/{user_id}/portfolios/{portfolio_id}/videos':
     get:
       summary: 'Get all the videos in a portfolio'
+      description: 'This method gets all the videos from the specified portfolio.'
       operationId: get_portfolio_videos
       tags:
         - Portfolios\Videos
@@ -13267,6 +13437,7 @@ paths:
   '/users/{user_id}/portfolios/{portfolio_id}/videos/{video_id}':
     delete:
       summary: 'Remove a video from a portfolio'
+      description: 'This method removes a video from the specified portfolio.'
       operationId: delete_video_from_portfolio
       tags:
         - Portfolios\Videos
@@ -13310,6 +13481,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific video in a portfolio'
+      description: 'This method gets a single video from the specified portfolio.'
       operationId: get_portfolio_video
       tags:
         - Portfolios\Videos
@@ -13347,6 +13519,7 @@ paths:
                 $ref: '#/components/schemas/video'
     put:
       summary: 'Add a video to a portfolio'
+      description: 'This method adds a video to the specified portfolio.'
       operationId: add_video_to_portfolio
       tags:
         - Portfolios\Videos
@@ -13391,6 +13564,7 @@ paths:
   '/users/{user_id}/presets':
     get:
       summary: 'Get all the embed presets that a user has created'
+      description: 'This method returns all the embed presets that belong to the specified user.'
       operationId: get_embed_presets
       tags:
         - 'Embed Presets\Essentials'
@@ -13431,6 +13605,7 @@ paths:
   '/users/{user_id}/presets/{preset_id}':
     get:
       summary: 'Get a specific embed preset'
+      description: 'This method returns a single embed preset that belongs to the specified user.'
       operationId: get_embed_preset
       tags:
         - 'Embed Presets\Essentials'
@@ -14176,17 +14351,18 @@ paths:
         -
           oauth2:
             - interact
-  '/users/{user_id}/uploads/{upload}':
+  '/users/{user_id}/uploads/{upload_id}':
     delete:
       summary: 'Complete a user''s streaming upload'
+      description: 'This method returns all the embed presets that belong to the specified user.'
       operationId: complete_streaming_upload
       tags:
-        - Videos\Upload
+        - Videos\Uploads
       parameters:
         -
           description: 'The ID of the upload attempt.'
           in: path
-          name: upload
+          name: upload_id
           required: true
           schema:
             type: number
@@ -14219,7 +14395,7 @@ paths:
         201:
           description: 'The streaming upload is complete.'
         404:
-          description: "* Error code 5006: The video file doesn't exist.\n* Error code 5007: The signature doesn't exist.\n* Error code 8400: The signature is invalid."
+          description: "* Error code 5006: No such video file exists.\n* Error code 5007: No such signature exists.\n* Error code 8400: The signature is invalid."
           content:
             application/json:
               schema:
@@ -14231,7 +14407,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
         500:
-          description: 'Error code 4011: The upload server returns an HTTP status code other than 200.'
+          description: 'Error code 4011: The upload server returned an HTTP status code other than 200.'
           content:
             application/json:
               schema:
@@ -14242,14 +14418,15 @@ paths:
             - upload
     get:
       summary: 'Get a user''s upload attempt'
+      description: 'This method returns all the embed presets that belong to the specified user.'
       operationId: get_upload_attempt
       tags:
-        - Videos\Upload
+        - Videos\Uploads
       parameters:
         -
           description: 'The ID of the upload attempt.'
           in: path
-          name: upload
+          name: upload_id
           required: true
           schema:
             type: number
@@ -14276,6 +14453,7 @@ paths:
   '/users/{user_id}/videos':
     get:
       summary: 'Get all the videos that a user has uploaded'
+      description: 'This method returns all the videos that the authenticated user has uploaded.'
       operationId: get_videos
       tags:
         - Videos\Essentials
@@ -14289,7 +14467,7 @@ paths:
             type: number
             example: 152184
         -
-          description: 'The page that contains the video URI. Only available when not paired with `query`.'
+          description: 'The page that contains the video URI. Available only when not paired with **query**.'
           in: query
           name: containing_uri
           required: false
@@ -14328,7 +14506,7 @@ paths:
             type: boolean
             example: true
         -
-          description: 'Whether to filter by all playable videos or by all videos that are not  playable.'
+          description: 'Whether to filter the results by playable videos (`true`) or non-playable videos (`false`).'
           in: query
           name: filter_playable
           required: false
@@ -14378,7 +14556,7 @@ paths:
               - plays
       responses:
         304:
-          description: 'This user hasn''t created any videos since the given `If-Modified-Since` header.'
+          description: 'The authenticated user hasn''t created any videos since the given **If-Modified-Since** header.'
         200:
           description: 'The videos were returned.'
           content:
@@ -14389,10 +14567,10 @@ paths:
                   $ref: '#/components/schemas/video'
     post:
       summary: 'Upload a video'
-      description: 'Begin the video upload process. For more information, see our [upload documentation](https://developer.vimeo.com/api/upload/videos).'
+      description: "This method begins the video upload process for the authenticated user. For more information, see our\n[upload documentation](https://developer.vimeo.com/api/upload/videos)."
       operationId: upload_video
       tags:
-        - Videos\Upload
+        - Videos\Uploads
       parameters:
         -
           description: 'The ID of the user.'
@@ -14410,7 +14588,7 @@ paths:
               type: object
               properties:
                 content_rating:
-                  description: 'A list of values describing the content in this video. Find the full list in the [/contentratings](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
+                  description: 'A list of values describing the content in this video. Find the full list in the [`/contentratings`](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
                   items:
                     type: string
                   type: array
@@ -14423,15 +14601,15 @@ paths:
                     buttons:
                       properties:
                         embed:
-                          description: 'Show or hide the Embed button.'
+                          description: 'Whether to show the embed button on the embeddable player.'
                           example: true
                           type: boolean
                         fullscreen:
-                          description: 'Show or hide the Fullscreen button.'
+                          description: 'Whether to show the fullscreen button on the embeddable player.'
                           example: true
                           type: boolean
                         hd:
-                          description: 'Show or hide the HD button.'
+                          description: 'Whether to show the HD button on the embeddable player.'
                           example: true
                           type: boolean
                         like:
@@ -14439,20 +14617,20 @@ paths:
                           example: true
                           type: boolean
                         scaling:
-                          description: 'Show or hide the Scaling button (shown only in Fullscreen mode).'
+                          description: 'Whether to show the scaling button on the embeddable player in fullscreen mode.'
                           example: true
                           type: boolean
                         share:
-                          description: 'Show or hide the Share button.'
+                          description: 'Whether to show the share button on the embeddable player.'
                           example: true
                           type: boolean
                         watchlater:
-                          description: 'Show or hide the Watch Later button.'
+                          description: 'Whether to show the watch later button on the embeddable player.'
                           example: true
                           type: boolean
                       type: object
                     color:
-                      description: 'The main color of the embed player.'
+                      description: 'The main color of the embeddable player.'
                       example: '#1ab7ea'
                       type: string
                     logos:
@@ -14460,45 +14638,45 @@ paths:
                         custom:
                           properties:
                             active:
-                              description: 'Show or hide your custom logo.'
+                              description: 'Whether to show the active custom logo on the embeddable player.'
                               example: true
                               type: boolean
                             link:
-                              description: 'The URL that loads when the user clicks your custom logo.'
+                              description: 'The URL that loads when the user clicks the custom logo.'
                               example: 'https://example.com'
                               type: string
                             sticky:
-                              description: 'Whether always to show the custom logo or to hide it after time with the rest of the UI.'
+                              description: 'Whether the custom logo is always visible on the embeddable player (`true`) or whether the logo appears and disappears with the rest of the UI (`false`).'
                               example: true
                               type: boolean
                           type: object
                         vimeo:
-                          description: 'Show or hide the Vimeo logo.'
+                          description: 'Whether to show the Vimeo logo on the embeddable player.'
                           example: true
                           type: boolean
                       type: object
                     playbar:
-                      description: 'Show or hide the playbar.'
+                      description: 'Whether to show the playbar on the embeddable player.'
                       example: true
                       type: boolean
                     title:
                       properties:
                         name:
-                          description: 'Show or hide the video title, or enable the user to determine whether the video title appears.'
+                          description: "How to handle the video title in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the video title.\n * `show` - Show the video title.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
                             - user
                           type: string
                         owner:
-                          description: 'Show or hide the owner information, or enable the user to determine whether the owner information appears.'
+                          description: "How to handle the owner information in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the owner info.\n * `show` - Show the owner info.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
                             - user
                           type: string
                         portrait:
-                          description: 'Show or hide the owner portrait, or enable the user to determine whether the owner portrait appears.'
+                          description: "How to handle the owner portrait in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the portrait.\n * `show` - Show the portrait.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
@@ -14506,12 +14684,12 @@ paths:
                           type: string
                       type: object
                     volume:
-                      description: 'Show or hide the volume selector.'
+                      description: 'Whether to show the volume selector on the embeddable player.'
                       example: true
                       type: boolean
                   type: object
                 license:
-                  description: 'The Creative Commons license.'
+                  description: 'The Creative Commons license under which the video is offered.'
                   enum:
                     - by
                     - by-nc
@@ -14522,7 +14700,7 @@ paths:
                     - cc0
                   type: string
                 locale:
-                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
+                  description: 'The video''s default language. For a full list of supported languages, use the [`/languages?filter=texttracks`](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en_US
                   type: string
                 name:
@@ -14530,7 +14708,7 @@ paths:
                   example: 'Celebrating 10 Years of Staff Picks'
                   type: string
                 password:
-                  description: 'The password. When you set `privacy.view` to `password`, you must provide the password as an additional parameter.'
+                  description: 'The password. When you set **privacy.view** to `password`, you must provide the password as an additional parameter.'
                   example: hunter1
                   type: string
                 privacy:
@@ -14547,18 +14725,18 @@ paths:
                         - nobody
                       type: string
                     download:
-                      description: 'Whether a user can download the video. Not available to users with a Basic membership'
+                      description: 'Whether a user can download the video. Not available to Vimeo Basic members.'
                       example: true
                       type: boolean
                     embed:
-                      description: 'The video''s embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/reference/videos#embed-privacy) for details on adding and removing domains.'
+                      description: 'The video''s embed setting. Specify the `whitelist` value if you want to provide a list of all valid embed domains; see our [Interacting with Videos](https://developer.vimeo.com/api/guides/videos/interact#set-off-site-privacy) guide for more information.'
                       enum:
                         - private
                         - public
                         - whitelist
                       type: string
                     view:
-                      description: 'The video''s privacy setting. When privacy is `users`, `application/json` is the only valid content type. Basic users can''t set privacy to `unlisted`.'
+                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `unlisted`.'
                       enum:
                         - anybody
                         - contacts
@@ -14569,61 +14747,33 @@ paths:
                         - users
                       type: string
                   type: object
-                ratings:
-                  properties:
-                    mpaa:
-                      properties:
-                        reason:
-                          description: "The reason for the video's MPAA rating.\n\nOption descriptions:\n * `at` - Adult themes\n * `bn` - Brief nudity\n * `n` - Nudity\n * `sl` - Strong language\n * `ss` - Sexual situations\n * `v` - Violence\n"
-                          enum:
-                            - at
-                            - bn
-                            - 'n'
-                            - sl
-                            - ss
-                            - v
-                          type: string
-                      type: object
-                    tv:
-                      properties:
-                        reason:
-                          description: "The reason for the video's TV rating.\n\nOption descriptions:\n * `d` - Suggestive dialogue\n * `fv` - Fantasy violence\n * `l` - Language\n * `ss` - Sexual situations\n * `v` - Violence\n"
-                          enum:
-                            - d
-                            - fv
-                            - l
-                            - ss
-                            - v
-                          type: string
-                      type: object
-                  type: object
                 review_page:
                   properties:
                     active:
-                      description: 'Enable or disable video review.'
+                      description: 'Whether to enable video review.'
                       example: true
                       type: boolean
                   type: object
                 spatial:
                   properties:
                     director_timeline:
-                      description: 'The 360 director timeline.'
+                      description: 'An array representing the 360 director timeline.'
                       items:
                         type: object
                         properties:
                           pitch:
-                            description: 'The timeline pitch. This value must be between -90 and 90.'
+                            description: 'The 360 director timeline pitch. This value must be between −90 and 90. Required only when **spatial.director_timeline** is defined.'
                             example: 70
                             type: number
                           roll:
-                            description: 'The timeline roll.'
+                            description: 'The 360 director timeline roll.'
                             type: number
                           time_code:
-                            description: 'The 360 director timeline time code.'
+                            description: 'The 360 director timeline time code. Required only when **spatial.director_timeline** is defined.'
                             example: 5
                             type: number
                           yaw:
-                            description: 'The timeline yaw. This value must be between 0 and 360.'
+                            description: 'The 360 director timeline yaw. This value must be between 0 and 360. Required only when **spatial.director_timeline** is defined.'
                             example: 125
                             type: number
                         required:
@@ -14632,7 +14782,7 @@ paths:
                           - yaw
                       type: array
                     field_of_view:
-                      description: 'The 360 field of view: default 50, minimum 30, maximum 90.'
+                      description: 'The 360 field of view. This value must be between 30 and 90. The default is 50.'
                       example: 50
                       type: number
                     projection:
@@ -14687,19 +14837,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/video'
         401:
-          description: 'Error code 8002: No user is associated with the authentication token.'
+          description: 'Error code 8002: No user is associated with the access token.'
           content:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/error'
         403:
-          description: "* Error code 4102: The user's allotted quota has been reached.\n* Error code 4101: The user's maximum disk space has been reached."
+          description: "* Error code 4102: The authenticated user's allotted quota has been reached.\n* Error code 4101: The authenticated user's maximum disk space has been reached."
           content:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/error'
         400:
-          description: "* Error code 2205: The body of the request isn't formatted properly.\n* Error code 2204: The request contains invalid parameters.\n* Error code 2204: The request contains invalid body parameters.\n* Error code 2230: The upload type is invalid.\n* Error code 3116: If a `type` payload parameter was supplied instead of `upload.approach`."
+          description: "* Error code 2205: The body of the request isn't formatted properly.\n* Error code 2204: The request contains invalid body parameters.\n* Error code 2230: The upload type is invalid.\n* Error code 3116: The **type** payload parameter was supplied instead of **upload.approach**. Use **upload.approach** starting from API version 3.4."
           content:
             application/vnd.vimeo.video+json:
               schema:
@@ -14713,6 +14863,7 @@ paths:
   '/users/{user_id}/videos/{video_id}':
     get:
       summary: 'Check if a user owns a video'
+      description: 'This method determines whether a particular user is the owner of the specified video.'
       operationId: check_if_user_owns_video
       tags:
         - Videos\Essentials
@@ -14749,6 +14900,7 @@ paths:
   '/users/{user_id}/watchlater':
     get:
       summary: 'Get all the videos in a user''s Watch Later queue'
+      description: 'This method gets all the videos from the specified user''s Watch Later queue.'
       operationId: get_watch_later_queue
       tags:
         - 'Watch Later Queue\Essentials'
@@ -14845,6 +14997,7 @@ paths:
   '/users/{user_id}/watchlater/{video_id}':
     delete:
       summary: 'Remove a video from a user''s Watch Later queue'
+      description: 'This method removes a single video from the specified user''s Watch Later queue.'
       operationId: delete_video_from_watch_later
       tags:
         - 'Watch Later Queue\Essentials'
@@ -14874,6 +15027,7 @@ paths:
             - interact
     get:
       summary: 'Check if a user has added a specific video to their Watch Later queue'
+      description: 'This method checks the specified user''s Watch Later queue for a particular video.'
       operationId: check_watch_later_queue
       tags:
         - 'Watch Later Queue\Essentials'
@@ -14913,6 +15067,7 @@ paths:
             - private
     put:
       summary: 'Add a video to a user''s Watch Later queue'
+      description: 'This method adds a single video to the specified user''s Watch Later queue.'
       operationId: add_video_to_watch_later
       tags:
         - 'Watch Later Queue\Essentials'
@@ -14943,6 +15098,7 @@ paths:
   /videos:
     get:
       summary: 'Search for videos'
+      description: 'This method returns all the videos that match custom search criteria.'
       operationId: search_videos
       tags:
         - Videos\Essentials
@@ -15005,7 +15161,7 @@ paths:
             type: number
             example: 10
         -
-          description: 'Search query.'
+          description: 'The search query.'
           in: query
           name: query
           required: true
@@ -15028,7 +15184,7 @@ paths:
               - plays
               - relevant
         -
-          description: 'The comma-separated list of videos to find.'
+          description: 'A comma-separated list of video URIs to find.'
           in: query
           name: uris
           required: false
@@ -15045,13 +15201,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/video'
         400:
-          description: "* Error code 2101: Either the `uris` or `links` parameter has filtering or sorting arguments.\n* Error code 2204: There is a problem with the batch request."
+          description: "* Error code 2101: Either the **uris** or **links** parameter has filtering or sorting arguments.\n* Error code 2204: A problem occurred with the batch request."
           content:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/error'
         503:
-          description: "* Search is disabled.\n* Error code 7300: There was an internal search error."
+          description: "* Search is disabled.\n* Error code 7300: An internal search error occurred."
           content:
             application/vnd.vimeo.video+json:
               schema:
@@ -15059,6 +15215,7 @@ paths:
   '/videos/{video_id}':
     delete:
       summary: 'Delete a video'
+      description: 'This method deletes the specified video.'
       operationId: delete_video
       tags:
         - Videos\Essentials
@@ -15086,6 +15243,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific video'
+      description: 'This method returns a single video.'
       operationId: get_video
       tags:
         - Videos\Essentials
@@ -15113,6 +15271,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     patch:
       summary: 'Edit a video'
+      description: 'This method edits the specified video.'
       operationId: edit_video
       tags:
         - Videos\Essentials
@@ -15133,12 +15292,12 @@ paths:
               type: object
               properties:
                 content_rating:
-                  description: 'A list of values describing the content in this video. You can find the full list in the [`/contentratings`](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
+                  description: 'A list of values describing the content in this video. Find the full list in the [`/contentratings`](https://developer.vimeo.com/api/reference/videos#get_content_ratings) endpoint.'
                   items:
                     type: string
                   type: array
                 description:
-                  description: 'The new description of the video.'
+                  description: 'The description of the video.'
                   example: 'A celebration of 10 years of Staff Picks.'
                   type: string
                 embed:
@@ -15146,36 +15305,36 @@ paths:
                     buttons:
                       properties:
                         embed:
-                          description: 'Show or hide the Embed button.'
+                          description: 'Whether to show the embed button on the embeddable player.'
                           example: true
                           type: boolean
                         fullscreen:
-                          description: 'Show or hide the Fullscreen button.'
+                          description: 'Whether to show the fullscreen button on the embeddable player.'
                           example: true
                           type: boolean
                         hd:
-                          description: 'Show or hide the HD button.'
+                          description: 'Whether to show the fullscreen button on the embeddable player.'
                           example: true
                           type: boolean
                         like:
-                          description: 'Show or hide the Like button.'
+                          description: 'Whether to show the like button on the embeddable player.'
                           example: true
                           type: boolean
                         scaling:
-                          description: 'Show or hide the Scaling button (shown only in Fullscreen mode).'
+                          description: 'Whether to show the scaling button on the embeddable player in fullscreen mode.'
                           example: true
                           type: boolean
                         share:
-                          description: 'Show or hide the Share button.'
+                          description: 'Whether to show the share button on the embeddable player.'
                           example: true
                           type: boolean
                         watchlater:
-                          description: 'Show or hide the Watch Later button.'
+                          description: 'Whether to show the watch later button on the embeddable player.'
                           example: true
                           type: boolean
                       type: object
                     color:
-                      description: 'The main color of the embed player.'
+                      description: 'The main color of the embeddable player.'
                       example: '#1ab7ea'
                       type: string
                     logos:
@@ -15183,45 +15342,45 @@ paths:
                         custom:
                           properties:
                             active:
-                              description: 'Show or hide your custom logo.'
+                              description: 'Whether to show the active custom logo on the embeddable player.'
                               example: true
                               type: boolean
                             link:
-                              description: 'The URL that loads when the user clicks your custom logo.'
+                              description: 'The URL that loads when the user clicks the custom logo.'
                               example: 'https://example.com'
                               type: string
                             sticky:
-                              description: 'Whether always to show the custom logo or to hide it after time with the rest of the UI.'
+                              description: 'Whether the custom logo is always visible on the embeddable player (`true`) or whether the logo appears and disappears with the rest of the UI (`false`).'
                               example: true
                               type: boolean
                           type: object
                         vimeo:
-                          description: 'Show or hide the Vimeo logo.'
+                          description: 'Whether to show the Vimeo logo on the embeddable player.'
                           example: true
                           type: boolean
                       type: object
                     playbar:
-                      description: 'Show or hide the playbar.'
+                      description: 'Whether to show the playbar on the embeddable player.'
                       example: true
                       type: boolean
                     title:
                       properties:
                         name:
-                          description: 'Show or hide the video title, or enable the user to determine whether the video title appears.'
+                          description: "How to handle the video title in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the video title.\n * `show` - Show the video title.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
                             - user
                           type: string
                         owner:
-                          description: 'Show or hide the owner information, or enable the user to determine whether the owner information appears.'
+                          description: "How to handle the owner information in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the owner info.\n * `show` - Show the owner info.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
                             - user
                           type: string
                         portrait:
-                          description: 'Show or hide the owner portrait, or enable the user to determine whether the owner portrait appears.'
+                          description: "How to handle the owner portrait in the title bar of the embeddable player.\n\nOption descriptions:\n * `hide` - Hide the portrait.\n * `show` - Show the portrait.\n * `user` - Enable the user to decide.\n"
                           enum:
                             - hide
                             - show
@@ -15229,12 +15388,12 @@ paths:
                           type: string
                       type: object
                     volume:
-                      description: 'Show or hide the volume selector.'
+                      description: 'Whether to show the volume selector on the embeddable player.'
                       example: true
                       type: boolean
                   type: object
                 license:
-                  description: 'The Creative Commons license.'
+                  description: 'The Creative Commons license under which the video is offered.'
                   enum:
                     - by
                     - by-nc
@@ -15245,15 +15404,15 @@ paths:
                     - cc0
                   type: string
                 locale:
-                  description: 'The video''s default language. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
+                  description: 'The video''s default language. For a full list of supported languages, use the [`/languages?filter=texttracks`](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
-                  description: 'The new title for the video.'
+                  description: 'The title of the video.'
                   example: 'Celebrating 10 Years of Staff Picks'
                   type: string
                 password:
-                  description: 'The password. When you set `privacy.view` to `password`, you must provide the password as an additional parameter.'
+                  description: 'The password. When you set **privacy.view** to `password`, you must provide the password as an additional parameter.'
                   example: hunter1
                   type: string
                 privacy:
@@ -15270,18 +15429,18 @@ paths:
                         - nobody
                       type: string
                     download:
-                      description: 'Whether a user can download the video. Not available to users with a Basic membership.'
+                      description: 'Whether a user can download the video. Not available to Vimeo Basic members.'
                       example: true
                       type: boolean
                     embed:
-                      description: 'The video''s new embed settings. The `whitelist` value enables you to define all valid embed domains. See our [documentation](https://developer.vimeo.com/api/reference/videos#embed-privacy) for details on adding and removing domains.'
+                      description: 'The video''s embed setting. Specify the `whitelist` value if you want to provide a list of all valid embed domains; see our [Interacting with Videos](https://developer.vimeo.com/api/guides/videos/interact#set-off-site-privacy) guide for more information.'
                       enum:
                         - private
                         - public
                         - whitelist
                       type: string
                     view:
-                      description: 'The video''s new privacy setting. When privacy is `users`, `application/json` is the only valid content type. Basic users can''t set privacy to `unlisted`.'
+                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `unlisted`.'
                       enum:
                         - anybody
                         - contacts
@@ -15292,61 +15451,33 @@ paths:
                         - users
                       type: string
                   type: object
-                ratings:
-                  properties:
-                    mpaa:
-                      properties:
-                        reason:
-                          description: "The reason for the video's MPAA rating.\n\nOption descriptions:\n * `at` - Adult themes\n * `bn` - Brief nudity\n * `n` - Nudity\n * `sl` - Strong language\n * `ss` - Sexual situations\n * `v` - Violence\n"
-                          enum:
-                            - at
-                            - bn
-                            - 'n'
-                            - sl
-                            - ss
-                            - v
-                          type: string
-                      type: object
-                    tv:
-                      properties:
-                        reason:
-                          description: "The reason for the video's TV rating.\n\nOption descriptions:\n * `d` - Suggestive dialogue\n * `fv` - Fantasy violence\n * `l` - Language\n * `ss` - Sexual situations\n * `v` - Violence\n"
-                          enum:
-                            - d
-                            - fv
-                            - l
-                            - ss
-                            - v
-                          type: string
-                      type: object
-                  type: object
                 review_page:
                   properties:
                     active:
-                      description: 'Enable or disable video review.'
+                      description: 'Whether to enable video review.'
                       example: true
                       type: boolean
                   type: object
                 spatial:
                   properties:
                     director_timeline:
-                      description: 'The 360 director timeline.'
+                      description: 'An array representing the 360 director timeline.'
                       items:
                         type: object
                         properties:
                           pitch:
-                            description: 'The timeline pitch. This value must be between -90 and 90.'
+                            description: 'The 360 director timeline pitch. This value must be between −90 and 90. Required only when **spatial.director_timeline** is defined.'
                             example: 70
                             type: number
                           roll:
-                            description: 'The timeline roll.'
+                            description: 'The 360 director timeline roll.'
                             type: number
                           time_code:
-                            description: 'The 360 director timeline time code.'
+                            description: 'The 360 director timeline time code. Required only when **spatial.director_timeline** is defined.'
                             example: 5
                             type: number
                           yaw:
-                            description: 'The timeline yaw. This value must be between 0 and 360.'
+                            description: 'The 360 director timeline yaw. This value must be between 0 and 360. Required only when **spatial.director_timeline** is defined.'
                             example: 125
                             type: number
                         required:
@@ -15355,7 +15486,7 @@ paths:
                           - yaw
                       type: array
                     field_of_view:
-                      description: 'The 360 field of view: default 50, minimum 30, maximum 90.'
+                      description: 'The 360 field of view. This value must be between 30 and 90. The default is 50.'
                       example: 50
                       type: number
                     projection:
@@ -15383,7 +15514,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/video'
         403:
-          description: "* The authenticated user doesn't own the video.\n* The `privacy` field is `disable` and the authenticated user can't set extra embed options.\n* The `privacy` field is `contacts` and the authenticated user can't follow creators.\n* The authenticated user has an opted-out PRO account and `privacy.view` is `users`, `password`, `nobody`, or `public`."
+          description: "* The authenticated user doesn't own the video.\n* The **privacy** field is `disable`, and the authenticated user can't set extra embed options.\n* The **privacy** field is `contacts`, and the authenticated user can't follow creators.\n* The authenticated user has an opted-out Pro account, and **privacy.view** is `users`, `password`, `nobody`, or `public`."
           content:
             application/vnd.vimeo.video+json:
               schema:
@@ -15401,6 +15532,7 @@ paths:
   '/videos/{video_id}/available_channels':
     get:
       summary: 'Get all the channels to which a user can add or remove a specific video'
+      description: 'Information about this method appears below.'
       operationId: get_available_video_channels
       tags:
         - Channels\Videos
@@ -15437,6 +15569,7 @@ paths:
   '/videos/{video_id}/categories':
     get:
       summary: 'Get all the categories to which a video belongs'
+      description: 'This method gets all the categories that contain a particular video.'
       operationId: get_video_categories
       tags:
         - Categories\Videos
@@ -15519,6 +15652,7 @@ paths:
   '/videos/{video_id}/comments':
     get:
       summary: 'Get all the comments on a video'
+      description: 'This method returns all the comments on the specified video.'
       operationId: get_comments
       tags:
         - Videos\Comments
@@ -15569,6 +15703,7 @@ paths:
                   $ref: '#/components/schemas/comment'
     post:
       summary: 'Add a comment to a video'
+      description: 'This method adds a comment to the specified video.'
       operationId: create_comment
       tags:
         - Videos\Comments
@@ -15601,6 +15736,12 @@ paths:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/comment'
+        400:
+          description: 'Error code 2207: The comment text is missing.'
+          content:
+            application/vnd.vimeo.comment+json:
+              schema:
+                $ref: '#/components/schemas/error'
         401:
           description: 'Error code 8003: The user credentials are invalid.'
           content:
@@ -15608,13 +15749,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
         403:
-          description: "* Error code 3413: Comments are disabled for this video.\n* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't comment.\n* Error code 3301: The comment was flagged as spam."
-          content:
-            application/vnd.vimeo.comment+json:
-              schema:
-                $ref: '#/components/schemas/error'
-        400:
-          description: 'Error code 2207: The comment text is missing.'
+          description: "* Error code 3301: The comment was flagged as spam.\n* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't comment.\n* Error code 3413: Comments are disabled for this video."
           content:
             application/vnd.vimeo.comment+json:
               schema:
@@ -15626,6 +15761,7 @@ paths:
   '/videos/{video_id}/comments/{comment_id}':
     delete:
       summary: 'Delete a video comment'
+      description: 'This method deletes the specified comment from a video.'
       operationId: delete_comment
       tags:
         - Videos\Comments
@@ -15650,7 +15786,7 @@ paths:
         204:
           description: 'The comment was deleted.'
         404:
-          description: "* No such video or comment exists.\n* Error code 5000: The deleted comment still exists."
+          description: "* No such video or comment exists.\n* Error code 5000: The comment wasn't deleted and still exists."
           content:
             application/json:
               schema:
@@ -15667,6 +15803,7 @@ paths:
             - delete
     get:
       summary: 'Get a specific video comment'
+      description: 'This method returns the specified comment on a video.'
       operationId: get_comment
       tags:
         - Videos\Comments
@@ -15702,6 +15839,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     patch:
       summary: 'Edit a video comment'
+      description: 'This method edits the specified comment on a video.'
       operationId: edit_comment
       tags:
         - Videos\Comments
@@ -15730,7 +15868,7 @@ paths:
               type: object
               properties:
                 text:
-                  description: 'The next text of the comment.'
+                  description: 'The new comment text.'
                   example: 'I love this!'
                   type: string
               required:
@@ -15742,14 +15880,14 @@ paths:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/comment'
-        403:
-          description: "* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't post comments.\n* Error code 3414: The authenticated user didn't write the comment and can't edit it.\n* Error code 3301: The supplied comment was flagged as spam."
+        400:
+          description: 'Error code 2207: The comment text is missing.'
           content:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/error'
-        400:
-          description: 'Error code 2207: The comment text is missing.'
+        403:
+          description: "* Error code 3301: The comment was flagged as spam.\n* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't post comments.\n* Error code 3414: The authenticated user didn't write the comment and can't edit it."
           content:
             application/vnd.vimeo.comment+json:
               schema:
@@ -15761,6 +15899,7 @@ paths:
   '/videos/{video_id}/comments/{comment_id}/replies':
     get:
       summary: 'Get all the replies to a video comment'
+      description: 'This method returns all the replies to the specified video comment.'
       operationId: get_comment_replies
       tags:
         - Videos\Comments
@@ -15814,6 +15953,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a reply to a video comment'
+      description: 'This method adds a reply to the specified video comment.'
       operationId: create_comment_reply
       tags:
         - Videos\Comments
@@ -15854,14 +15994,14 @@ paths:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/comment'
-        403:
-          description: "* Error code 3413: Comments are disabled on this video.\n* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't comment.\n* Error code 3301: The comment was flagged as spam."
+        400:
+          description: 'Error code 2207: The comment text is missing.'
           content:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/error'
-        400:
-          description: 'Error code 2207: The comment text is missing.'
+        403:
+          description: "* Error code 3301: The comment was flagged as spam.\n* Error code 3411: The authenticated user is unverified.\n* Error code 3412: The authenticated user can't comment.\n* Error code 3413: Comments are disabled on this video."
           content:
             application/vnd.vimeo.comment+json:
               schema:
@@ -15873,6 +16013,7 @@ paths:
   '/videos/{video_id}/credits':
     get:
       summary: 'Get all the credited users in a video'
+      description: 'This method returns all the credited users in a video.'
       operationId: get_video_credits
       tags:
         - Videos\Credits
@@ -15932,7 +16073,7 @@ paths:
               - date
       responses:
         200:
-          description: 'The users were returned.'
+          description: 'The credited users were returned.'
           content:
             application/vnd.vimeo.credit+json:
               schema:
@@ -15941,6 +16082,7 @@ paths:
                   $ref: '#/components/schemas/credit'
     post:
       summary: 'Credit a user in a video'
+      description: 'This method adds a user credit to a video.'
       operationId: add_video_credit
       tags:
         - Videos\Credits
@@ -15973,7 +16115,7 @@ paths:
                   example: Producer
                   type: string
                 user_uri:
-                  description: 'The URI of the Vimeo user who should be given credit in this video.'
+                  description: 'The Vimeo URI of the credited person.'
                   example: /users/152184
                   type: string
               required:
@@ -15989,7 +16131,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/credit'
         400:
-          description: "* The credit was added.\n* A parameter is invalid.\n* The authenticated user has an unverified email address.\n* There is a user block between the video owner and the person receiving credit."
+          description: "* A parameter is invalid.\n* The authenticated user has an unverified email address.\n* There is a user block between the video owner and the person receiving credit."
           content:
             application/vnd.vimeo.credit+json:
               schema:
@@ -16002,7 +16144,8 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
   '/videos/{video_id}/credits/{credit_id}':
     delete:
-      summary: 'Delete a credit for a user in a video'
+      summary: 'Delete the credit for a user in a video'
+      description: 'This method deletes the specified user credit from a video.'
       operationId: delete_video_credit
       tags:
         - Videos\Credits
@@ -16038,6 +16181,7 @@ paths:
             - edit
     get:
       summary: 'Get a specific credited user in a video'
+      description: 'This method returns a single credited user in a video.'
       operationId: get_video_credit
       tags:
         - Videos\Credits
@@ -16072,7 +16216,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/legacy-error'
     patch:
-      summary: 'Edit a credit for a user in a video'
+      summary: 'Edit the credit for a user in a video'
+      description: 'This method edits the specified user credit in a video.'
       operationId: edit_video_credit
       tags:
         - Videos\Credits
@@ -16101,11 +16246,11 @@ paths:
               type: object
               properties:
                 name:
-                  description: 'The name of the person being credited.'
+                  description: 'The name of the credited person.'
                   example: 'Sam Doe'
                   type: string
                 role:
-                  description: 'The role of the person being credited.'
+                  description: 'The role of the credited person.'
                   example: Producer
                   type: string
       responses:
@@ -16134,6 +16279,7 @@ paths:
   '/videos/{video_id}/likes':
     get:
       summary: 'Get all the users who have liked a video'
+      description: 'This method gets all the users who have liked a particular video.'
       operationId: get_video_likes
       tags:
         - Likes\Essentials
@@ -16195,6 +16341,7 @@ paths:
   '/videos/{video_id}/pictures':
     get:
       summary: 'Get all the thumbnails of a video'
+      description: 'This method returns all the thumbnail images of the specified video.'
       operationId: get_video_thumbnails
       tags:
         - Videos\Thumbnails
@@ -16234,6 +16381,7 @@ paths:
                   $ref: '#/components/schemas/picture'
     post:
       summary: 'Add a video thumbnail'
+      description: 'This method adds a thumbnail image to the specified video.'
       operationId: create_video_thumbnail
       tags:
         - Videos\Thumbnails
@@ -16254,7 +16402,7 @@ paths:
               type: object
               properties:
                 active:
-                  description: 'Whether the image created by the `time` field should be the default thumbnail for the video.'
+                  description: 'Whether the image created by the **time** field should be the default thumbnail for the video.'
                   example: true
                   type: boolean
                 time:
@@ -16275,12 +16423,13 @@ paths:
   '/videos/{video_id}/pictures/{picture_id}':
     delete:
       summary: 'Delete a video thumbnail'
+      description: 'This method deletes the specified thumbnail image from a video.'
       operationId: delete_video_thumbnail
       tags:
         - Videos\Thumbnails
       parameters:
         -
-          description: 'The ID of the picture.'
+          description: 'The ID of the thumbnail.'
           in: path
           name: picture_id
           required: true
@@ -16303,13 +16452,14 @@ paths:
           oauth2:
             - edit
     get:
-      summary: 'Get a video thumbnail'
+      summary: 'Get a specific video thumbnail'
+      description: 'This method returns a single thumbnail image from the specified video.'
       operationId: get_video_thumbnail
       tags:
         - Videos\Thumbnails
       parameters:
         -
-          description: 'The ID of the picture.'
+          description: 'The ID of the thumbnail.'
           in: path
           name: picture_id
           required: true
@@ -16333,12 +16483,13 @@ paths:
                 $ref: '#/components/schemas/picture'
     patch:
       summary: 'Edit a video thumbnail'
+      description: 'This method edits the specified video thumbnail image.'
       operationId: edit_video_thumbnail
       tags:
         - Videos\Thumbnails
       parameters:
         -
-          description: 'The ID of the picture.'
+          description: 'The ID of the thumbnail.'
           in: path
           name: picture_id
           required: true
@@ -16378,6 +16529,7 @@ paths:
   '/videos/{video_id}/presets/{preset_id}':
     delete:
       summary: 'Remove an embed preset from a video'
+      description: 'This method removes the embed preset from the specified video.'
       operationId: delete_video_embed_preset
       tags:
         - 'Embed Presets\Videos'
@@ -16413,6 +16565,7 @@ paths:
             - edit
     get:
       summary: 'Check if an embed preset has been added to a video'
+      description: 'This method determines whether the specified video uses a particular embed preset.'
       operationId: get_video_embed_preset
       tags:
         - 'Embed Presets\Videos'
@@ -16474,10 +16627,11 @@ paths:
             - edit
   '/videos/{video_id}/privacy/domains':
     get:
-      summary: 'Get all the domains on which a video can be embedded'
+      summary: 'Get all the domains on a video''s whitelist'
+      description: 'This method returns all the domains on the specified video''s whitelist.'
       operationId: get_video_privacy_domains
       tags:
-        - 'Videos\Embed Privacy'
+        - 'Videos\Embed privacy'
       parameters:
         -
           description: 'The ID of the video.'
@@ -16520,10 +16674,11 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
   '/videos/{video_id}/privacy/domains/{domain}':
     delete:
-      summary: 'Restrict a video from being embedded on a domain'
+      summary: 'Remove a domain from a video''s whitelist'
+      description: 'This method removes the specified domain from a video''s whitelist.'
       operationId: delete_video_privacy_domain
       tags:
-        - 'Videos\Embed Privacy'
+        - 'Videos\Embed privacy'
       parameters:
         -
           description: 'The domain name.'
@@ -16543,9 +16698,9 @@ paths:
             example: 258684937
       responses:
         204:
-          description: 'The video was disallowed from being embedded on the domain.'
+          description: 'The domain was removed.'
         403:
-          description: 'The video isn''t set to a user-defined access list.'
+          description: 'The video''s embed privacy setting isn''t `whitelist`.'
           content:
             application/json:
               schema:
@@ -16561,11 +16716,11 @@ paths:
           oauth2:
             - edit
     put:
-      summary: 'Permit a video to be embedded on a domain'
-      description: 'If domain privacy is enabled for this video, this method permits the video to be embedded on the specified domain.'
+      summary: 'Add a domain to a video''s whitelist'
+      description: 'This method adds the specified domain to a video''s whitelist.'
       operationId: add_video_privacy_domain
       tags:
-        - 'Videos\Embed Privacy'
+        - 'Videos\Embed privacy'
       parameters:
         -
           description: 'The domain name.'
@@ -16598,10 +16753,11 @@ paths:
             - edit
   '/videos/{video_id}/privacy/users':
     get:
-      summary: 'Get all the users who can view a user''s private videos by default'
+      summary: 'Get all the users who can view a private video'
+      description: 'This method returns all the users who have access to the specified private video.'
       operationId: get_video_privacy_users
       tags:
-        - 'Videos\Viewing Privacy'
+        - 'Videos\Viewing privacy'
       parameters:
         -
           description: 'The ID of the video.'
@@ -16637,17 +16793,17 @@ paths:
                 items:
                   $ref: '#/components/schemas/user'
         400:
-          description: 'No users can view the private video.'
+          description: 'No users can view this private video by default.'
           content:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Permit a list of users to view a private video'
-      description: "The body of this request should follow our\n[batch request format](https://developer.vimeo.com/api/common-formats#batch-requests). Each object must contain\na single `URI` field, and the value of this field must be the URI of the user who can view this video."
+      description: "This method gives multiple users permission to view the specified private video. The body of the request should\nfollow our [batch request format](https://developer.vimeo.com/api/common-formats#working-with-batch-requests): each\nobject must contain a single uri field whose value is the URI of the user who can view the video."
       operationId: add_video_privacy_users
       tags:
-        - 'Videos\Viewing Privacy'
+        - 'Videos\Viewing privacy'
       parameters:
         -
           description: 'The ID of the video.'
@@ -16673,9 +16829,10 @@ paths:
   '/videos/{video_id}/privacy/users/{user_id}':
     delete:
       summary: 'Restrict a user from viewing a private video'
+      description: 'This method prevents a user from being able to view the specified private video.'
       operationId: delete_video_privacy_user
       tags:
-        - 'Videos\Viewing Privacy'
+        - 'Videos\Viewing privacy'
       parameters:
         -
           description: 'The ID of the user.'
@@ -16714,9 +16871,10 @@ paths:
             - edit
     put:
       summary: 'Permit a specific user to view a private video'
+      description: 'This method gives a single user permission to view the specified private video.'
       operationId: add_video_privacy_user
       tags:
-        - 'Videos\Viewing Privacy'
+        - 'Videos\Viewing privacy'
       parameters:
         -
           description: 'The ID of the user.'
@@ -16756,6 +16914,7 @@ paths:
   '/videos/{video_id}/tags':
     get:
       summary: 'Get all the tags of a video'
+      description: 'This method returns all the tags associated with a video.'
       operationId: get_video_tags
       tags:
         - Videos\Tags
@@ -16779,6 +16938,7 @@ paths:
                   $ref: '#/components/schemas/tag'
     put:
       summary: 'Add a list of tags to a video'
+      description: 'This method adds multiple tags to the specified video.'
       operationId: add_video_tags
       tags:
         - Videos\Tags
@@ -16799,7 +16959,7 @@ paths:
               type: object
               properties:
                 name:
-                  description: 'The name of the tag to apply. See our documentation on [batch requests](https://developer.vimeo.com/api/common-formats#batch-requests) for more information.'
+                  description: 'The name of the tag to apply. Specify multiple tag names as a batch request; see [Using Common Formats and Parameters](https://developer.vimeo.com/api/common-formats#working-with-batch-requests) for details.'
                   example: awesome
                   type: string
                 page:
@@ -16814,7 +16974,7 @@ paths:
                 - name
       responses:
         200:
-          description: 'The tags that were added.'
+          description: 'The tags were added.'
           content:
             application/vnd.vimeo.tag+json:
               schema:
@@ -16822,13 +16982,13 @@ paths:
                 items:
                   $ref: '#/components/schemas/tag'
         400:
-          description: "* The request body wasn't supplied.\n* A parameter is invalid.\n* The request body isn't a JSON-encoded list of tags."
+          description: "* The request body wasn't supplied.\n* A parameter is invalid.\n* The request body doesn't contain a JSON-encoded list of tags.."
           content:
             application/vnd.vimeo.tag+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
         403:
-          description: "* The authenticated user can't add tags to a video.\n* The number of tags would exceed 20."
+          description: "* The authenticated user can't add tags to a video.\n* The total number of tags can't exceed 20."
           content:
             application/vnd.vimeo.tag+json:
               schema:
@@ -16840,6 +17000,7 @@ paths:
   '/videos/{video_id}/tags/{word}':
     delete:
       summary: 'Remove a tag from a video'
+      description: 'This method removes the specified tag from a video.'
       operationId: delete_video_tag
       tags:
         - Videos\Tags
@@ -16875,6 +17036,7 @@ paths:
             - edit
     get:
       summary: 'Check if a tag has been added to a video'
+      description: 'This method determines whether a particular tag has been added to a video.'
       operationId: check_video_for_tag
       tags:
         - Videos\Tags
@@ -16896,8 +17058,8 @@ paths:
             type: string
             example: awesome
       responses:
-        204:
-          description: 'The tag has been added.'
+        200:
+          description: 'The tag has been added to the video.'
           content:
             application/vnd.vimeo.tag+json:
               schema:
@@ -16916,6 +17078,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     put:
       summary: 'Add a specific tag to a video'
+      description: 'This method adds a single tag to the specified video.'
       operationId: add_video_tag
       tags:
         - Videos\Tags
@@ -16937,7 +17100,7 @@ paths:
             type: string
             example: awesome
       responses:
-        204:
+        200:
           description: 'The tag was added.'
           content:
             application/vnd.vimeo.tag+json:
@@ -16950,7 +17113,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/legacy-error'
         403:
-          description: 'The number of tags on the video would exceed 20.'
+          description: 'The total number of tags can''t exceed 20.'
           content:
             application/vnd.vimeo.tag+json:
               schema:
@@ -16962,9 +17125,10 @@ paths:
   '/videos/{video_id}/texttracks':
     get:
       summary: 'Get all the text tracks of a video'
+      description: 'This method returns all the text tracks of the specified video.'
       operationId: get_text_tracks
       tags:
-        - 'Videos\Text Tracks'
+        - 'Videos\Text tracks'
       parameters:
         -
           description: 'The ID of the video.'
@@ -16991,10 +17155,10 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
     post:
       summary: 'Add a text track to a video'
-      description: 'For additional information, see our [text track upload guide](https://developer.vimeo.com/api/upload/texttracks).'
+      description: 'This method adds a text track to the specified video. For more information, see [Working with Text Track Uploads](https://developer.vimeo.com/api/upload/texttracks).'
       operationId: create_text_track
       tags:
-        - 'Videos\Text Tracks'
+        - 'Videos\Text tracks'
       parameters:
         -
           description: 'The ID of the video.'
@@ -17012,11 +17176,11 @@ paths:
               type: object
               properties:
                 active:
-                  description: 'Active text tracks appear in the player and are visible to other users. Only one text track per language can be active.'
+                  description: 'Whether the current text track is the *active text track*, or the one that appears in the player. Only one text track per language and type can be active.'
                   example: true
                   type: boolean
                 language:
-                  description: 'The language of the text track. For a complete list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
+                  description: 'The language of the text track. For a full list of supported language, use the [`/languages?filter=texttracks`](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
@@ -17044,7 +17208,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/text-track'
         403:
-          description: "* The authenticated user can't edit the text track.\n* Error code 2204: The request contains errors."
+          description: "* The authenticated user can't add the text track.\n* Error code 2204: The request contains errors."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
@@ -17056,9 +17220,10 @@ paths:
   '/videos/{video_id}/texttracks/{texttrack_id}':
     delete:
       summary: 'Delete a text track'
+      description: 'This method deletes the specified text track from a video.'
       operationId: delete_text_track
       tags:
-        - 'Videos\Text Tracks'
+        - 'Videos\Text tracks'
       parameters:
         -
           description: 'The ID of the text track.'
@@ -17080,13 +17245,13 @@ paths:
         204:
           description: 'The text track was deleted.'
         404:
-          description: "* No such video or text track exists.\n* The authenticated user can't delete the text track.\n* Error code 5014: The text track that you specified doesn't exist.\n* Error code 5015: The text track that you specified belongs to a different video."
+          description: "* No such video or text track exists.\n* The authenticated user can't delete the text track.\n* Error code 5014: The specified text track doesn't exist.\n* Error code 5015: The specified text track belongs to a different video."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
         403:
-          description: "* Error code 3430: You don't have permission to access this text track.\n* Error code 3431: This text track is disabled."
+          description: "* Error code 3430: The authenticated user doesn't have permission to access the text track.\n* Error code 3431: This text track is disabled."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
@@ -17097,9 +17262,10 @@ paths:
             - delete
     get:
       summary: 'Get a specific text track'
+      description: 'This method returns a single text track from the specified video.'
       operationId: get_text_track
       tags:
-        - 'Videos\Text Tracks'
+        - 'Videos\Text tracks'
       parameters:
         -
           description: 'The ID of the text track.'
@@ -17125,22 +17291,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/text-track'
         404:
-          description: "* No such video or text track exists.\n* Error code 5014: The text track that you specified doesn't exist.\n* Error code 5015: The text track that you specified belongs to a different video."
+          description: "* No such video or text track exists.\n* Error code 5014: The specified text track doesn't exist.\n* Error code 5015: The specified text track belongs to a different video."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
         403:
-          description: "* Error code 3430: You don't have permission to access this text track.\n* Error code 3431: This text track is disabled."
+          description: "* Error code 3430: The authenticated user doesn't have permission to access the text track.\n* Error code 3431: This text track is disabled."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
                 $ref: '#/components/schemas/error'
     patch:
       summary: 'Edit a text track'
+      description: 'This method edits the specified text track.'
       operationId: edit_text_track
       tags:
-        - 'Videos\Text Tracks'
+        - 'Videos\Text tracks'
       parameters:
         -
           description: 'The ID of the text track.'
@@ -17166,11 +17333,11 @@ paths:
               type: object
               properties:
                 active:
-                  description: 'Whether the text track is active, meaning that it appears in the player. Only one text track per language, and type, can be active.'
+                  description: 'Whether the current text track is the active text track, or the one that appears in the player. Only one text track per language and per type can be active.'
                   example: true
                   type: boolean
                 language:
-                  description: 'The language of the text track. For a full list of valid languages, use the [/languages?filter=texttracks](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
+                  description: 'The language of the text track. For a full list of supported languages, use the [`/languages?filter=texttracks`](https://developer.vimeo.com/api/reference/videos#get_languages) endpoint.'
                   example: en-US
                   type: string
                 name:
@@ -17178,7 +17345,7 @@ paths:
                   example: Commentary
                   type: string
                 type:
-                  description: 'The text track type.'
+                  description: 'The type of the text track.'
                   enum:
                     - captions
                     - chapters
@@ -17194,13 +17361,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/text-track'
         404:
-          description: "* No such video or text track exists.\n* Error code 5014: The text track that you specified doesn't exist.\n* Error code 5015: The text track that you specified belongs to a different video."
+          description: "* No such video or text track exists.\n* Error code 5014: The specified text track doesn't exist.\n* Error code 5015: The specified text track belongs to a different video."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
         403:
-          description: "* The authenticated user can't edit the text track.\n* Error code 2204: There are errors in the request.\n* Error code 3430: You don't have permission to access this text track.\n* Error code 3431: This text track is disabled."
+          description: "* The authenticated user can't edit the text track.\n* Error code 2204: There are errors in the request.\n* Error code 3430: The authenticated user doesn't have permission to access the text track.\n* Error code 3431: This text track is disabled."
           content:
             application/vnd.vimeo.video.texttrack+json:
               schema:
@@ -17288,6 +17455,7 @@ paths:
   '/videos/{video_id}/versions':
     post:
       summary: 'Add a version to a video'
+      description: 'This method adds a version to the specified video.'
       operationId: create_video_version
       tags:
         - Videos\Versions
@@ -17314,7 +17482,7 @@ paths:
                 upload:
                   properties:
                     approach:
-                      description: 'Upload approach'
+                      description: 'The approach by which to upload the version.'
                       enum:
                         - post
                         - pull
@@ -17322,15 +17490,15 @@ paths:
                         - tus
                       type: string
                     link:
-                      description: 'If your upload approach is pull, Vimeo will download the video hosted at this public URL. This URL must be valid for at least 24 hours.'
+                      description: 'When **upload.approach** is `pull`, the public URL from which to download the version. This URL must be valid for at least 24 hours.'
                       example: 'https://example.com'
                       type: string
                     redirect_url:
-                      description: 'The app''s redirect URL. Use this parameter when `approach` is `post`.'
+                      description: 'When **upload.approach** is `post`, the app''s redirect URL.'
                       example: 'https://example.com'
                       type: string
                     size:
-                      description: 'Upload size'
+                      description: 'The upload size of the version.'
                       example: '13623861'
                       type: string
                   required:
@@ -17341,25 +17509,25 @@ paths:
                 - upload
       responses:
         201:
-          description: 'Standard request.'
+          description: 'The version was added.'
           content:
             application/vnd.vimeo.video.version+json:
               schema:
                 $ref: '#/components/schemas/video-versions'
         400:
-          description: "* Error code 2204: If the request input contains invalid upload data.\n* Error code 2204: If the request input contains invalid versions data."
+          description: 'Error code 2204: The request input contains invalid versions data.'
           content:
             application/vnd.vimeo.video.version+json:
               schema:
                 $ref: '#/components/schemas/error'
         404:
-          description: "* Error code 5011: If an upload associated with the version isn't found.\n* Error code 5012: If a video associated with the upload isn't found.\n* Error code 5013: If the version of the API used is less than 3.4 and isn't of approach `tus`, the endpoint isn't available."
+          description: "* Error code 5011: An upload isn't associated with this version.\n* Error code 5012: A video isn't associated with this upload.\n* Error code 5013: The endpoint isn't available, because the specified version of the API is less than 3.4 and **upload.approach** isn't `tus`."
           content:
             application/vnd.vimeo.video.version+json:
               schema:
                 $ref: '#/components/schemas/error'
         403:
-          description: 'Error code 3427: If a user isn''t permitted to edit the video'
+          description: 'Error code 3427: The authenticated user can''t edit the video.'
           content:
             application/vnd.vimeo.video.version+json:
               schema:
@@ -17367,6 +17535,7 @@ paths:
   '/videos/{video_id}/videos':
     get:
       summary: 'Get all the related videos of a video'
+      description: 'This method returns all the related videos of a particular video.'
       operationId: get_related_videos
       tags:
         - Videos\Recommendations
@@ -17414,7 +17583,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/video'
         400:
-          description: 'The value of `filter` isn'' `related`.'
+          description: 'The value of **filter** isn''t `related`.'
           content:
             application/vnd.vimeo.video+json:
               schema:
