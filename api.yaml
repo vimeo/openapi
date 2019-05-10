@@ -16,6 +16,8 @@ tags:
   -
     name: Albums\Essentials
   -
+    name: Albums\Videos
+  -
     name: 'Authentication Extras\Essentials'
   -
     name: Categories\Channels
@@ -85,6 +87,8 @@ tags:
     name: Projects\Videos
   -
     name: Tags\Essentials
+  -
+    name: Tutorial\Essentials
   -
     name: Users\Essentials
   -
@@ -7080,7 +7084,7 @@ paths:
                         - whitelist
                       type: string
                     view:
-                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `unlisted`.'
+                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `disable` or `unlisted`.'
                       enum:
                         - anybody
                         - contacts
@@ -7204,6 +7208,10 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/error'
+      security:
+        -
+          oauth2:
+            - upload
   '/me/videos/{video_id}':
     get:
       summary: 'Check if a user owns a video'
@@ -7249,7 +7257,7 @@ paths:
             - delete
     get:
       summary: 'Get all the videos that a user has watched'
-      description: 'Information about this method appears below.'
+      description: "Information about this method appears below.\n\n**NOTE:** This endpoint is deprecated. Any request to it returns empty data with HTTP status code 200."
       operationId: get_watch_history
       tags:
         - 'Users\Watch history'
@@ -9836,6 +9844,14 @@ paths:
             application/vnd.vimeo.auth+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+  /tutorial:
+    get:
+      summary: 'Get started with the Vimeo API'
+      description: "This method, in conjunction with our [Getting Started](https://developer.vimeo.com/api/guides/start) guide, can\nhelp you learn how to use the Vimeo API."
+      operationId: developer_tutorial
+      tags:
+        - Tutorial\Essentials
+      responses: {  }
   /users:
     get:
       summary: 'Search for users'
@@ -10473,6 +10489,12 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+        403:
+          description: 'Error code 3200: The authenticated user cannot access uploaded thumbnails for the specified album.'
+          content:
+            application/vnd.vimeo.picture+json:
+              schema:
+                $ref: '#/components/schemas/error'
     post:
       summary: 'Add a custom uploaded thumbnail'
       description: "This method adds an image file as a custom thumbnail to the specified album. For information on how to upload the thumbnail, see our\n[Working with Thumbnail Uploads](https://developer.vimeo.com/api/upload/thumbnails) guide, and follow the same steps."
@@ -14736,7 +14758,7 @@ paths:
                         - whitelist
                       type: string
                     view:
-                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `unlisted`.'
+                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `disable` or `unlisted`.'
                       enum:
                         - anybody
                         - contacts
@@ -14860,6 +14882,10 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/error'
+      security:
+        -
+          oauth2:
+            - upload
   '/users/{user_id}/videos/{video_id}':
     get:
       summary: 'Check if a user owns a video'
@@ -15440,7 +15466,7 @@ paths:
                         - whitelist
                       type: string
                     view:
-                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `unlisted`.'
+                      description: 'The video''s privacy setting. When this value is `users`, `application/json` is the only valid content type. Also, Vimeo Basic members can''t set this value to `disable` or `unlisted`.'
                       enum:
                         - anybody
                         - contacts
@@ -15529,6 +15555,52 @@ paths:
         -
           oauth2:
             - edit
+  '/videos/{video_id}/available_albums':
+    get:
+      summary: 'Get all the albums to which a user can add or remove a specific video'
+      operationId: get_available_video_albums
+      tags:
+        - Albums\Videos
+      parameters:
+        -
+          description: 'The ID of the video.'
+          in: path
+          name: video_id
+          required: true
+          schema:
+            type: number
+            example: 258684937
+        -
+          description: 'The page number of the results to show.'
+          in: query
+          name: page
+          required: false
+          schema:
+            type: number
+            example: 1
+        -
+          description: 'The number of items to show on each page of results, up to a maximum of 100.'
+          in: query
+          name: per_page
+          required: false
+          schema:
+            type: number
+            example: 10
+      responses:
+        200:
+          description: 'The albums were returned.'
+          content:
+            application/vnd.vimeo.album+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/album'
+        403:
+          description: 'Error code 3433: The authenticated user can''t add this video to collections.'
+          content:
+            application/vnd.vimeo.album+json:
+              schema:
+                $ref: '#/components/schemas/error'
   '/videos/{video_id}/available_channels':
     get:
       summary: 'Get all the channels to which a user can add or remove a specific video'
@@ -17877,6 +17949,23 @@ components:
                     - options
                     - uri
                   type: object
+                add_to:
+                  description: 'Information about adding or removing a video from the album. This data requires a bearer token with the `private` scope.'
+                  nullable: true
+                  properties:
+                    options:
+                      description: 'An array of HTTP methods permitted on this URI. This data requires a bearer token with the `private` scope.'
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: 'The API URI that resolves to the connection data. This data requires a bearer token with the `private` scope.'
+                      example: /albums/1234/videos/5678
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
                 add_videos:
                   description: 'An action indicating that the authenticated user is an admin of the album and may therefore add videos. This data requires a bearer token with the `private` scope.'
                   properties:
@@ -17896,6 +17985,7 @@ components:
               required:
                 - add_custom_thumbnails
                 - add_logos
+                - add_to
                 - add_videos
               type: object
           required:
@@ -17941,6 +18031,9 @@ components:
           description: 'Whether album videos should use the review mode URL.'
           example: true
           type: boolean
+        share_link:
+          description: 'The URL to share the showcase.'
+          type: string
         sort:
           description: 'Sort type of the album.'
           enum:
@@ -18014,6 +18107,7 @@ components:
         - privacy
         - resource_key
         - review_mode
+        - share_link
         - sort
         - theme
         - uri
@@ -21640,6 +21734,48 @@ components:
             connections:
               description: 'A list of resource URIs related to the video.'
               properties:
+                available_albums:
+                  description: 'Information about the albums to which this video may be added. This data requires a bearer token with the `private` scope.'
+                  properties:
+                    options:
+                      description: 'An array of HTTP methods permitted on this URI. This data requires a bearer token with the `private` scope.'
+                      items:
+                        type: string
+                      type: array
+                    total:
+                      description: 'The total number of albums on this connection. This data requires a bearer token with the `private` scope.'
+                      example: 14
+                      type: number
+                    uri:
+                      description: 'The API URI that resolves to the connection data. This data requires a bearer token with the `private` scope.'
+                      example: /videos/258684937/videos/available_albums
+                      type: string
+                  required:
+                    - options
+                    - total
+                    - uri
+                  type: object
+                available_channels:
+                  description: 'Information about the channels to which this video may be added. This data requires a bearer token with the `private` scope.'
+                  properties:
+                    options:
+                      description: 'An array of HTTP methods permitted on this URI. This data requires a bearer token with the `private` scope.'
+                      items:
+                        type: string
+                      type: array
+                    total:
+                      description: 'The total number of channels on this connection. This data requires a bearer token with the `private` scope.'
+                      example: 14
+                      type: number
+                    uri:
+                      description: 'The API URI that resolves to the connection data. This data requires a bearer token with the `private` scope.'
+                      example: /videos/258684937/videos/available_channels
+                      type: string
+                  required:
+                    - options
+                    - total
+                    - uri
+                  type: object
                 comments:
                   description: 'Information about the comments on this video.'
                   properties:
@@ -21882,6 +22018,10 @@ components:
                       items:
                         type: string
                       type: array
+                    resource_key:
+                      description: 'The resource key string of the current version of the video.'
+                      example: bac1033deba2310ebba2caec33c23e4beea67aba
+                      type: string
                     total:
                       description: 'The total number of versions on this connection.'
                       example: 3
@@ -21896,6 +22036,8 @@ components:
                     - uri
                   type: object
               required:
+                - available_albums
+                - available_channels
                 - comments
                 - credits
                 - likes
